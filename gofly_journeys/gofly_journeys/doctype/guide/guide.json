@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Guide-.###",
+ "creation": "2025-09-29 14:13:24.051139",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_details_section",
+  "personal_details_column",
+  "first_name",
+  "last_name",
+  "full_name",
+  "gender",
+  "date_of_birth",
+  "email",
+  "phone_number",
+  "column_break_gupp",
+  "guide_id",
+  "languages_known",
+  "experience",
+  "availability"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_details_section",
+   "fieldtype": "Section Break",
+   "label": "Guide Details"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "placeholder": "Enter the first name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "placeholder": "Enter the last name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "placeholder": "Enter the full name"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale\nOther"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Phone",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "personal_details_column",
+   "fieldtype": "Column Break",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "column_break_gupp",
+   "fieldtype": "Column Break",
+   "label": "Professional Details"
+  },
+  {
+   "fieldname": "guide_id",
+   "fieldtype": "Data",
+   "label": "Guide ID"
+  },
+  {
+   "fieldname": "languages_known",
+   "fieldtype": "Data",
+   "label": "Languages Known",
+   "placeholder": "Eg., Tamil, English, French"
+  },
+  {
+   "fieldname": "experience",
+   "fieldtype": "Int",
+   "label": "Experience",
+   "placeholder": "Years of experience"
+  },
+  {
+   "fieldname": "availability",
+   "fieldtype": "Select",
+   "label": "Availability",
+   "options": "Availability\nNot Availability"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-01 14:28:06.092626",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Guide",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

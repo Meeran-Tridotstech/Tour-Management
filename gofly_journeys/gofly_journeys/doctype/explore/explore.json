@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2025-09-27 12:20:23.625889",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "place_name",
+  "famous_places",
+  "location",
+  "attach_images"
+ ],
+ "fields": [
+  {
+   "fieldname": "place_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Place Name"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fieldname": "attach_images",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Tour images"
+  },
+  {
+   "fieldname": "famous_places",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Famous Places"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-30 16:40:18.180661",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Explore",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

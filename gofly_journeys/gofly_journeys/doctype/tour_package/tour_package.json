@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PKG-.###",
+ "creation": "2025-09-23 14:35:39.618397",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tour_package",
+  "package_column",
+  "package_name",
+  "column_break_qoim",
+  "package_code",
+  "location_section",
+  "country",
+  "column_break_vbes",
+  "states",
+  "package_duration_section",
+  "package_duration_column",
+  "start_date",
+  "column_break_wezn",
+  "end_date",
+  "duration_trip_section",
+  "duration_trip_column",
+  "nights",
+  "column_break_hpep",
+  "days",
+  "visit_place",
+  "description",
+  "section_break_qcja",
+  "explore",
+  "section_break_qpre",
+  "column_break_zfgx",
+  "column_break_fzoa",
+  "column_break_xdgx",
+  "amount",
+  "book_now"
+ ],
+ "fields": [
+  {
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "label": "Package Name",
+   "placeholder": "Enter The Name"
+  },
+  {
+   "bold": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "placeholder": "Fixed Amount"
+  },
+  {
+   "fieldname": "tour_package",
+   "fieldtype": "Section Break",
+   "label": "Tour package"
+  },
+  {
+   "fieldname": "visit_place",
+   "fieldtype": "Section Break",
+   "label": "Visit Place"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Autocomplete",
+   "label": "Country",
+   "options": "Afghanistan\nAlbania\nAlgeria\nAndorra\nAngola\nAntigua and Barbuda\nArgentina\nArmenia\nAustralia\nAustria\nAzerbaijan\nBahamas\nBahrain\nBangladesh\nBarbados\nBelarus\nBelgium\nBelize\nBenin\nBhutan\nBolivia\nBosnia and Herzegovina\nBotswana\nBrazil\nBrunei\nBulgaria\nBurkina Faso\nBurundi\nCabo Verde\nCambodia\nCameroon\nCanada\nCentral African Republic\nChad\nChile\nChina\nColombia\nComoros\nCongo (Congo-Brazzaville)\nCosta Rica\nCroatia\nCuba\nCyprus\nCzechia (Czech Republic)\nDemocratic Republic of the Congo\nDenmark\nDjibouti\nDominica\nDominican Republic\nEcuador\nEgypt\nEl Salvador\nEquatorial Guinea\nEritrea\nEstonia\nEswatini\nEthiopia\nFiji\nFinland\nFrance\nGabon\nGambia\nGeorgia\nGermany\nGhana\nGreece\nGrenada\nGuatemala\nGuinea\nGuinea-Bissau\nGuyana\nHaiti\nHonduras\nHungary\nIceland\nIndia\nIndonesia\nIran\nIraq\nIreland\nIsrael\nItaly\nJamaica\nJapan\nJordan\nKazakhstan\nKenya\nKiribati\nKuwait\nKyrgyzstan\nLaos\nLatvia\nLebanon\nLesotho\nLiberia\nLibya\nLiechtenstein\nLithuania\nLuxembourg\nMadagascar\nMalawi\nMalaysia\nMaldives\nMali\nMalta\nMarshall Islands\nMauritania\nMauritius\nMexico\nMicronesia\nMoldova\nMonaco\nMongolia\nMontenegro\nMorocco\nMozambique\nMyanmar (Burma)\nNamibia\nNauru\nNepal\nNetherlands\nNew Zealand\nNicaragua\nNiger\nNigeria\nNorth Korea\nNorth Macedonia\nNorway\nOman\nPakistan\nPalau\nPanama\nPapua New Guinea\nParaguay\nPeru\nPhilippines\nPoland\nPortugal\nQatar\nRomania\nRussia\nRwanda\nSaint Kitts and Nevis\nSaint Lucia\nSaint Vincent and the Grenadines\nSamoa\nSan Marino\nSao Tome and Principe\nSaudi Arabia\nSenegal\nSerbia\nSeychelles\nSierra Leone\nSingapore\nSlovakia\nSlovenia\nSolomon Islands\nSomalia\nSouth Africa\nSouth Korea\nSouth Sudan\nSpain\nSri Lanka\nSudan\nSuriname\nSweden\nSwitzerland\nSyria\nTaiwan\nTajikistan\nTanzania\nThailand\nTimor-Leste\nTogo\nTonga\nTrinidad and Tobago\nTunisia\nTurkey\nTurkmenistan\nTuvalu\nUganda\nUkraine\nUnited Arab Emirates\nUnited Kingdom\nUnited States\nUruguay\nUzbekistan\nVanuatu\nVatican City\nVenezuela\nVietnam\nYemen\nZambia\nZimbabwe",
+   "placeholder": "Select Country"
+  },
+  {
+   "fieldname": "explore",
+   "fieldtype": "Table",
+   "label": "Explore",
+   "options": "Explore"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "placeholder": "Enter the Description"
+  },
+  {
+   "fieldname": "package_duration_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "placeholder": "Start Date"
+  },
+  {
+   "depends_on": "start_date",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "mandatory_depends_on": "start_date",
+   "placeholder": "End Date"
+  },
+  {
+   "fieldname": "package_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "package_code",
+   "fieldtype": "Data",
+   "label": "Package Code",
+   "placeholder": "Enter The Package Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "duration_trip_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days",
+   "fieldtype": "Int",
+   "label": "Days"
+  },
+  {
+   "fieldname": "nights",
+   "fieldtype": "Int",
+   "label": "Nights"
+  },
+  {
+   "fieldname": "section_break_qcja",
+   "fieldtype": "Section Break",
+   "label": "Visit Place"
+  },
+  {
+   "fieldname": "section_break_qpre",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zfgx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fzoa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xdgx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "package_duration_section",
+   "fieldtype": "Section Break",
+   "label": "Package Duration"
+  },
+  {
+   "fieldname": "column_break_wezn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "duration_trip_section",
+   "fieldtype": "Section Break",
+   "label": "Duration Trip"
+  },
+  {
+   "fieldname": "column_break_hpep",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qoim",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "column_break_vbes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "states",
+   "fieldtype": "Autocomplete",
+   "in_list_view": 1,
+   "label": "States",
+   "options": "Andhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChhattisgarh\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJharkhand\nKarnataka\nKerala\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal\nNew South Wales\nQueensland\nSouth Australia\nTasmania\nVictoria\nWestern Australia\nAcre\nAlagoas\nAmazonas\nBahia\nCear\u00e1\nEsp\u00edrito Santo\nGoi\u00e1s\nMaranh\u00e3o\nMato Grosso\nMato Grosso do Sul\nMinas Gerais\nPar\u00e1\nPara\u00edba\nParan\u00e1\nPernambuco\nPiau\u00ed\nRio de Janeiro\nRio Grande do Norte\nRio Grande do Sul\nRond\u00f4nia\nRoraima\nSanta Catarina\nS\u00e3o Paulo\nSergipe\nTocantins\nAlberta\nBritish Columbia\nManitoba\nNew Brunswick\nNewfoundland and Labrador\nNorthwest Territories\nNova Scotia\nNunavut\nOntario\nPrince Edward Island\nQuebec\nSaskatchewan\nYukon\nAlabama\nAlaska\nArizona\nArkansas\nCalifornia\nColorado\nConnecticut\nDelaware\nFlorida\nGeorgia\nHawaii\nIdaho\nIllinois\nIndiana\nIowa\nKansas\nKentucky\nLouisiana\nMaine\nMaryland\nMassachusetts\nMichigan\nMinnesota\nMississippi\nMissouri\nMontana\nNebraska\nNevada\nNew Hampshire\nNew Jersey\nNew Mexico\nNew York\nNorth Carolina\nNorth Dakota\nOhio\nOklahoma\nOregon\nPennsylvania\nRhode Island\nSouth Carolina\nSouth Dakota\nTennessee\nTexas\nUtah\nVermont\nVirginia\nWashington\nWest Virginia\nWisconsin\nWyoming\nJohor\nKedah\nKelantan\nMalacca\nNegeri Sembilan\nPahang\nPerak\nPerlis\nPenang\nSabah\nSarawak\nSelangor\nTerengganu\nKuala Lumpur\nLabuan\nPutrajaya\nIbaraki\nTochigi\nGunma\nSaitama\nChiba\nTokyo\nKanagawa\nNiigata\nToyama\nIshikawa\nFukui\nYamanashi\nNagano\nGifu\nShizuoka\nAichi\nMie\nShiga\nKyoto\nOsaka\nHyogo\nNara\nWakayama\nTottori\nShimane\nOkayama\nHiroshima\nYamaguchi\nTokushima\nKagawa\nEhime\nKochi\nFukuoka\nSaga\nNagasaki\nKumamoto\nOita\nMiyazaki\nKagoshima\nOkinawa"
+  },
+  {
+   "fieldname": "book_now",
+   "fieldtype": "Button",
+   "label": "Book Now"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-01 15:53:20.513614",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Tour Package",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "package_name"
+}

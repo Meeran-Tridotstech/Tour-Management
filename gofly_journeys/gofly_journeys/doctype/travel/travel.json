@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-29 16:20:11.046978",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "transportation_mode",
+  "departure_city",
+  "arrival_city",
+  "departure_date__time",
+  "arrival_date_time",
+  "travel_company",
+  "travel_number",
+  "duration",
+  "seat_type",
+  "guide",
+  "hotel"
+ ],
+ "fields": [
+  {
+   "fieldname": "transportation_mode",
+   "fieldtype": "Select",
+   "label": "Transportation Mode",
+   "options": "Flight\nTrain\nBus\nCar\nShip"
+  },
+  {
+   "fieldname": "departure_city",
+   "fieldtype": "Data",
+   "label": "Departure City",
+   "placeholder": "e.g., Chennai, Delhi"
+  },
+  {
+   "fieldname": "arrival_city",
+   "fieldtype": "Data",
+   "label": "Arrival City",
+   "placeholder": "e.g., Bangkok, Paris"
+  },
+  {
+   "fieldname": "departure_date__time",
+   "fieldtype": "Datetime",
+   "label": "Departure Date  Time",
+   "placeholder": "Scheduled start of travel"
+  },
+  {
+   "fieldname": "arrival_date_time",
+   "fieldtype": "Datetime",
+   "label": "Arrival Date Time",
+   "placeholder": "Scheduled arrival"
+  },
+  {
+   "fieldname": "travel_company",
+   "fieldtype": "Data",
+   "label": "Travel Company",
+   "placeholder": "Airline, bus operator, etc."
+  },
+  {
+   "fieldname": "travel_number",
+   "fieldtype": "Select",
+   "label": "Travel Number",
+   "options": "Flight\nTrain\nBus No"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration",
+   "placeholder": "e.g., 5 hours, 1200 km"
+  },
+  {
+   "fieldname": "seat_type",
+   "fieldtype": "Select",
+   "label": "Seat Type",
+   "options": "Economy\nBusiness\nSleeper"
+  },
+  {
+   "fieldname": "guide",
+   "fieldtype": "Link",
+   "label": "Guide",
+   "options": "Guide"
+  },
+  {
+   "fieldname": "hotel",
+   "fieldtype": "Link",
+   "label": "Hotel",
+   "options": "Hotel"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-30 14:24:08.447697",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "travel",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
