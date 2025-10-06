@@ -28,15 +28,23 @@
   "nights",
   "visit_place_tab",
   "section_break_qcja",
-  "explore",
+  "expected_trip_month",
+  "column_break_wijj",
+  "column_break_bcfq",
+  "column_break_yrwr",
+  "up_to",
   "visit_place",
+  "explore",
   "description",
   "section_break_qpre",
   "column_break_zfgx",
   "column_break_fzoa",
   "column_break_xdgx",
   "amount",
-  "book_now"
+  "book_now",
+  "tourist_place_tab",
+  "images",
+  "image_slider"
  ],
  "fields": [
   {
@@ -54,11 +62,13 @@
   },
   {
    "fieldname": "tour_package",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hide_border": 1
   },
   {
    "fieldname": "visit_place",
    "fieldtype": "Section Break",
+   "hide_border": 1,
    "label": "Visit Place"
   },
   {
@@ -108,10 +118,12 @@
    "label": "Tour package"
   },
   {
+   "bold": 1,
    "fieldname": "package_code",
    "fieldtype": "Data",
    "label": "Package Code",
    "placeholder": "Enter The Package Code",
+   "read_only": 1,
    "unique": 1
   },
   {
@@ -134,7 +146,7 @@
   {
    "fieldname": "section_break_qcja",
    "fieldtype": "Section Break",
-   "label": "Visit Place"
+   "hide_border": 1
   },
   {
    "fieldname": "section_break_qpre",
@@ -173,7 +185,8 @@
   },
   {
    "fieldname": "status_section",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hide_border": 1
   },
   {
    "bold": 1,
@@ -213,12 +226,52 @@
    "fieldname": "visit_place_tab",
    "fieldtype": "Tab Break",
    "label": "Visit Place"
+  },
+  {
+   "fieldname": "expected_trip_month",
+   "fieldtype": "Select",
+   "label": "Expected Trip Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "up_to",
+   "fieldtype": "Select",
+   "label": "Up to",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "column_break_yrwr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wijj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bcfq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tourist_place_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tourist Place"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Images",
+   "options": "Tour Package Image"
+  },
+  {
+   "fieldname": "image_slider",
+   "fieldtype": "HTML",
+   "label": "Image Slider"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-06 19:56:36.701146",
+ "modified": "2025-10-07 00:48:18.115343",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",
