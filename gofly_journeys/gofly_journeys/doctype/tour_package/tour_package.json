@@ -41,6 +41,8 @@
   "column_break_fzoa",
   "column_break_xdgx",
   "amount",
+  "section_break_zkkq",
+  "column_break_igbd",
   "book_now",
   "tourist_place_tab",
   "images",
@@ -150,7 +152,8 @@
   },
   {
    "fieldname": "section_break_qpre",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hide_border": 1
   },
   {
    "fieldname": "column_break_zfgx",
@@ -266,12 +269,21 @@
    "fieldname": "image_slider",
    "fieldtype": "HTML",
    "label": "Image Slider"
+  },
+  {
+   "fieldname": "section_break_zkkq",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "fieldname": "column_break_igbd",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-07 00:48:18.115343",
+ "modified": "2025-10-07 18:44:26.768223",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",

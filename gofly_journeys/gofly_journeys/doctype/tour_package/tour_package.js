@@ -9,6 +9,39 @@ frappe.ui.form.on('Tour Package', {
         } else {
             frm.fields_dict.image_slider.$wrapper.html("<p>No images found.</p>");
         }
+
+        
+        // Button
+        setTimeout(() => {
+            let btn = frm.fields_dict.book_now?.$input;
+            if (btn) {
+                btn.css({
+                    "width": "205%",                 // full width
+                    "background-color": "#007bff",   // blue
+                    "color": "white",                // white text
+                    "font-weight": "600",
+                    "border": "none",
+                    "border-radius": "6px",
+                    "padding": "10px",
+                    "font-size": "15px",
+                    "cursor": "pointer",
+                    "transition": "0.3s",
+                });
+
+                // Add hover effect
+                btn.hover(
+                    function() {
+                        $(this).css("background-color", "#0056b3"); // darker blue on hover
+                    },
+                    function() {
+                        $(this).css("background-color", "#007bff"); // normal blue
+                    }
+                );
+            }
+        }, 500);
+
+
+        
     },
 
     // ----------------- Start and End Date Logic -----------------
@@ -147,6 +180,9 @@ function set_status_color(status) {
             input.style.color = "black";
         }
     }, 500);
+
+
+    
 }
 
 
