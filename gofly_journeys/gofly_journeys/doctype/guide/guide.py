@@ -19,4 +19,4 @@ class Guide(Document):
                 # Example pattern: 1 uppercase letter + 7 digits
                 pattern = r'^[A-Z]{1}\d{7}$'
                 if not re.match(pattern, self.passport):
-                    frappe.throw("Invalid passport number. Format should be: A1234567")        
+                    frappe.throw("Invalid passport number. Format should be: A1234567")

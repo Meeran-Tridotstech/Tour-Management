@@ -148,6 +148,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "description": "Example:A1234567",
    "fieldname": "passport",
    "fieldtype": "Data",
    "label": "Passport"
@@ -156,7 +157,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-08 16:58:20.195950",
+ "modified": "2025-10-08 17:31:05.616465",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Guide",
