@@ -10,22 +10,30 @@
   "personal_details_column",
   "first_name",
   "last_name",
+  "column_break_ucjl",
   "full_name",
   "gender",
+  "column_break_wxso",
   "date_of_birth",
   "email",
+  "column_break_xdno",
   "phone_number",
-  "column_break_gupp",
+  "passport",
+  "section_break_jwgt",
+  "column_break_lkoi",
   "guide_id",
-  "languages_known",
+  "column_break_cvxl",
   "experience",
-  "availability"
+  "column_break_ceyt",
+  "status",
+  "column_break_bnfg",
+  "languages_known"
  ],
  "fields": [
   {
    "fieldname": "personal_details_section",
    "fieldtype": "Section Break",
-   "label": "Guide Details"
+   "label": "Details"
   },
   {
    "fieldname": "first_name",
@@ -40,52 +48,59 @@
    "placeholder": "Enter the last name"
   },
   {
+   "bold": 1,
    "fieldname": "full_name",
    "fieldtype": "Data",
+   "in_standard_filter": 1,
    "label": "Full Name",
-   "placeholder": "Enter the full name"
+   "placeholder": "Enter the full name",
+   "read_only": 1
   },
   {
    "fieldname": "gender",
    "fieldtype": "Select",
    "label": "Gender",
-   "options": "Male\nFemale\nOther"
+   "options": "\nMale\nFemale\nOther",
+   "placeholder": "Select Gender"
   },
   {
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
-   "label": "Date of Birth"
+   "label": "Date of Birth",
+   "placeholder": "DOB"
   },
   {
+   "bold": 1,
+   "description": "example@gmail.com",
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "placeholder": "example@gmail.com",
+   "set_only_once": 1
   },
   {
    "fieldname": "phone_number",
    "fieldtype": "Phone",
-   "label": "Phone Number"
+   "label": "Phone Number",
+   "placeholder": "Enter 10 Digits"
   },
   {
    "fieldname": "personal_details_column",
-   "fieldtype": "Column Break",
-   "label": "Personal Details"
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_gupp",
-   "fieldtype": "Column Break",
-   "label": "Professional Details"
-  },
-  {
+   "bold": 1,
    "fieldname": "guide_id",
    "fieldtype": "Data",
-   "label": "Guide ID"
+   "label": "Guide ID",
+   "read_only": 1
   },
   {
    "fieldname": "languages_known",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "label": "Languages Known",
-   "placeholder": "Eg., Tamil, English, French"
+   "max_height": "50px",
+   "placeholder": "English,Tamil,Hindi etc..."
   },
   {
    "fieldname": "experience",
@@ -94,16 +109,54 @@
    "placeholder": "Years of experience"
   },
   {
-   "fieldname": "availability",
+   "fieldname": "column_break_ucjl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wxso",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xdno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jwgt",
+   "fieldtype": "Section Break",
+   "label": "Guide Details"
+  },
+  {
+   "fieldname": "column_break_lkoi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ceyt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
    "fieldtype": "Select",
-   "label": "Availability",
-   "options": "Availability\nNot Availability"
+   "label": "Status",
+   "options": "\nAvailable\nAssigned\nOn Tour\nOn Leave\nInactive\nBlocked"
+  },
+  {
+   "fieldname": "column_break_cvxl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bnfg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "passport",
+   "fieldtype": "Data",
+   "label": "Passport"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-01 14:28:06.092626",
+ "modified": "2025-10-08 16:58:20.195950",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Guide",

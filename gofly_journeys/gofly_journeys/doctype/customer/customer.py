@@ -7,6 +7,8 @@ from frappe.utils import validate_email_address
 
 
 class Customer(Document):
+    #Full Name:
+    #---------
     def validate(self):
         # Full Name
         if self.first_name and self.last_name:
@@ -20,6 +22,9 @@ class Customer(Document):
             if not validate_email_address(self.email_address):
                 frappe.throw("Please enter a valid Email Address")
 
+
+# Country:
+#--------
 @frappe.whitelist()
 def get_states_for_country(country):
     """Fetch states from external API"""
@@ -38,6 +43,9 @@ def get_states_for_country(country):
         frappe.log_error(f"Error fetching states for {country}: {e}")
         return []
 
+
+# State:
+#------
 @frappe.whitelist()
 def get_cities_for_state(country, state):
     """Fetch cities for the given country/state"""
