@@ -1,23 +1,35 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "Book NO-.###",
  "creation": "2025-09-26 15:16:57.917701",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "booking_id",
-  "customer",
+  "package_details_section",
   "tour_package",
+  "tour_package_name",
+  "column_break_xhqi",
+  "start_date",
+  "end_date",
+  "column_break_wuru",
+  "package_status",
+  "amount",
+  "section_break_tyrz",
+  "customer",
+  "column_break_choi",
   "booking_date",
   "status",
-  "amount",
-  "number_of_adults",
-  "number_of_children",
-  "total_guests",
+  "column_break_ieea",
   "booking_status",
   "hotel",
   "travel",
-  "guide"
+  "guide",
+  "amended_from",
+  "section_break_dtwd",
+  "total_guests",
+  "number_of_adults",
+  "number_of_children"
  ],
  "fields": [
   {
@@ -40,20 +52,18 @@
    "options": "Tour Package"
   },
   {
+   "bold": 1,
+   "fetch_from": "tour_package.amount",
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "label": "Amount",
+   "read_only": 1
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
    "options": "Draft\nConfirmed\nCancelled\nCompleted"
-  },
-  {
-   "fieldname": "booking_id",
-   "fieldtype": "Data",
-   "label": "Booking ID"
   },
   {
    "fieldname": "number_of_adults",
@@ -87,22 +97,96 @@
    "fieldname": "travel",
    "fieldtype": "Link",
    "label": "Travel",
-   "options": "travel"
+   "options": "Travel"
   },
   {
    "fieldname": "guide",
    "fieldtype": "Link",
    "label": "Guide",
    "options": "Guide"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Booking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_choi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ieea",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_dtwd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "package_details_section",
+   "fieldtype": "Section Break",
+   "label": "Package Details"
+  },
+  {
+   "fieldname": "section_break_tyrz",
+   "fieldtype": "Section Break",
+   "label": "Booking Section"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "tour_package.package_name",
+   "fieldname": "tour_package_name",
+   "fieldtype": "Data",
+   "label": "Tour Package Name",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fetch_from": "tour_package.start_date",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fetch_from": "tour_package.end_date",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fetch_from": "tour_package.package_status",
+   "fieldname": "package_status",
+   "fieldtype": "Data",
+   "label": "Package Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xhqi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wuru",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-10-01 16:16:10.856660",
+ "modified": "2025-10-08 23:47:02.380562",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

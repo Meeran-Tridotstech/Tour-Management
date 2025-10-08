@@ -7,21 +7,33 @@ from frappe.utils import validate_email_address
 
 
 class Customer(Document):
-    #Full Name:
-    #---------
     def validate(self):
-        # Full Name
-        if self.first_name and self.last_name:
-            self.full_name = f"{self.first_name} {self.last_name}"
-        elif self.first_name:
-            self.full_name = self.first_name
-        elif self.last_name:
-            self.full_name = self.last_name
         # Email validation
         if self.email_address:
             if not validate_email_address(self.email_address):
                 frappe.throw("Please enter a valid Email Address")
+        
+    #     self.ensure_one_customer_per_user()
 
+    # def ensure_one_customer_per_user(self):
+    #     # Get current logged-in user
+    #     current_user = frappe.session.user
+
+    #     # Ignore Administrator and Guest
+    #     if current_user in ("Administrator", "Guest"):
+    #         return
+
+    #     # Check if this user already has another Customer record
+    #     existing = frappe.db.exists(
+    #         "Customer",
+    #         {"owner": current_user, "name": ["!=", self.name]}
+    #     )
+
+    #     if existing:
+    #         frappe.throw(
+    #             f"You already have a Customer record ({existing}). "
+    #             "Only one Customer is allowed per user."
+    #         )
 
 # Country:
 #--------
@@ -62,3 +74,6 @@ def get_cities_for_state(country, state):
     except Exception as e:
         frappe.log_error(f"Error fetching cities for {state}: {e}")
         return []
+
+
+

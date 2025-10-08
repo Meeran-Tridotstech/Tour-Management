@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Customer-.###",
+ "autoname": "field:full_name",
  "creation": "2025-09-23 14:44:55.195360",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -11,13 +11,13 @@
   "last_name",
   "full_name",
   "gender",
-  "date_of_birth",
   "column_break_zona",
+  "date_of_birth",
   "phone_number",
   "alternate_phone_number",
   "country",
-  "state",
   "column_break_aqdd",
+  "state",
   "city",
   "email_address",
   "address_line_1"
@@ -29,7 +29,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Full Name",
-   "read_only": 1
+   "read_only": 1,
+   "unique": 1
   },
   {
    "fieldname": "gender",
@@ -115,11 +116,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-06 16:26:12.891668",
+ "modified": "2025-10-09 00:44:47.775347",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Customer",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

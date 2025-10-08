@@ -22,11 +22,9 @@
   "section_break_jwgt",
   "column_break_lkoi",
   "guide_id",
-  "column_break_cvxl",
   "experience",
-  "column_break_ceyt",
+  "column_break_cvxl",
   "status",
-  "column_break_bnfg",
   "languages_known"
  ],
  "fields": [
@@ -130,10 +128,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_ceyt",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -141,10 +135,6 @@
   },
   {
    "fieldname": "column_break_cvxl",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_bnfg",
    "fieldtype": "Column Break"
   },
   {
@@ -157,7 +147,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-08 17:31:05.616465",
+ "modified": "2025-10-08 23:19:48.203389",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Guide",
