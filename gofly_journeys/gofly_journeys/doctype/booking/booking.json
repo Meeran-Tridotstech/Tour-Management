@@ -17,25 +17,24 @@
   "amount",
   "section_break_tyrz",
   "customer",
-  "column_break_choi",
   "booking_date",
-  "status",
-  "column_break_ieea",
+  "travel_date",
+  "returm_date",
+  "column_break_choi",
   "booking_status",
+  "html",
   "hotel",
-  "travel",
-  "guide",
+  "transport",
+  "visa",
   "amended_from",
-  "section_break_dtwd",
-  "total_guests",
-  "number_of_adults",
-  "number_of_children"
+  "section_break_fkdj",
+  "travellers"
  ],
  "fields": [
   {
-   "default": "now",
    "fieldname": "booking_date",
    "fieldtype": "Datetime",
+   "is_virtual": 1,
    "label": "Booking Date",
    "read_only": 1
   },
@@ -60,50 +59,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Draft\nConfirmed\nCancelled\nCompleted"
-  },
-  {
-   "fieldname": "number_of_adults",
-   "fieldtype": "Int",
-   "label": "Number of Adults"
-  },
-  {
-   "fieldname": "number_of_children",
-   "fieldtype": "Int",
-   "label": "Number of Children"
-  },
-  {
-   "fieldname": "total_guests",
-   "fieldtype": "Int",
-   "label": "Total Guests",
-   "placeholder": "adults + children"
-  },
-  {
    "fieldname": "booking_status",
    "fieldtype": "Select",
    "label": "Booking Status",
-   "options": "Draft\nConfirmed\nCancelled"
-  },
-  {
-   "fieldname": "hotel",
-   "fieldtype": "Link",
-   "label": "Hotel",
-   "options": "Hotel"
-  },
-  {
-   "fieldname": "travel",
-   "fieldtype": "Link",
-   "label": "Travel",
-   "options": "Travel"
-  },
-  {
-   "fieldname": "guide",
-   "fieldtype": "Link",
-   "label": "Guide",
-   "options": "Guide"
+   "options": "\nDraft\nConfirmed\nCancelled"
   },
   {
    "fieldname": "amended_from",
@@ -118,14 +77,6 @@
   {
    "fieldname": "column_break_choi",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_ieea",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_dtwd",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "package_details_section",
@@ -176,13 +127,57 @@
   {
    "fieldname": "column_break_wuru",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "travel_date",
+   "fieldtype": "Date",
+   "label": "Travel Date"
+  },
+  {
+   "fieldname": "returm_date",
+   "fieldtype": "Date",
+   "label": "Returm Date"
+  },
+  {
+   "fieldname": "html",
+   "fieldtype": "HTML",
+   "label": "HTML",
+   "options": "<b>If you Need? (Check\u2714)</b>\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "hotel",
+   "fieldtype": "Check",
+   "label": " Hotel"
+  },
+  {
+   "default": "0",
+   "fieldname": "transport",
+   "fieldtype": "Check",
+   "label": "Transport"
+  },
+  {
+   "default": "0",
+   "fieldname": "visa",
+   "fieldtype": "Check",
+   "label": "Visa"
+  },
+  {
+   "fieldname": "section_break_fkdj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "travellers",
+   "fieldtype": "Table",
+   "label": "Travellers",
+   "options": "Traveller Details"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-08 23:47:02.380562",
+ "modified": "2025-10-09 18:09:57.787743",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class Inclusion(Document):
+class TravellerDetails(Document):
 	pass
