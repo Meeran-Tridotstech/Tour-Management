@@ -14,19 +14,20 @@
   "column_break_zona",
   "date_of_birth",
   "phone_number",
-  "alternate_phone_number",
   "country",
   "column_break_aqdd",
   "state",
   "city",
   "email_address",
-  "address_line_1"
+  "section_break_gqzl",
+  "address"
  ],
  "fields": [
   {
    "bold": 1,
    "fieldname": "full_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Full Name",
    "read_only": 1,
@@ -52,17 +53,6 @@
    "fieldname": "phone_number",
    "fieldtype": "Phone",
    "label": "Phone Number"
-  },
-  {
-   "fieldname": "alternate_phone_number",
-   "fieldtype": "Phone",
-   "label": "Alternate Phone Number"
-  },
-  {
-   "fieldname": "address_line_1",
-   "fieldtype": "Small Text",
-   "label": "Address Line 1",
-   "max_height": "50px"
   },
   {
    "bold": 1,
@@ -111,12 +101,22 @@
    "fieldtype": "Select",
    "label": "City",
    "set_only_once": 1
+  },
+  {
+   "fieldname": "section_break_gqzl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "max_height": "50px"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-09 00:44:47.775347",
+ "modified": "2025-10-12 13:08:37.610636",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Customer",

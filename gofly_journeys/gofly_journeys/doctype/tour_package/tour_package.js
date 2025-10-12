@@ -422,15 +422,54 @@ function set_status_color(status) {
     }, 500);
 }
 
+// function show_image_slider(frm) {
+//     let images = frm.doc.images.map(i => i.image).filter(Boolean);
+//     if (!images.length) return;
 
-// ------------------ Image Slider ------------------
+//     let img_html = images.map(img => `<img src="${img}" alt="Tour Image">`).join("");
+//     let total_images = images.length;
+//     let total_duration = total_images * 3; // 3s per image
+
+//     let html = `
+//         <div class="image-slider">
+//             <div class="slides">
+//                 ${img_html}
+//             </div>
+//         </div>
+
+//         <style>
+//         .image-slider {
+//             width: 100%;
+//             overflow: hidden;
+//             position: relative;
+//             border-radius: 10px;
+//         }
+//         .slides {
+//             display: flex;
+//             width: ${total_images * 100}%;
+//             animation: slide ${total_duration}s linear infinite;
+//         }
+//         .slides img {
+//             width: ${100 / total_images}%;
+//             height: 400px;
+//             object-fit: cover;
+//         }
+//         @keyframes slide {
+//             0% { transform: translateX(0); }
+//             100% { transform: translateX(-${(total_images - 1) * (100 / total_images)}%); }
+//         }
+//         </style>
+//     `;
+//     frm.fields_dict.image_slider.$wrapper.html(html);
+// }
+
 function show_image_slider(frm) {
     let images = frm.doc.images.map(i => i.image).filter(Boolean);
     if (!images.length) return;
 
     let img_html = images.map(img => `<img src="${img}" alt="Tour Image">`).join("");
     let total_images = images.length;
-    let total_duration = total_images * 3; // 3s per image
+    let total_duration = total_images * 2; // 1s per image
 
     let html = `
         <div class="image-slider">
@@ -448,17 +487,20 @@ function show_image_slider(frm) {
         }
         .slides {
             display: flex;
-            width: calc(100% * ${total_images});
-            animation: slide ${total_duration}s infinite steps(${total_images});
+            width: ${total_images * 100}%;
+            animation: slide ${total_duration}s linear infinite;
         }
         .slides img {
-            width: 100%;
+            width: ${100 / total_images}%;
             height: 400px;
             object-fit: cover;
         }
         @keyframes slide {
-            from { transform: translateX(0); }
-            to { transform: translateX(-${(total_images - 1) * 100}%); }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-${(total_images - 1) * (100 / total_images)}%); }
+        }
+        .image-slider:hover .slides {
+            animation-play-state: paused;
         }
         </style>
     `;

@@ -1,91 +1,143 @@
 {
  "actions": [],
- "autoname": "hash",
+ "autoname": "field:payment_id",
  "creation": "2025-09-26 17:44:14.562421",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "payment_id",
   "customer",
-  "amount",
-  "status",
-  "reference_number",
-  "payment_method",
+  "booking",
   "payment_date",
-  "pay_now",
+  "amount",
+  "visa_amount",
+  "column_break_wdla",
+  "total_amount",
+  "advance_amount",
+  "balance_amount",
+  "payment_count",
+  "column_break_ylti",
   "payment_status",
-  "booking"
+  "pay_amount",
+  "section_break_zyej",
+  "payment_history"
  ],
  "fields": [
   {
    "fieldname": "payment_id",
    "fieldtype": "Data",
    "label": "Payment Id",
-   "read_only": 1
+   "read_only": 1,
+   "unique": 1
   },
   {
+   "bold": 1,
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer"
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "label": "Amount"
-  },
-  {
-   "default": "Process",
-   "fieldname": "status",
-   "fieldtype": "Autocomplete",
-   "label": "Status",
-   "options": "Pending\nPaid\nFailed\nRefunded",
+   "options": "Customer",
    "read_only": 1
   },
   {
-   "fieldname": "reference_number",
-   "fieldtype": "Select",
-   "label": "Reference Number",
-   "options": "Bank\nTransaction ID"
+   "bold": 1,
+   "fetch_from": "booking.amount",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Pacake Amount"
   },
   {
-   "fieldname": "payment_method",
-   "fieldtype": "Select",
-   "label": "Payment Method",
-   "options": "Cash\nCard\nOnline\nBank Transfer"
-  },
-  {
-   "default": "Today",
+   "bold": 1,
    "fieldname": "payment_date",
-   "fieldtype": "Datetime",
-   "label": "Payment Date"
-  },
-  {
-   "fieldname": "pay_now",
-   "fieldtype": "Button",
-   "label": "Pay Now"
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "read_only": 1
   },
   {
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
-   "options": "Pending\nconform\ncomplete"
+   "options": "\nPending\nPartially Paid\nCompleted",
+   "read_only": 1
   },
   {
+   "bold": 1,
    "fieldname": "booking",
    "fieldtype": "Link",
    "label": "Booking",
-   "options": "Booking"
+   "options": "Booking",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wdla",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "booking.visa_fee",
+   "fieldname": "visa_amount",
+   "fieldtype": "Currency",
+   "label": "Visa Amount"
+  },
+  {
+   "bold": 1,
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "advance_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Advance Amount",
+   "non_negative": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "balance_amount",
+   "fieldtype": "Currency",
+   "label": "Balance Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_zyej",
+   "fieldtype": "Section Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "payment_history",
+   "fieldtype": "Small Text",
+   "label": "<b style=\"color:lightblack;\">Payment History</b>",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pay_amount",
+   "fieldtype": "Currency",
+   "label": "<b style=\"color:green;\">Pay Amount</b>"
+  },
+  {
+   "description": "<b style=\"color:red;\">You can only make 3 payments for this booking</b>",
+   "fieldname": "payment_count",
+   "fieldtype": "Int",
+   "label": "Payment Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ylti",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-01 16:37:24.455891",
+ "modified": "2025-10-13 00:32:25.362682",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Payment",
- "naming_rule": "Random",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

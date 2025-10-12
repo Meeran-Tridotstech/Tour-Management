@@ -45,6 +45,7 @@
   "column_break_igbd",
   "book_now",
   "tourist_place_tab",
+  "check_image",
   "images",
   "image_slider"
  ],
@@ -259,6 +260,7 @@
    "label": "Tourist Place"
   },
   {
+   "depends_on": "check_image",
    "fieldname": "images",
    "fieldtype": "Table",
    "label": "Images",
@@ -277,12 +279,20 @@
   {
    "fieldname": "column_break_igbd",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_image",
+   "fieldtype": "Check",
+   "label": "<b>If you check, you will see that multiple images have been inserted in the table below.</b>"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-09 13:04:21.168415",
+ "make_attachments_public": 1,
+ "max_attachments": 7,
+ "modified": "2025-10-12 12:27:00.786067",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",
