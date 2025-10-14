@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2025-10-14 17:28:45.577614",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Customer",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Add your message here</p>\n",
+ "message_type": "Markdown",
+ "modified": "2025-10-14 17:31:18.240216",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Payment",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Customer"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "{{ doc.name }} Delivered"
+}

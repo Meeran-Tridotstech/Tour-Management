@@ -3,7 +3,9 @@
  "allow_rename": 1,
  "autoname": "Book NO-.###",
  "creation": "2025-09-26 15:16:57.917701",
+ "default_email_template": "Booking Status Report",
  "doctype": "DocType",
+ "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
   "package_details_section",
@@ -22,7 +24,7 @@
   "column_break_choi",
   "return_date",
   "booking_status",
-  "amended_from",
+  "sender_email",
   "visa_tab",
   "visa_section",
   "html",
@@ -46,7 +48,8 @@
   "make_payment",
   "terms_and_conditions_tab",
   "notes_section",
-  "terms_and_conditions"
+  "terms_and_conditions",
+  "amended_from"
  ],
  "fields": [
   {
@@ -81,16 +84,6 @@
    "fieldtype": "Select",
    "label": "Booking Status",
    "options": "Draft\nConfirmed\nCompleted\nCancelled"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Booking",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
   },
   {
    "fieldname": "column_break_choi",
@@ -285,13 +278,30 @@
    "fieldname": "return_date",
    "fieldtype": "Date",
    "label": "Return Date"
+  },
+  {
+   "fetch_from": "customer.email_address",
+   "fieldname": "sender_email",
+   "fieldtype": "Data",
+   "label": "Sender Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Booking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-12 18:10:21.742589",
+ "modified": "2025-10-14 16:54:32.233597",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
@@ -312,6 +322,8 @@
   }
  ],
  "row_format": "Dynamic",
+ "sender_field": "sender_email",
+ "sender_name_field": "customer",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

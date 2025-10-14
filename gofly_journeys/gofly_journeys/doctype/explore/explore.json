@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "days",
   "destination_name",
   "key_attractions",
   "description",
@@ -35,12 +36,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Best Time to Visit"
+  },
+  {
+   "fieldname": "days",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Days"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-10-09 11:42:49.044274",
+ "modified": "2025-10-14 14:47:30.560876",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Explore",

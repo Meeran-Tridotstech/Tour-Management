@@ -1,0 +1,32 @@
+{
+ "attach_print": 1,
+ "channel": "Email",
+ "creation": "2025-10-14 12:38:47.586132",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Booking",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>New Booking Notification</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      color: #333333;\n      line-height: 1.6;\n    }\n    .container {\n      max-width: 600px;\n      margin: auto;\n      padding: 20px;\n      border: 1px solid #dddddd;\n      border-radius: 8px;\n      background-color: #f9f9f9;\n    }\n    h2 {\n      color: #0073e6;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 15px;\n    }\n    td {\n      padding: 8px;\n      border-bottom: 1px solid #dddddd;\n    }\n    td.label {\n      font-weight: bold;\n      width: 40%;\n      background-color: #f0f0f0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <h2>New Booking Submitted</h2>\n    <p>Dear Admin,</p>\n    <p>A new booking has been submitted through the Booking form. Please find the details below:</p>\n\n    <table>\n      <tr>\n        <td class=\"label\">Booking ID:</td>\n        <td>{{ doc.name }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Customer:</td>\n        <td>{{ doc.customer }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Sender Email:</td>\n        <td>{{ doc.sender_email }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Booking Date:</td>\n        <td>{{ doc.booking_date }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Travel Date:</td>\n        <td>{{ doc.travel_date }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Return Date:</td>\n        <td>{{ doc.return_date }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Package Name:</td>\n        <td>{{ doc.tour_package_name }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Package Start Date:</td>\n        <td>{{ doc.start_date }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Package End Date:</td>\n        <td>{{ doc.end_date }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Package Status:</td>\n        <td>{{ doc.package_status }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Booking Status:</td>\n        <td>{{ doc.booking_status }}</td>\n      </tr>\n      <tr>\n        <td class=\"label\">Amount:</td>\n        <td>{{ doc.amount }}</td>\n      </tr>\n    </table>\n\n    <p>Please review the booking and take necessary action.</p>\n    <p>Best regards,<br>Your Booking System</p>\n  </div>\n</body>\n</html>\n",
+ "message_type": "HTML",
+ "modified": "2025-10-14 16:10:46.192897",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Administrator",
+ "owner": "Administrator",
+ "print_format": "Booking Print",
+ "recipients": [
+  {
+   "receiver_by_document_field": "sender_email",
+   "receiver_by_role": "Administrator"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Sharmila",
+ "sender_email": "sharmilajayaprakash2001@gmail.com",
+ "subject": "{{ doc.name }} Delivered"
+}

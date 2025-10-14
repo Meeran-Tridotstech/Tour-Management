@@ -2,7 +2,9 @@
  "actions": [],
  "autoname": "field:payment_id",
  "creation": "2025-09-26 17:44:14.562421",
+ "default_email_template": "Payment",
  "doctype": "DocType",
+ "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
   "payment_id",
@@ -19,6 +21,7 @@
   "column_break_ylti",
   "payment_status",
   "pay_amount",
+  "sender_email",
   "section_break_zyej",
   "payment_history"
  ],
@@ -43,7 +46,7 @@
    "fetch_from": "booking.amount",
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Pacake Amount"
+   "label": "Package Amount"
   },
   {
    "bold": 1,
@@ -128,12 +131,18 @@
   {
    "fieldname": "column_break_ylti",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sender_email",
+   "fieldtype": "Data",
+   "label": "Sender Email",
+   "options": "Email"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-13 00:32:25.362682",
+ "modified": "2025-10-14 17:19:05.795511",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Payment",
@@ -154,6 +163,8 @@
   }
  ],
  "row_format": "Dynamic",
+ "sender_field": "sender_email",
+ "sender_name_field": "customer",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

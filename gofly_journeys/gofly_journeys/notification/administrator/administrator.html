@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>New Booking Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #0073e6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    td {
+      padding: 8px;
+      border-bottom: 1px solid #dddddd;
+    }
+    td.label {
+      font-weight: bold;
+      width: 40%;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>New Booking Submitted</h2>
+    <p>Dear Admin,</p>
+    <p>A new booking has been submitted through the Booking form. Please find the details below:</p>
+
+    <table>
+      <tr>
+        <td class="label">Booking ID:</td>
+        <td>{{ doc.name }}</td>
+      </tr>
+      <tr>
+        <td class="label">Customer:</td>
+        <td>{{ doc.customer }}</td>
+      </tr>
+      <tr>
+        <td class="label">Sender Email:</td>
+        <td>{{ doc.sender_email }}</td>
+      </tr>
+      <tr>
+        <td class="label">Booking Date:</td>
+        <td>{{ doc.booking_date }}</td>
+      </tr>
+      <tr>
+        <td class="label">Travel Date:</td>
+        <td>{{ doc.travel_date }}</td>
+      </tr>
+      <tr>
+        <td class="label">Return Date:</td>
+        <td>{{ doc.return_date }}</td>
+      </tr>
+      <tr>
+        <td class="label">Package Name:</td>
+        <td>{{ doc.tour_package_name }}</td>
+      </tr>
+      <tr>
+        <td class="label">Package Start Date:</td>
+        <td>{{ doc.start_date }}</td>
+      </tr>
+      <tr>
+        <td class="label">Package End Date:</td>
+        <td>{{ doc.end_date }}</td>
+      </tr>
+      <tr>
+        <td class="label">Package Status:</td>
+        <td>{{ doc.package_status }}</td>
+      </tr>
+      <tr>
+        <td class="label">Booking Status:</td>
+        <td>{{ doc.booking_status }}</td>
+      </tr>
+      <tr>
+        <td class="label">Amount:</td>
+        <td>{{ doc.amount }}</td>
+      </tr>
+    </table>
+
+    <p>Please review the booking and take necessary action.</p>
+    <p>Best regards,<br>Your Booking System</p>
+  </div>
+</body>
+</html>
