@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Bookng Member-.###",
+ "creation": "2025-10-16 18:43:07.424021",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "gender",
+  "age",
+  "passport_number",
+  "nationality",
+  "visa_required",
+  "visa_status",
+  "visa_type",
+  "visa_fee",
+  "visa_approved_date",
+  "visa_expiry_date",
+  "visa_document",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Age"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Passport Number",
+   "unique": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Nationality",
+   "options": "Country"
+  },
+  {
+   "default": "0",
+   "fieldname": "visa_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Visa Required"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "visa_required",
+   "fieldname": "visa_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Visa Status",
+   "options": "Applied\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "depends_on": "visa_required",
+   "fieldname": "visa_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Visa Type",
+   "options": "\nTourist Visa\nBusiness Visa\nStudent Visa\nWork Visa\nMedical Visa\nTransit Visa\nDiplomatic Visa"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "visa_approved_date",
+   "fieldtype": "Date",
+   "label": "Visa Approved Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "visa_expiry_date",
+   "fieldtype": "Date",
+   "label": "Visa Expiry Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "visa_document",
+   "fieldtype": "Attach",
+   "label": "Visa Document"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "depends_on": "visa_required",
+   "fieldname": "visa_fee",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Visa Fee",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-16 20:28:08.295970",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Booking Member",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

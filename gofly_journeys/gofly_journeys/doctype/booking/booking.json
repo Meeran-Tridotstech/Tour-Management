@@ -24,32 +24,17 @@
   "return_date",
   "booking_status",
   "sender_email",
-  "travellers_tab",
-  "section_break_fkdj",
-  "travellers",
   "visa_tab",
   "visa_section",
-  "html",
-  "visa_required",
-  "visa_details_section",
-  "passport_details_column",
-  "passport_no",
-  "passport_expiry_date",
-  "passport_issue_country",
-  "column_break_gdat",
-  "visa_type",
-  "visa_fee",
-  "additional_docs",
-  "column_break_itkb",
-  "visa_applied_date",
-  "visa_approved_date",
-  "visa_status",
-  "visa_documents",
+  "booking_members",
   "terms_and_conditions_tab",
   "notes_section",
   "terms_and_conditions",
-  "make_payment",
-  "amended_from"
+  "amended_from",
+  "section_break_seuh",
+  "accept_tnc",
+  "column_break_jikd",
+  "make_payment"
  ],
  "fields": [
   {
@@ -151,106 +136,13 @@
    "label": "Travel Date"
   },
   {
-   "fieldname": "html",
-   "fieldtype": "HTML",
-   "label": "HTML",
-   "options": "<b>If you Need? (Check\u2714)</b>\n<br>\n<br>"
-  },
-  {
-   "fieldname": "section_break_fkdj",
-   "fieldtype": "Section Break",
-   "label": "Travellers Details"
-  },
-  {
-   "fieldname": "travellers",
-   "fieldtype": "Table",
-   "label": "Travellers",
-   "options": "Traveller Details"
-  },
-  {
    "fieldname": "notes_section",
-   "fieldtype": "Section Break",
-   "label": "Notes"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "terms_and_conditions",
-   "fieldtype": "Text Editor",
+   "fieldtype": "HTML",
    "label": "Terms and Conditions"
-  },
-  {
-   "depends_on": "visa_required",
-   "fieldname": "visa_details_section",
-   "fieldtype": "Section Break",
-   "hide_border": 1,
-   "label": "Visa Details Section"
-  },
-  {
-   "fieldname": "visa_type",
-   "fieldtype": "Select",
-   "label": "Visa Type",
-   "options": "\nTourist Visa\nBusiness Visa\nStudent Visa\nWork Visa\nMedical Visa\nTransit Visa\nDiplomatic Visa"
-  },
-  {
-   "description": "Ex:N1234567",
-   "fieldname": "passport_no",
-   "fieldtype": "Data",
-   "label": "Passport No"
-  },
-  {
-   "fieldname": "passport_expiry_date",
-   "fieldtype": "Date",
-   "label": "Passport Expiry Date"
-  },
-  {
-   "fieldname": "visa_documents",
-   "fieldtype": "Attach",
-   "label": "Visa Documents"
-  },
-  {
-   "fieldname": "visa_status",
-   "fieldtype": "Select",
-   "label": "Visa Status",
-   "options": "\nPending\nSubmitted\nApproved\nRejected"
-  },
-  {
-   "fieldname": "column_break_gdat",
-   "fieldtype": "Column Break",
-   "label": "Visa Details"
-  },
-  {
-   "bold": 1,
-   "fieldname": "visa_fee",
-   "fieldtype": "Currency",
-   "label": "Visa Fee",
-   "read_only": 1
-  },
-  {
-   "bold": 1,
-   "default": "0",
-   "fieldname": "visa_required",
-   "fieldtype": "Check",
-   "label": "Visa"
-  },
-  {
-   "fieldname": "passport_issue_country",
-   "fieldtype": "Link",
-   "label": "Country of Issue",
-   "options": "Country"
-  },
-  {
-   "fieldname": "visa_applied_date",
-   "fieldtype": "Date",
-   "label": "Applied Date"
-  },
-  {
-   "fieldname": "visa_approved_date",
-   "fieldtype": "Date",
-   "label": "Approved Date"
-  },
-  {
-   "fieldname": "additional_docs",
-   "fieldtype": "Attach",
-   "label": "Additional Documents"
   },
   {
    "fieldname": "visa_tab",
@@ -260,12 +152,8 @@
   {
    "fieldname": "visa_section",
    "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "travellers_tab",
-   "fieldtype": "Tab Break",
-   "label": "Travellers"
+   "hide_border": 1,
+   "label": "Booking Members"
   },
   {
    "fieldname": "terms_and_conditions_tab",
@@ -302,20 +190,31 @@
    "search_index": 1
   },
   {
-   "fieldname": "passport_details_column",
-   "fieldtype": "Column Break",
-   "label": "Passport Details"
+   "default": "0",
+   "fieldname": "accept_tnc",
+   "fieldtype": "Check",
+   "label": "I accept Terms & Conditions"
   },
   {
-   "fieldname": "column_break_itkb",
+   "fieldname": "section_break_seuh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jikd",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "booking_members",
+   "fieldtype": "Table",
+   "label": "Booking Members",
+   "options": "Booking Member"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-16 13:19:21.455558",
+ "modified": "2025-10-16 20:07:27.128183",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
