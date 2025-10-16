@@ -68,7 +68,8 @@ frappe.ui.form.on('Booking', {
             }
             frappe.new_doc('Payment', {
                 customer: frm.doc.customer,
-                booking: frm.doc.name
+                booking: frm.doc.name,
+                amount: frm.doc.amount
             });
         });
 
@@ -152,60 +153,60 @@ frappe.ui.form.on('Booking', {
     // ==============================
     // 3️⃣ Visa Type Change Event
     // ==============================
-    visa_type(frm) {
-        let visa_fees = {
-            "Tourist Visa": 5000,
-            "Business Visa": 7500,
-            "Student Visa": 10000,
-            "Work Visa": 15000,
-            "Medical Visa": 8000,
-            "Transit Visa": 2000,
-            "Diplomatic Visa": 0
-        };
-        frm.set_value("visa_fee", frm.doc.visa_type ? visa_fees[frm.doc.visa_type] || 0 : 0);
-    }
+    // visa_type(frm) {
+    //     let visa_fees = {
+    //         "Tourist Visa": 5000,
+    //         "Business Visa": 7500,
+    //         "Student Visa": 10000,
+    //         "Work Visa": 15000,
+    //         "Medical Visa": 8000,
+    //         "Transit Visa": 2000,
+    //         "Diplomatic Visa": 0
+    //     };
+    //     frm.set_value("visa_fee", frm.doc.visa_type ? visa_fees[frm.doc.visa_type] || 0 : 0);
+    // }
 
 });
 
 
 
-// frappe.ui.form.on('Booking Member', {
-//     visa_approved_date: function(frm, cdt, cdn) {
-//         let row = frappe.get_doc(cdt, cdn);
-//         if (row.visa_approved_date && row.visa_type) {
-//             // Example validity (days)
-//             let duration = 90;
-//             let approved = frappe.datetime.str_to_obj(row.visa_approved_date);
-//             let expiry = frappe.datetime.add_days(approved, duration);
-//             frappe.model.set_value(cdt, cdn, 'visa_expiry_date', frappe.datetime.obj_to_str(expiry));
-//         }
-//     },
-//      age: function(frm, cdt, cdn) {
-//         let row = frappe.get_doc(cdt, cdn);
+frappe.ui.form.on('Booking Member', {
+    visa_approved_date: function(frm, cdt, cdn) {
+        let row = frappe.get_doc(cdt, cdn);
+        if (row.visa_approved_date && row.visa_type) {
+            // Example validity (days)
+            let duration = 90;
+            let approved = frappe.datetime.str_to_obj(row.visa_approved_date);
+            let expiry = frappe.datetime.add_days(approved, duration);
+            frappe.model.set_value(cdt, cdn, 'visa_expiry_date', frappe.datetime.obj_to_str(expiry));
+        }
+    },
+     age: function(frm, cdt, cdn) {
+        let row = frappe.get_doc(cdt, cdn);
 
-//         if (!row.age || row.age <= 0) {
-//             frappe.msgprint(__('Age must be greater than 0.'));
-//             frappe.model.set_value(cdt, cdn, 'age', '');
-//             return;
-//         }
+        if (!row.age || row.age <= 0) {
+            frappe.msgprint(__('Age must be greater than 0.'));
+            frappe.model.set_value(cdt, cdn, 'age', '');
+            return;
+        }
 
-//         if (row.age < 18) {
-//             frappe.msgprint(__('⚠️ Member {0} is under 18. Please ensure a guardian is assigned.', [row.member_name]));
-//         }
+        if (row.age < 18) {
+            frappe.msgprint(__('⚠️ Member {0} is under 18. Please ensure a guardian is assigned.', [row.member_name]));
+        }
 
-//         if (row.age > 100) {
-//             frappe.throw(__('❌ Invalid age for {0}. Age cannot exceed 100 years.', [row.member_name]));
-//         }
-//     },
-//     before_save: function(frm) {
-//         // Check all rows before saving the form
-//         (frm.doc.booking_members || []).forEach(row => {
-//             if (!row.age || row.age <= 0) {
-//                 frappe.throw(__('Please enter a valid age for {0}.', [row.member_name]));
-//             }
-//             if (row.age > 100) {
-//                 frappe.throw(__('Invalid age for {0}. Must be less than 100.', [row.member_name]));
-//             }
-//         });
-//     }
-// });
+        if (row.age > 100) {
+            frappe.throw(__('❌ Invalid age for {0}. Age cannot exceed 100 years.', [row.member_name]));
+        }
+    },
+    before_save: function(frm) {
+        // Check all rows before saving the form
+        (frm.doc.booking_members || []).forEach(row => {
+            if (!row.age || row.age <= 0) {
+                frappe.throw(__('Please enter a valid age for {0}.', [row.member_name]));
+            }
+            if (row.age > 100) {
+                frappe.throw(__('Invalid age for {0}. Must be less than 100.', [row.member_name]));
+            }
+        });
+    }
+});

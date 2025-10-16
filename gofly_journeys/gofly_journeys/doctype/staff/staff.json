@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{staff_name}-{###}",
+ "creation": "2025-10-16 23:26:59.808103",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_gmjf",
+  "amended_from",
+  "staff_name",
+  "contact_number",
+  "email",
+  "column_break_pavz",
+  "assigned_customer",
+  "assigned_tour",
+  "allocation_date",
+  "status",
+  "section_break_wcil",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_gmjf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Staff",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "staff_name",
+   "fieldtype": "Data",
+   "label": "Staff Name"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Phone",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "assigned_customer",
+   "fieldtype": "Link",
+   "label": "Assigned Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "assigned_tour",
+   "fieldtype": "Link",
+   "label": "Assigned Tour",
+   "options": "Booking"
+  },
+  {
+   "fieldname": "allocation_date",
+   "fieldtype": "Date",
+   "label": "Allocation Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_pavz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wcil",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-16 23:41:30.249370",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Staff",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

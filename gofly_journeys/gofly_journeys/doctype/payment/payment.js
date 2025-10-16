@@ -7,7 +7,6 @@ frappe.ui.form.on("Payment", {
                 make_razorpay_payment(frm);
             }, "Actions");
         }
-
         const paymentCount = frm.doc.payment_count || 0;
 
         // Reset read-only
@@ -30,9 +29,9 @@ frappe.ui.form.on("Payment", {
             }
             frm.set_df_property("pay_amount", "read_only", 1);
         }
-
     }
 });
+
 
 function make_razorpay_payment(frm) {
     const payAmount = frm.doc.pay_amount || 0;
@@ -41,15 +40,15 @@ function make_razorpay_payment(frm) {
 
     // Validations
     if (payAmount <= 0) {
-        frappe.msgprint("Please enter a valid Pay Amount.");
+        frappe.msgprint("Please enter a valid Pay Amount");
         return;
     }
     if (payAmount > balance) {
-        frappe.msgprint("Pay Amount cannot exceed Balance Amount.");
+        frappe.msgprint("Pay Amount cannot exceed Balance Amount");
         return;
     }
     if (paymentCount >= 3) {
-        frappe.msgprint("You can only make 3 payments for this booking.");
+        frappe.msgprint("You can only make 3 payments for this booking");
         return;
     }
 
@@ -86,10 +85,10 @@ function make_razorpay_payment(frm) {
 
             if (newBalance <= 0) {
                 frm.set_value("payment_status", "Completed");
-                frappe.msgprint("🎉 All payments completed successfully!");
+                frappe.msgprint("All payments completed successfully!");
             } else {
                 frm.set_value("payment_status", "Partially Paid");
-                frappe.msgprint(`✅ ₹${payAmount} paid.\nRemaining balance: ₹${newBalance}`);
+                frappe.msgprint(`₹${payAmount} paid.\nRemaining balance: ₹${newBalance}`);
 
                 if (newCount === 2 && newBalance > 0) {
                     frm.set_value("pay_amount", newBalance);
