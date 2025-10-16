@@ -36,6 +36,10 @@
   "visit_place",
   "explore",
   "description",
+  "tourist_place_tab",
+  "section_break_fcim",
+  "images",
+  "image_slider",
   "section_break_qpre",
   "column_break_zfgx",
   "column_break_fzoa",
@@ -43,14 +47,11 @@
   "amount",
   "section_break_zkkq",
   "column_break_igbd",
-  "book_now",
-  "tourist_place_tab",
-  "check_image",
-  "images",
-  "image_slider"
+  "book_now"
  ],
  "fields": [
   {
+   "bold": 1,
    "fieldname": "package_name",
    "fieldtype": "Data",
    "label": "Package Name",
@@ -93,6 +94,7 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description",
+   "max_height": "100px",
    "placeholder": "Enter the Description"
   },
   {
@@ -101,12 +103,14 @@
    "label": "Package Duration"
   },
   {
+   "bold": 1,
    "fieldname": "start_date",
    "fieldtype": "Date",
    "label": "Start Date",
    "placeholder": "Start Date"
   },
   {
+   "bold": 1,
    "depends_on": "start_date",
    "fieldname": "end_date",
    "fieldtype": "Date",
@@ -231,12 +235,14 @@
    "label": "Visit Place"
   },
   {
+   "bold": 1,
    "fieldname": "expected_trip_month",
    "fieldtype": "Select",
    "label": "Expected Trip Month",
    "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
   },
   {
+   "bold": 1,
    "fieldname": "up_to",
    "fieldtype": "Select",
    "label": "Up to",
@@ -260,7 +266,6 @@
    "label": "Tourist Place"
   },
   {
-   "depends_on": "check_image",
    "fieldname": "images",
    "fieldtype": "Table",
    "label": "Images",
@@ -281,10 +286,8 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
-   "fieldname": "check_image",
-   "fieldtype": "Check",
-   "label": "<b>If you check, you will see that multiple images have been inserted in the table below.</b>"
+   "fieldname": "section_break_fcim",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
@@ -292,7 +295,7 @@
  "links": [],
  "make_attachments_public": 1,
  "max_attachments": 7,
- "modified": "2025-10-12 12:27:00.786067",
+ "modified": "2025-10-16 13:04:25.290955",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",

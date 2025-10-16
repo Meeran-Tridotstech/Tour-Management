@@ -1,248 +1,3 @@
-
-// frappe.ui.form.on('Tour Package', {
-//     refresh(frm) {
-//         calculate_days_left(frm);
-//         set_status_color(frm.doc.package_status);
-
-//         if (frm.doc.images && frm.doc.images.length > 0) {
-//             show_image_slider(frm);
-//         } else {
-//             frm.fields_dict.image_slider.$wrapper.html("<p>No images found.</p>");
-//         }
-
-        
-//         // Button
-//         setTimeout(() => {
-//             let btn = frm.fields_dict.book_now?.$input;
-//             if (btn) {
-//                 btn.css({
-//                     "width": "205%",                 // full width
-//                     "background-color": "#007bff",   // blue
-//                     "color": "white",                // white text
-//                     "font-weight": "600",
-//                     "border": "none",
-//                     "border-radius": "6px",
-//                     "padding": "10px",
-//                     "font-size": "15px",
-//                     "cursor": "pointer",
-//                     "transition": "0.3s",
-//                 });
-
-//                 // Add hover effect
-//                 btn.hover(
-//                     function() {
-//                         $(this).css("background-color", "#0056b3"); // darker blue on hover
-//                     },
-//                     function() {
-//                         $(this).css("background-color", "#007bff"); // normal blue
-//                     }
-//                 );
-//             }
-//         }, 500);
-
-
-        
-//     },
-
-//     // ----------------- Start and End Date Logic -----------------
-//     start_date(frm) {
-//         if (frm.doc.start_date) {
-//             // Auto add 30 days to Start Date
-//             let end_date = frappe.datetime.add_days(frm.doc.start_date, 30);
-//             frm.set_value('end_date', end_date);
-
-//             // Make End Date read-only
-//             frm.set_df_property('end_date', 'read_only', 1);
-//         }
-//         calculate_days_left(frm);
-//     },
-
-//     end_date(frm) {
-//         calculate_days_left(frm);
-//     },
-
-//     // ----------------- Package Code Generation -----------------
-//     package_name(frm) {
-//         if (frm.doc.package_name) {
-//             let short_name = frm.doc.package_name.replace(/\s+/g, '').substring(0, 3).toUpperCase();
-//             let random_number = Math.floor(100 + Math.random() * 900);
-//             frm.set_value('package_code', `PKG-${short_name}-${random_number}`);
-//         }
-//     },
-
-//     // ----------------- Country → State Dynamic Filter -----------------
-//     country(frm) {
-//         if (!frm.doc.country) return;
-
-//         frappe.call({
-//             method: "gofly_journeys.gofly_journeys.doctype.customer.customer.get_states_for_country",
-//             args: { country: frm.doc.country },
-//             callback: function (r) {
-//                 let state_options = r.message && r.message.length ? [''].concat(r.message) : [''];
-//                 frm.set_df_property('state', 'options', state_options);
-//                 frm.refresh_field('state');
-//             }
-//         });
-//     },
-
-//     // ----------------- Expected Trip Month → Up To -----------------
-//     expected_trip_month(frm) {
-//         if (!frm.doc.expected_trip_month) return;
-
-//         // All months
-//         let months = [
-//             "January", "February", "March", "April", "May", "June",
-//             "July", "August", "September", "October", "November", "December"
-//         ];
-
-//         // Find index of selected month
-//         let start_index = months.indexOf(frm.doc.expected_trip_month);
-
-//         // Get next 2 months
-//         let next_months = [];
-//         for (let i = 1; i <= 2; i++) {
-//             let idx = (start_index + i) % 12; // wrap around December → January
-//             next_months.push(months[idx]);
-//         }
-
-//         // Set options for 'up_to' field
-//         frm.set_df_property('up_to', 'options', [''].concat(next_months));
-//         frm.refresh_field('up_to');
-
-//         // Clear previous value
-//         frm.set_value('up_to', '');
-//     }
-// });
-
-
-// // ------------------ Calculate Days Left (Based on Today → End Date) ------------------
-// function calculate_days_left(frm) {
-//     if (frm.doc.end_date) {
-//         // Get today's date and end date
-//         let today = frappe.datetime.now_date();
-//         let today_obj = frappe.datetime.str_to_obj(today);
-//         let end_obj = frappe.datetime.str_to_obj(frm.doc.end_date);
-
-//         // Calculate difference
-//         let diff_ms = end_obj - today_obj;
-
-//         // If already ended
-//         if (diff_ms < 0) {
-//             frm.set_value("days_left", "0 days left");
-//             frm.set_value("package_status", "Closed");
-//             set_status_color("Closed");
-//             return;
-//         }
-
-//         // Convert to days
-//         let diff_days = Math.floor(diff_ms / (1000 * 60 * 60 * 24));
-
-//         // Set readable value
-//         frm.set_value(
-//             "days_left",
-//             `${diff_days} day${diff_days !== 1 ? "s left" : " left"}`
-//         );
-
-//         // Change status and color
-//         if (diff_days > 3) {
-//             frm.set_value("package_status", "Available");
-//             set_status_color("Available");
-//         } else if (diff_days <= 3 && diff_days > 0) {
-//             frm.set_value("package_status", "Available");
-//             set_status_color("Expiring");
-//         }
-//     } else {
-//         frm.set_value("days_left", "");
-//         if (!frm.doc.package_status) {
-//             frm.set_value("package_status", "Available");
-//             set_status_color("Available");
-//         }
-//     }
-// }
-
-
-// // ---------------- Color Logic ----------------
-// function set_status_color(status) {
-//     setTimeout(() => {
-//         let field = document.querySelector('[data-fieldname="package_status"]');
-//         if (!field) return;
-
-//         let input = field.querySelector('.control-value');
-//         if (!input) return;
-
-//         if (status === "Available") {
-//             input.style.color = "green";
-//         } else if (status === "Expiring") {
-//             input.style.color = "orange";
-//         } else if (status === "Closed") {
-//             input.style.color = "red";
-//         } else {
-//             input.style.color = "black";
-//         }
-//     }, 500);
-
-
-    
-// }
-
-
-// function show_image_slider(frm) {
-//     let images = frm.doc.images.map(i => i.image).filter(Boolean);
-
-//     if (!images.length) return;
-
-//     // Generate HTML for images
-//     let img_html = images
-//         .map(img => `<img src="${img}" alt="Tour Image">`)
-//         .join("");
-
-//     let total_images = images.length;
-//     let total_duration = total_images * 3; // 3 seconds per image
-
-//     // Build slider HTML
-//     let html = `
-//         <div class="image-slider">
-//             <div class="slides">
-//                 ${img_html}
-//             </div>
-//         </div>
-
-//         <style>
-//         .image-slider {
-//             width: 100%;
-//             overflow: hidden;
-//             position: relative;
-//             border-radius: 10px;
-//         }
-//         .slides {
-//             display: flex;
-//             width: calc(100% * ${total_images});
-//             animation: slide ${total_duration}s infinite steps(${total_images});
-//         }
-//         .slides img {
-//             width: 100%;
-//             height: 400px;
-//             object-fit: cover;
-//         }
-//         @keyframes slide {
-//             from { transform: translateX(0); }
-//             to { transform: translateX(-${(total_images - 1) * 100}%); }
-//         }
-//         </style>
-//     `;
-
-//     // Inject HTML into the HTML field
-//     frm.fields_dict.image_slider.$wrapper.html(html);
-// }
-
-
-
-
-
-
-
-
-
 frappe.ui.form.on('Tour Package', {
     refresh(frm) {
         calculate_days_left(frm);
@@ -258,7 +13,7 @@ frappe.ui.form.on('Tour Package', {
         // ------------------ BOOK NOW Button Logic ------------------
         if (frm.fields_dict.book_now && frm.doc.docstatus < 2) {
             // Remove old click handler before adding new one
-            frm.fields_dict.book_now.$input.off("click").on("click", function() {
+            frm.fields_dict.book_now.$input.off("click").on("click", function () {
                 create_booking_from_package(frm);
             });
         }
@@ -280,15 +35,38 @@ frappe.ui.form.on('Tour Package', {
                     "transition": "0.3s",
                 });
                 btn.hover(
-                    function() {
+                    function () {
                         $(this).css("background-color", "#0056b3");
                     },
-                    function() {
+                    function () {
                         $(this).css("background-color", "#007bff");
                     }
                 );
             }
         }, 500);
+
+
+
+        frappe.call({
+            method: "frappe.client.get",
+            args: {
+                doctype: "User",
+                name: frappe.session.user
+            },
+            callback: function (r) {
+                if (r.message) {
+                    let roles = r.message.roles.map(role => role.role);
+                    // Show 'images' field only if user has 'Staff' role
+                    if (roles.includes("Staff"&&"Administrator")) {
+                        frm.set_df_property('images', 'hidden', 0);
+                    } else {
+                        frm.set_df_property('images', 'hidden', 1);
+                    }
+                }
+            }
+        });
+
+        
     },
 
     // ----------------- Start and End Date Logic -----------------
@@ -428,7 +206,7 @@ function set_status_color(status) {
 
 //     let img_html = images.map(img => `<img src="${img}" alt="Tour Image">`).join("");
 //     let total_images = images.length;
-//     let total_duration = total_images * 3; // 3s per image
+//     let total_duration = total_images * 2; // 1s per image
 
 //     let html = `
 //         <div class="image-slider">
@@ -458,51 +236,107 @@ function set_status_color(status) {
 //             0% { transform: translateX(0); }
 //             100% { transform: translateX(-${(total_images - 1) * (100 / total_images)}%); }
 //         }
+//         .image-slider:hover .slides {
+//             animation-play-state: paused;
+//         }
 //         </style>
 //     `;
 //     frm.fields_dict.image_slider.$wrapper.html(html);
 // }
 
+
 function show_image_slider(frm) {
-    let images = frm.doc.images.map(i => i.image).filter(Boolean);
+    let images = (frm.doc.images || []).map(i => i.image).filter(Boolean);
     if (!images.length) return;
 
-    let img_html = images.map(img => `<img src="${img}" alt="Tour Image">`).join("");
-    let total_images = images.length;
-    let total_duration = total_images * 2; // 1s per image
+    // Build HTML for slider
+    let img_html = images.map((img, idx) => `
+        <div class="slide${idx === 0 ? ' active' : ''}">
+            <img src="${img}" alt="Tour Image">
+        </div>
+    `).join("");
 
     let html = `
         <div class="image-slider">
-            <div class="slides">
-                ${img_html}
-            </div>
+            ${img_html}
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
         </div>
 
         <style>
         .image-slider {
-            width: 100%;
-            overflow: hidden;
             position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 370px;
+            margin: auto;
+            overflow: hidden;
             border-radius: 10px;
         }
-        .slides {
-            display: flex;
-            width: ${total_images * 100}%;
-            animation: slide ${total_duration}s linear infinite;
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: content;
+            display: block;
         }
-        .slides img {
-            width: ${100 / total_images}%;
-            height: 400px;
-            object-fit: cover;
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
         }
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-${(total_images - 1) * (100 / total_images)}%); }
+        .slide.active {
+            opacity: 1;
         }
-        .image-slider:hover .slides {
-            animation-play-state: paused;
+        .image-slider button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
         }
+        .image-slider .prev { left: 10px; }
+        .image-slider .next { right: 10px; }
         </style>
     `;
+
+    // Inject HTML
     frm.fields_dict.image_slider.$wrapper.html(html);
+
+    // Slider logic
+    let currentIndex = 0;
+    const slides = frm.fields_dict.image_slider.$wrapper.find('.slide');
+
+    function showSlide(index) {
+        slides.removeClass('active');
+        slides.eq(index).addClass('active');
+    }
+
+    // Auto slide every 3 seconds
+    let slideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }, 3000);
+
+    // Prev/Next buttons
+    frm.fields_dict.image_slider.$wrapper.find('.prev').on('click', function() {
+        clearInterval(slideInterval);
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+    });
+
+    frm.fields_dict.image_slider.$wrapper.find('.next').on('click', function() {
+        clearInterval(slideInterval);
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    });
 }

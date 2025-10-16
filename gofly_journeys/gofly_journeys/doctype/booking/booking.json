@@ -3,7 +3,6 @@
  "allow_rename": 1,
  "autoname": "Book NO-.###",
  "creation": "2025-09-26 15:16:57.917701",
- "default_email_template": "Booking Status Report",
  "doctype": "DocType",
  "email_append_to": 1,
  "engine": "InnoDB",
@@ -25,34 +24,36 @@
   "return_date",
   "booking_status",
   "sender_email",
+  "travellers_tab",
+  "section_break_fkdj",
+  "travellers",
   "visa_tab",
   "visa_section",
   "html",
   "visa_required",
   "visa_details_section",
-  "visa_type",
+  "passport_details_column",
   "passport_no",
   "passport_expiry_date",
   "passport_issue_country",
+  "column_break_gdat",
+  "visa_type",
+  "visa_fee",
+  "additional_docs",
+  "column_break_itkb",
   "visa_applied_date",
   "visa_approved_date",
-  "column_break_gdat",
-  "visa_fee",
-  "include_visa_fee",
-  "visa_documents",
-  "additional_docs",
   "visa_status",
-  "travellers_tab",
-  "section_break_fkdj",
-  "travellers",
-  "make_payment",
+  "visa_documents",
   "terms_and_conditions_tab",
   "notes_section",
   "terms_and_conditions",
+  "make_payment",
   "amended_from"
  ],
  "fields": [
   {
+   "bold": 1,
    "fieldname": "booking_date",
    "fieldtype": "Datetime",
    "is_virtual": 1,
@@ -60,12 +61,14 @@
    "read_only": 1
   },
   {
+   "bold": 1,
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
    "options": "Customer"
   },
   {
+   "bold": 1,
    "fieldname": "tour_package",
    "fieldtype": "Link",
    "label": "Tour Package",
@@ -80,10 +83,12 @@
    "read_only": 1
   },
   {
+   "bold": 1,
    "fieldname": "booking_status",
    "fieldtype": "Select",
    "label": "Booking Status",
-   "options": "Draft\nConfirmed\nCompleted\nCancelled"
+   "options": "Draft\nBooked\nConfirmed\nCompleted\nCancelled",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_choi",
@@ -140,6 +145,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "bold": 1,
    "fieldname": "travel_date",
    "fieldtype": "Date",
    "label": "Travel Date"
@@ -185,6 +191,7 @@
    "options": "\nTourist Visa\nBusiness Visa\nStudent Visa\nWork Visa\nMedical Visa\nTransit Visa\nDiplomatic Visa"
   },
   {
+   "description": "Ex:N1234567",
    "fieldname": "passport_no",
    "fieldtype": "Data",
    "label": "Passport No"
@@ -207,7 +214,8 @@
   },
   {
    "fieldname": "column_break_gdat",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "label": "Visa Details"
   },
   {
    "bold": 1,
@@ -217,6 +225,7 @@
    "read_only": 1
   },
   {
+   "bold": 1,
    "default": "0",
    "fieldname": "visa_required",
    "fieldtype": "Check",
@@ -237,12 +246,6 @@
    "fieldname": "visa_approved_date",
    "fieldtype": "Date",
    "label": "Approved Date"
-  },
-  {
-   "default": "0",
-   "fieldname": "include_visa_fee",
-   "fieldtype": "Check",
-   "label": "Include Visa in Package"
   },
   {
    "fieldname": "additional_docs",
@@ -275,6 +278,7 @@
    "label": "Make Payment"
   },
   {
+   "bold": 1,
    "fieldname": "return_date",
    "fieldtype": "Date",
    "label": "Return Date"
@@ -283,6 +287,7 @@
    "fetch_from": "customer.email_address",
    "fieldname": "sender_email",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Sender Email",
    "options": "Email"
   },
@@ -295,13 +300,22 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "passport_details_column",
+   "fieldtype": "Column Break",
+   "label": "Passport Details"
+  },
+  {
+   "fieldname": "column_break_itkb",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-14 16:54:32.233597",
+ "modified": "2025-10-16 13:19:21.455558",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
