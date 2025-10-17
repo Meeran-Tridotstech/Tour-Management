@@ -150,39 +150,24 @@ frappe.ui.form.on('Booking', {
         }
     },
 
-    // ==============================
-    // 3️⃣ Visa Type Change Event
-    // ==============================
-    // visa_type(frm) {
-    //     let visa_fees = {
-    //         "Tourist Visa": 5000,
-    //         "Business Visa": 7500,
-    //         "Student Visa": 10000,
-    //         "Work Visa": 15000,
-    //         "Medical Visa": 8000,
-    //         "Transit Visa": 2000,
-    //         "Diplomatic Visa": 0
-    //     };
-    //     frm.set_value("visa_fee", frm.doc.visa_type ? visa_fees[frm.doc.visa_type] || 0 : 0);
-    // }
-
 });
 
 
-
 frappe.ui.form.on('Booking Member', {
-    visa_approved_date: function(frm, cdt, cdn) {
-        let row = frappe.get_doc(cdt, cdn);
+    visa_approved_date(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
         if (row.visa_approved_date && row.visa_type) {
-            // Example validity (days)
+            // Set expiry date automatically (e.g., 90 days validity)
             let duration = 90;
             let approved = frappe.datetime.str_to_obj(row.visa_approved_date);
             let expiry = frappe.datetime.add_days(approved, duration);
             frappe.model.set_value(cdt, cdn, 'visa_expiry_date', frappe.datetime.obj_to_str(expiry));
         }
     },
-     age: function(frm, cdt, cdn) {
-        let row = frappe.get_doc(cdt, cdn);
+
+    age(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
 
         if (!row.age || row.age <= 0) {
             frappe.msgprint(__('Age must be greater than 0.'));
@@ -198,8 +183,9 @@ frappe.ui.form.on('Booking Member', {
             frappe.throw(__('❌ Invalid age for {0}. Age cannot exceed 100 years.', [row.member_name]));
         }
     },
-    before_save: function(frm) {
-        // Check all rows before saving the form
+
+    before_save(frm) {
+        // Validate all members before saving
         (frm.doc.booking_members || []).forEach(row => {
             if (!row.age || row.age <= 0) {
                 frappe.throw(__('Please enter a valid age for {0}.', [row.member_name]));
@@ -208,5 +194,53 @@ frappe.ui.form.on('Booking Member', {
                 frappe.throw(__('Invalid age for {0}. Must be less than 100.', [row.member_name]));
             }
         });
+        // Update total visa fee before saving
+        calculate_total_visa_fee(frm);
+    },
+
+    visa_type(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        // Visa Type → Fee mapping
+        const visa_fees = {
+            "Tourist Visa": 3000,
+            "Business Visa": 5000,
+            "Student Visa": 7000,
+            "Work Visa": 6000,
+            "Medical Visa": 4500,
+            "Transit Visa": 2000,
+            "Diplomatic Visa": 0
+        };
+
+        let fee = visa_fees[row.visa_type] || 0;
+        frappe.model.set_value(cdt, cdn, "visa_fee", fee);
+
+        // Update total visa fee whenever visa fee changes
+        calculate_total_visa_fee(frm);
+    },
+
+    // Also recalc if visa_fee manually changed
+    visa_fee(frm, cdt, cdn) {
+        calculate_total_visa_fee(frm);
+    },
+
+    // Recalc when a row is removed
+    booking_members_remove(frm, cdt, cdn) {
+        calculate_total_visa_fee(frm);
+    },
+
+    // Optional: Recalc when a row is added
+    booking_members_add(frm, cdt, cdn) {
+        calculate_total_visa_fee(frm);
     }
 });
+
+// ------------------- FUNCTION: Calculate Total Visa Fee -------------------
+function calculate_total_visa_fee(frm) {
+    let total = 0;
+    (frm.doc.booking_members || []).forEach(row => {
+        total += flt(row.visa_fee);
+    });
+    frm.set_value("total_visa_fee", total);
+    frm.refresh_field("total_visa_fee");
+}

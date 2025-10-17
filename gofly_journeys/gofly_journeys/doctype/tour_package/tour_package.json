@@ -269,7 +269,8 @@
    "fieldname": "images",
    "fieldtype": "Table",
    "label": "Images",
-   "options": "Tour Package Image"
+   "options": "Tour Package Image",
+   "reqd": 1
   },
   {
    "fieldname": "image_slider",
@@ -295,7 +296,7 @@
  "links": [],
  "make_attachments_public": 1,
  "max_attachments": 7,
- "modified": "2025-10-16 13:04:25.290955",
+ "modified": "2025-10-17 11:59:32.320952",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",

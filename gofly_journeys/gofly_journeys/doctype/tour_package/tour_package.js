@@ -12,7 +12,6 @@ frappe.ui.form.on('Tour Package', {
 
         // ------------------ BOOK NOW Button Logic ------------------
         if (frm.fields_dict.book_now && frm.doc.docstatus < 2) {
-            // Remove old click handler before adding new one
             frm.fields_dict.book_now.$input.off("click").on("click", function () {
                 create_booking_from_package(frm);
             });
@@ -35,38 +34,18 @@ frappe.ui.form.on('Tour Package', {
                     "transition": "0.3s",
                 });
                 btn.hover(
-                    function () {
-                        $(this).css("background-color", "#0056b3");
-                    },
-                    function () {
-                        $(this).css("background-color", "#007bff");
-                    }
+                    function () { $(this).css("background-color", "#0056b3"); },
+                    function () { $(this).css("background-color", "#007bff"); }
                 );
             }
         }, 500);
 
-
-
-        frappe.call({
-            method: "frappe.client.get",
-            args: {
-                doctype: "User",
-                name: frappe.session.user
-            },
-            callback: function (r) {
-                if (r.message) {
-                    let roles = r.message.roles.map(role => role.role);
-                    // Show 'images' field only if user has 'Staff' role
-                    if (roles.includes("Staff"&&"Administrator")) {
-                        frm.set_df_property('images', 'hidden', 0);
-                    } else {
-                        frm.set_df_property('images', 'hidden', 1);
-                    }
-                }
-            }
-        });
-
-        
+        // ------------------ Show 'images' field only for Staff ------------------
+        if (frappe.user.has_role("Staff")) {
+            frm.set_df_property("images", "hidden", 0);
+        } else {
+            frm.set_df_property("images", "hidden", 1);
+        }
     },
 
     // ----------------- Start and End Date Logic -----------------
@@ -110,7 +89,6 @@ frappe.ui.form.on('Tour Package', {
     // ----------------- Expected Trip Month → Up To -----------------
     expected_trip_month(frm) {
         if (!frm.doc.expected_trip_month) return;
-
         let months = [
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
@@ -126,11 +104,6 @@ frappe.ui.form.on('Tour Package', {
         frm.set_df_property('up_to', 'options', [''].concat(next_months));
         frm.refresh_field('up_to');
         frm.set_value('up_to', '');
-
-
-
-
-        
     }
 });
 
@@ -138,14 +111,14 @@ frappe.ui.form.on('Tour Package', {
 // ------------------ Create Booking Record from Tour Package ------------------
 function create_booking_from_package(frm) {
     frappe.new_doc('Booking', {
-        tour_package: frm.doc.name,             // Link field to Tour Package
-        tour_package_name: frm.doc.package_name, // Optional (if exists)
+        tour_package: frm.doc.name,
+        tour_package_name: frm.doc.package_name,
         start_date: frm.doc.start_date,
         end_date: frm.doc.end_date,
         package_status: frm.doc.package_status,
-        amount: frm.doc.amount,                 // optional
-        country: frm.doc.country,               // optional
-        state: frm.doc.state                    // optional
+        amount: frm.doc.amount,
+        country: frm.doc.country,
+        state: frm.doc.state
     });
 }
 
@@ -206,11 +179,11 @@ function set_status_color(status) {
 }
 
 
+// ------------------ Image Slider ------------------
 function show_image_slider(frm) {
     let images = (frm.doc.images || []).map(i => i.image).filter(Boolean);
     if (!images.length) return;
 
-    // Build HTML for slider
     let img_html = images.map((img, idx) => `
         <div class="slide${idx === 0 ? ' active' : ''}">
             <img src="${img}" alt="Tour Image">
@@ -229,7 +202,7 @@ function show_image_slider(frm) {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            height: 370px;
+            height: 380px;
             margin: auto;
             overflow: hidden;
             border-radius: 10px;
@@ -270,10 +243,8 @@ function show_image_slider(frm) {
         </style>
     `;
 
-    // Inject HTML
     frm.fields_dict.image_slider.$wrapper.html(html);
 
-    // Slider logic
     let currentIndex = 0;
     const slides = frm.fields_dict.image_slider.$wrapper.find('.slide');
 
@@ -282,13 +253,11 @@ function show_image_slider(frm) {
         slides.eq(index).addClass('active');
     }
 
-    // Auto slide every 3 seconds
     let slideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % slides.length;
         showSlide(currentIndex);
     }, 3000);
 
-    // Prev/Next buttons
     frm.fields_dict.image_slider.$wrapper.find('.prev').on('click', function() {
         clearInterval(slideInterval);
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
@@ -301,3 +270,6 @@ function show_image_slider(frm) {
         showSlide(currentIndex);
     });
 }
+
+
+

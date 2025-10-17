@@ -27,6 +27,7 @@
   "visa_tab",
   "visa_section",
   "booking_members",
+  "total_visa_fee",
   "terms_and_conditions_tab",
   "notes_section",
   "terms_and_conditions",
@@ -208,13 +209,20 @@
    "fieldtype": "Table",
    "label": "Booking Members",
    "options": "Booking Member"
+  },
+  {
+   "bold": 1,
+   "fieldname": "total_visa_fee",
+   "fieldtype": "Int",
+   "label": "Total Visa Amount",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-16 20:07:27.128183",
+ "modified": "2025-10-17 17:26:12.814681",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
