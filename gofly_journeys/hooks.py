@@ -5,9 +5,7 @@ app_description = "GoFly Journeys"
 app_email = "sharmila2001@gmail.com"
 app_license = "mit"
 
-app_include_js = [
-"https://checkout.razorpay.com/v1/checkout.js"
-]
+
 
 # Apps
 # ------------------
@@ -246,3 +244,6 @@ app_include_js = [
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+app_include_js = [
+"https://checkout.razorpay.com/v1/checkout.js"
+]
