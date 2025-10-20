@@ -2,26 +2,29 @@
  "actions": [],
  "autoname": "field:payment_id",
  "creation": "2025-09-26 17:44:14.562421",
- "default_email_template": "Payment",
  "doctype": "DocType",
  "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
-  "payment_id",
+  "customer_details_section",
   "customer",
+  "payment_id",
+  "column_break_omzp",
   "booking",
-  "payment_date",
+  "amount_section",
   "amount",
   "visa_amount",
-  "column_break_wdla",
+  "column_break_vydl",
   "total_amount",
   "advance_amount",
+  "column_break_ngto",
   "balance_amount",
-  "payment_count",
-  "column_break_ylti",
   "payment_status",
+  "payment_section",
   "pay_amount",
   "sender_email",
+  "column_break_ylhz",
+  "payment_count",
   "section_break_zyej",
   "payment_history"
  ],
@@ -49,13 +52,6 @@
    "label": "Package Amount"
   },
   {
-   "bold": 1,
-   "fieldname": "payment_date",
-   "fieldtype": "Date",
-   "label": "Payment Date",
-   "read_only": 1
-  },
-  {
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
@@ -71,12 +67,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_wdla",
-   "fieldtype": "Column Break"
-  },
-  {
    "bold": 1,
-   "fetch_from": "booking.visa_fee",
+   "fetch_from": "booking.total_visa_fee",
    "fieldname": "visa_amount",
    "fieldtype": "Currency",
    "label": "Visa Amount"
@@ -129,20 +121,49 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_ylti",
+   "fetch_from": "customer.email_address",
+   "fieldname": "sender_email",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sender Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "customer_details_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Details"
+  },
+  {
+   "fieldname": "column_break_omzp",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "sender_email",
-   "fieldtype": "Data",
-   "label": "Sender Email",
-   "options": "Email"
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break_vydl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "column_break_ylhz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ngto",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-14 17:19:05.795511",
+ "modified": "2025-10-20 10:16:47.526612",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Payment",

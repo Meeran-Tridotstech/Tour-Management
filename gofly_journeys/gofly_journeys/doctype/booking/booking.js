@@ -74,7 +74,7 @@ frappe.ui.form.on('Booking', {
                 // ✅ Create New Payment
                 const total_amount = (frm.doc.amount || 0) + (frm.doc.total_visa_fee || 0);
                 const advance_amount = Math.ceil(total_amount / 3);
-                const balance_amount = total_amount - advance_amount;
+                const balance_amount = total_amount; // 🔹 initial full balance
 
                 frappe.call({
                     method: 'frappe.client.insert',
@@ -87,7 +87,7 @@ frappe.ui.form.on('Booking', {
                             visa_amount: frm.doc.total_visa_fee || 0,
                             total_amount,
                             advance_amount,
-                            balance_amount,
+                            balance_amount, // 🔹 added
                             pay_amount: advance_amount,
                             payment_count: 0,
                             payment_status: 'Pending'
@@ -96,13 +96,13 @@ frappe.ui.form.on('Booking', {
                     callback: function (r) {
                         if (r.message) {
                             frappe.msgprint(__('✅ Payment record created successfully!'));
-                            // Trigger Razorpay
-                            make_razorpay_payment(r.message.name);
+                            frappe.set_route('Form', 'Payment', r.message.name);
                         }
                     }
                 });
             });
         });
+
 
         // ======================================
         // 📜 Terms & Conditions
@@ -188,63 +188,4 @@ frappe.ui.form.on('Booking Member', {
 function calculate_total_visa_fee(frm) {
     const total = (frm.doc.booking_members || []).reduce((sum, row) => sum + (row.visa_fee || 0), 0);
     frm.set_value('total_visa_fee', total);
-}
-
-// ======================================
-// 💳 Razorpay Payment Integration
-// ======================================
-function make_razorpay_payment(payment_name) {
-    frappe.db.get_doc('Payment', payment_name).then(payment => {
-        const payAmount = payment.advance_amount;
-        const balance = payment.balance_amount;
-        const count = payment.payment_count || 0;
-
-        if (payAmount <= 0 || count >= 3) {
-            frappe.msgprint('No payment required or max limit reached.');
-            return;
-        }
-
-        const options = {
-            key: 'rzp_test_1DP5mmOlF5G5ag',
-            amount: payAmount * 100,
-            currency: 'INR',
-            name: payment.customer,
-            description: `Payment for Booking: ${payment.booking}`,
-            handler: function (response) {
-                const now = frappe.datetime.now_datetime();
-                const newHistory = `
-                    <b style="color:green">* Payment ID:</b> ${response.razorpay_payment_id}
-                    <br><b style="color:green">Amount:</b> ₹${payAmount}
-                    <br><b style="color:green">Date:</b> ${now}
-                    <br><br>${payment.payment_history || ''}
-                `;
-
-                const newCount = count + 1;
-                const newBalance = balance - payAmount;
-
-                frappe.db.set_value('Payment', payment_name, {
-                    payment_history: newHistory,
-                    balance_amount: newBalance,
-                    payment_count: newCount,
-                    payment_status: newBalance <= 0 ? 'Completed' : 'Partially Paid',
-                    advance_amount: newBalance > 0 ? Math.ceil(newBalance / (3 - newCount)) : 0
-                }).then(() => {
-                    frappe.msgprint(
-                        newBalance <= 0
-                            ? '✅ All payments completed!'
-                            : `₹${payAmount} paid. Remaining balance: ₹${newBalance}`
-                    );
-                });
-            },
-            prefill: {
-                name: payment.customer,
-                email: payment.email || 'tourist@gmail.com',
-                contact: payment.mobile || '9999999999'
-            },
-            theme: { color: '#3399cc' }
-        };
-
-        const rzp = new Razorpay(options);
-        rzp.open();
-    });
 }

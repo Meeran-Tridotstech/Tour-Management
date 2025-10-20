@@ -74,29 +74,29 @@ class Payment(Document):
                     last_num = 1
             self.payment_id = f"PAY-{nowdate().replace('-', '')}-{last_num:04d}"
 
-    # def validate(self):
-    #     self.validate_amounts()
+    def validate(self):
+        self.validate_amounts()
 
-    # def validate_amounts(self):
-    #     # Ensure numeric fields are not negative
-    #     for field in ["amount", "visa_amount", "advance_amount"]:
-    #         value = getattr(self, field, None)
-    #         if value is None:
-    #             frappe.throw(f"{field.replace('_', ' ').title()} is required.")
-    #         elif value < 0:
-    #             frappe.throw(f"{field.replace('_', ' ').title()} cannot be negative.")
+    def validate_amounts(self):
+        # Ensure numeric fields are not negative
+        for field in ["amount", "visa_amount", "advance_amount"]:
+            value = getattr(self, field, None)
+            if value is None:
+                frappe.throw(f"{field.replace('_', ' ').title()} is required.")
+            elif value < 0:
+                frappe.throw(f"{field.replace('_', ' ').title()} cannot be negative.")
 
-    #     # ✅ Calculate total_amount = package + visa
-    #     self.total_amount = (self.amount or 0) + (self.visa_amount or 0)
+        # ✅ Calculate total_amount = package + visa
+        self.total_amount = (self.amount or 0) + (self.visa_amount or 0)
 
-    #     # ✅ Validate advance_amount <= total_amount
-    #     if self.advance_amount > self.total_amount:
-    #         frappe.throw("Advance Amount cannot be greater than Total Amount.")
+        # ✅ Validate advance_amount <= total_amount
+        if self.advance_amount > self.total_amount:
+            frappe.throw("Advance Amount cannot be greater than Total Amount.")
 
-    #     # ✅ Calculate balance_amount (only if not manually updated)
-    #     if not self.balance_amount or self.balance_amount == 0:
-    #         self.balance_amount = self.total_amount - (self.advance_amount or 0)
+        # ✅ Calculate balance_amount (only if not manually updated)
+        if not self.balance_amount or self.balance_amount == 0:
+            self.balance_amount = self.total_amount - (self.advance_amount or 0)
 
-    #     # ✅ Validation for zero total
-    #     if self.total_amount <= 0:
-    #         frappe.throw("Total Amount must be greater than zero.")
+        # ✅ Validation for zero total
+        if self.total_amount <= 0:
+            frappe.throw("Total Amount must be greater than zero.")
