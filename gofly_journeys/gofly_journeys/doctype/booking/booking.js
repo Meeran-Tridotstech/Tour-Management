@@ -1,5 +1,6 @@
 frappe.ui.form.on('Booking', {
     refresh(frm) {
+        gofly.common.add_open_related_button(frm);
         const roles = frappe.user_roles;
         const is_guide = roles.includes('Guide');
 
@@ -97,6 +98,7 @@ frappe.ui.form.on('Booking', {
                         if (r.message) {
                             frappe.msgprint(__('✅ Payment record created successfully!'));
                             frappe.set_route('Form', 'Payment', r.message.name);
+
                         }
                     }
                 });
@@ -128,6 +130,7 @@ frappe.ui.form.on('Booking', {
         frm.set_df_property('visa_status', 'read_only', !is_guide);
         frm.set_df_property('visa_approved_date', 'read_only', !is_guide);
         frm.set_df_property('visa_documents', 'read_only', !is_guide);
+
     },
 
     before_save(frm) {

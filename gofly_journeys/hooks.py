@@ -245,5 +245,11 @@ app_license = "mit"
 # }
 
 app_include_js = [
-"https://checkout.razorpay.com/v1/checkout.js"
-]
+    "https://checkout.razorpay.com/v1/checkout.js",
+    "/assets/gofly_journeys/js/common_buttons.js",
+    "/assets/gofly_journeys/js/common_list_buttons.js"
+    ]
+
+app_include_css = [
+    "/assets/gofly_journeys/css/one.css"
+    ]

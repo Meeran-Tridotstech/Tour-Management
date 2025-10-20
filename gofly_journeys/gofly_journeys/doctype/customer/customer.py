@@ -12,28 +12,6 @@ class Customer(Document):
         if self.email_address:
             if not validate_email_address(self.email_address):
                 frappe.throw("Please enter a valid Email Address")
-        
-    #     self.ensure_one_customer_per_user()
-
-    # def ensure_one_customer_per_user(self):
-    #     # Get current logged-in user
-    #     current_user = frappe.session.user
-
-    #     # Ignore Administrator and Guest
-    #     if current_user in ("Administrator", "Guest"):
-    #         return
-
-    #     # Check if this user already has another Customer record
-    #     existing = frappe.db.exists(
-    #         "Customer",
-    #         {"owner": current_user, "name": ["!=", self.name]}
-    #     )
-
-    #     if existing:
-    #         frappe.throw(
-    #             f"You already have a Customer record ({existing}). "
-    #             "Only one Customer is allowed per user."
-    #         )
 
 # Country:
 #--------

@@ -296,7 +296,7 @@
  "links": [],
  "make_attachments_public": 1,
  "max_attachments": 7,
- "modified": "2025-10-17 11:59:32.320952",
+ "modified": "2025-10-20 22:33:58.509879",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",
@@ -322,7 +322,7 @@
  "sort_order": "DESC",
  "states": [
   {
-   "color": "Green",
+   "color": "Pink",
    "title": "Available"
   },
   {

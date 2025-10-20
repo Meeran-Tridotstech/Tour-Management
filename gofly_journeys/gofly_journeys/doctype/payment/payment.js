@@ -1,6 +1,6 @@
-
 frappe.ui.form.on("Payment", {
     refresh(frm) {
+        gofly.common.add_open_related_button(frm);
         const paymentCount = frm.doc.payment_count || 0;
         const balance = frm.doc.balance_amount || 0;
         const total = frm.doc.total_amount || 0;
@@ -127,8 +127,26 @@ function make_razorpay_payment(frm) {
                 frm.set_df_property("pay_amount", "read_only", 1);
             }
 
-            // 💾 Save and reload
-            frm.save().then(() => frm.reload_doc());
+            // 💾 Save the Payment doc first
+            frm.save().then(() => {
+                // 🔗 Update related Booking doctype after the first payment
+                if (newCount === 1 && frm.doc.booking) {
+                    frappe.db.set_value("Booking", frm.doc.booking, "booking_status", "Booked")
+                        .then(() => {
+                            // ✅ Show alert
+                            frappe.show_alert({ message: "Booking status updated to 'Booked'", indicator: "green" });
+
+                            // ✅ Show popup message
+                            frappe.msgprint("Booking status has been updated to 'Booked'.");
+
+                            // 🔄 Redirect to the Booking doctype
+                            frappe.set_route("Form", "Booking", frm.doc.booking);
+                        });
+                } else {
+                    frm.reload_doc();
+                }
+            });
+
         },
 
         prefill: {

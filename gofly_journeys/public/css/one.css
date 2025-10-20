@@ -1,0 +1,64 @@
+/* 🖋️ AmstelvarAlpha Font Styling for All List Views and Buttons */
+
+/* Import AmstelvarAlpha font */
+@font-face {
+  font-family: "AmstelvarAlpha";
+  src: url("https://mdn.github.io/shared-assets/fonts/variable-fonts/AmstelvarAlpha-VF.ttf");
+  font-style: normal;
+}
+
+/* Base font styling for list views */
+.list-row-container,
+.list-row,
+.list-row-col,
+.list-row-col > span,
+.list-row-col > div {
+    font-family: "AmstelvarAlpha", sans-serif !important;
+    /* font-size: 1.5rem !important; */
+    color: #2c3e50 !important;
+    font-style: oblique 15deg; /* slight tilt for handwritten look */
+    font-weight: 500;
+}
+
+/* Page headings */
+.page-head .title-text {
+    font-family: "AmstelvarAlpha", sans-serif !important;
+    font-size: 1.5rem !important;
+    color: #1a237e !important;
+    font-style: oblique 15deg;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn,
+.btn-primary,
+.btn-default {
+    font-family: "AmstelvarAlpha", sans-serif !important;
+    /* font-size: 1rem !important; */
+    letter-spacing: 1px;
+    /* color: #ffffff !important; */
+    /* background-color: #1565c0 !important; */
+    /* border: none !important; */
+    /* border-radius: 8px !important; */
+    font-style: oblique 15deg;
+    /* font-weight: 500; */
+}
+
+/* Dropdowns */
+.dropdown-menu li > a,
+.dropdown-item {
+    font-family: "AmstelvarAlpha", sans-serif !important;
+    /* font-size: 1rem !important; */
+    /* color: #283593 !important; */
+    font-style: oblique 15deg;
+    /* font-weight: 500; */
+}
+
+/* Example usage for standalone text */
+.sample {
+    font-family: "AmstelvarAlpha", sans-serif;
+    /* font-size: 2rem; */
+    font-style: oblique 23deg;
+    font-weight: 500;
+    color: #2c3e50;
+}

@@ -7,7 +7,42 @@ frappe.ui.form.on('Guide', {
     },
     last_name: function(frm) {
         set_full_name(frm);
-    }
+    },
+    country: function (frm) {
+        if (!frm.doc.country) return;
+
+        frappe.call({
+            method: "gofly_journeys.gofly_journeys.doctype.customer.customer.get_states_for_country",
+            args: { country: frm.doc.country },
+            callback: function (r) {
+                if (r.message && r.message.length > 0) {
+                    frm.set_df_property('state', 'options', [''].concat(r.message));
+                    frm.refresh_field('state');
+                } else {
+                    frm.set_df_property('state', 'options', ['']);
+                    frm.refresh_field('state');
+                }
+            }
+        });
+    },
+
+    state: function (frm) {
+        if (!frm.doc.state || !frm.doc.country) return;
+
+        frappe.call({
+            method: "gofly_journeys.gofly_journeys.doctype.customer.customer.get_cities_for_state",
+            args: { country: frm.doc.country, state: frm.doc.state },
+            callback: function (r) {
+                if (r.message && r.message.length > 0) {
+                    frm.set_df_property('city', 'options', [''].concat(r.message));
+                    frm.refresh_field('city');
+                } else {
+                    frm.set_df_property('city', 'options', ['']);
+                    frm.refresh_field('city');
+                }
+            }
+        });
+    },
 });
 
 function set_full_name(frm) {

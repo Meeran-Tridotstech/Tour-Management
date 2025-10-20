@@ -3,17 +3,7 @@
 
 frappe.ui.form.on('Customer', {
     refresh: function (frm) {
-        frm.add_custom_button(__('Go to Tour Package'), function () {
-            frappe.set_route('List', 'Tour Package');
-        });
-
-        frm.set_query('state', function () {
-            return {
-                filters: {
-                    country: frm.doc.country || ''
-                }
-            };
-        });
+        gofly.common.add_open_related_button(frm);
     },
 
 

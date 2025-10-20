@@ -40,8 +40,9 @@
  "fields": [
   {
    "bold": 1,
+   "depends_on": "eval:doc.booking_status===\"Booked\"",
    "fieldname": "booking_date",
-   "fieldtype": "Datetime",
+   "fieldtype": "Date",
    "is_virtual": 1,
    "label": "Booking Date",
    "read_only": 1
@@ -222,7 +223,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-17 17:26:12.814681",
+ "modified": "2025-10-20 14:09:51.459414",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Booking",
@@ -247,5 +248,26 @@
  "sender_name_field": "customer",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Gray",
+   "title": "Draft"
+  },
+  {
+   "color": "Orange",
+   "title": "Booked"
+  },
+  {
+   "color": "Green",
+   "title": "Confirmed"
+  },
+  {
+   "color": "Purple",
+   "title": "Completed"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelled"
+  }
+ ]
 }

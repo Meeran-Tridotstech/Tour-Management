@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "autoname": "Tour Assignment-.###",
+ "creation": "2025-10-20 11:55:59.856939",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "details_section",
+  "booking",
+  "customer",
+  "column_break_vpga",
+  "booking_status",
+  "payment_status",
+  "guide_details_section",
+  "guide_id",
+  "guide",
+  "column_break_vyvd",
+  "email",
+  "phone",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "booking",
+   "fieldtype": "Link",
+   "label": "Booking",
+   "options": "Booking"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "guide_id.full_name",
+   "fieldname": "guide",
+   "fieldtype": "Data",
+   "label": "Guide"
+  },
+  {
+   "fetch_from": "booking.booking_status",
+   "fieldname": "booking_status",
+   "fieldtype": "Data",
+   "label": "Booking Status",
+   "options": "Pending\nIn Progress\nCompleted"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Data",
+   "label": "Payment Status"
+  },
+  {
+   "fieldname": "column_break_vpga",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "guide_details_section",
+   "fieldtype": "Section Break",
+   "label": "Guide Details"
+  },
+  {
+   "fieldname": "guide_id",
+   "fieldtype": "Link",
+   "label": "Guide ID",
+   "options": "Guide"
+  },
+  {
+   "fieldname": "column_break_vyvd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "guide.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fetch_from": "guide.phone_number",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-20 19:56:05.827031",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Tour Staff Assignment",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,5 +1,6 @@
 frappe.ui.form.on('Tour Package', {
     refresh(frm) {
+        gofly.common.add_open_related_button(frm);
         calculate_days_left(frm);
         set_status_color(frm.doc.package_status);
 
