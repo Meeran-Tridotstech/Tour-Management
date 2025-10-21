@@ -6,8 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "details_section",
-  "booking",
   "customer",
+  "booking",
   "column_break_vpga",
   "booking_status",
   "payment_status",
@@ -17,7 +17,8 @@
   "column_break_vyvd",
   "email",
   "phone",
-  "status"
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
@@ -33,6 +34,7 @@
    "options": "Customer"
   },
   {
+   "bold": 1,
    "fetch_from": "guide_id.full_name",
    "fieldname": "guide",
    "fieldtype": "Data",
@@ -75,27 +77,45 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "guide.email",
+   "bold": 1,
+   "fetch_from": "guide_id.email",
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "read_only": 1
   },
   {
-   "fetch_from": "guide.phone_number",
+   "bold": 1,
+   "fetch_from": "guide_id.phone_number",
    "fieldname": "phone",
    "fieldtype": "Data",
-   "label": "Phone"
+   "label": "Phone",
+   "read_only": 1
   },
   {
+   "bold": 1,
+   "fetch_from": "guide_id.status",
    "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status"
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tour Staff Assignment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-10-20 19:56:05.827031",
+ "modified": "2025-10-21 13:47:32.800295",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Staff Assignment",

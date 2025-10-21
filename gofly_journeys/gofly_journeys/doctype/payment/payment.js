@@ -146,7 +146,6 @@ function make_razorpay_payment(frm) {
                     frm.reload_doc();
                 }
             });
-
         },
 
         prefill: {

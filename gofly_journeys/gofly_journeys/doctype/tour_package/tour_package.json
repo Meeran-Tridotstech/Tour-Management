@@ -35,7 +35,6 @@
   "up_to",
   "visit_place",
   "explore",
-  "description",
   "tourist_place_tab",
   "section_break_fcim",
   "images",
@@ -89,13 +88,6 @@
    "fieldtype": "Table",
    "label": "Explore",
    "options": "Explore"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Text Editor",
-   "label": "Description",
-   "max_height": "100px",
-   "placeholder": "Enter the Description"
   },
   {
    "fieldname": "package_duration_column",
@@ -296,7 +288,7 @@
  "links": [],
  "make_attachments_public": 1,
  "max_attachments": 7,
- "modified": "2025-10-20 22:33:58.509879",
+ "modified": "2025-10-21 09:19:22.319928",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Package",

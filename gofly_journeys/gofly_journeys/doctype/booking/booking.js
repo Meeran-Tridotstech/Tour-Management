@@ -107,23 +107,49 @@ frappe.ui.form.on('Booking', {
 
 
         // ======================================
-        // 📜 Terms & Conditions
+        // 🌍 Enhanced Terms & Conditions (Tour Management)
         // ======================================
         const html_content = `
-            <div style="max-height:350px; overflow:auto; border:1px solid #ddd; padding:15px; border-radius:8px; background:#fafafa;">
-                <h3 style="text-align:center; color:#2c3e50;">Terms & Conditions</h3>
-                <p>By booking, you agree to the following terms:</p>
-                <ul>
-                    <li>Bookings are confirmed only after advance payment.</li>
-                    <li>Balance must be cleared before tour start date.</li>
-                    <li>Cancellations within 15 days are non-refundable.</li>
-                    <li>We are not liable for loss, delays, or damages due to natural causes.</li>
-                </ul>
-                <p style="color:#e74c3c; text-align:center; margin-top:8px;">
-                    <strong>Please read carefully before proceeding.</strong>
-                </p>
-            </div>
-        `;
+                <div style="
+                    max-height:380px; 
+                    overflow:auto; 
+                    border:2px solid #3498db; 
+                    padding:20px; 
+                    border-radius:12px; 
+                    background:linear-gradient(180deg, #f5f7fa, #e3f2fd);
+                    font-family:'Poppins', 'Segoe UI', sans-serif;
+                    color:#2c3e50;
+                ">
+                    <h2 style="text-align:center; color:#1565c0; font-weight:600; margin-bottom:15px;">
+                        📜 Tour Booking Terms & Conditions
+                    </h2>
+                    <p style="font-size:14px; color:#34495e; text-align:center;">
+                        Please review each point carefully and check the box to confirm your agreement.
+                    </p>
+
+                    <div style="margin-top:15px; line-height:1.8; font-size:14px;">
+                        <label><input type="checkbox" style="margin-right:8px;">Bookings are confirmed only after advance payment.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Balance payment must be made before the tour start date.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Cancellations within 15 days are non-refundable.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Refunds (if any) will be processed within 7–10 working days.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Company reserves the right to modify or cancel tours due to unforeseen events (weather, strikes, etc.).</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Travelers must carry valid ID, passport, visa, and travel documents.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Company is not liable for loss of baggage, delays, or personal belongings.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Participants must follow the guide’s instructions and maintain discipline during the tour.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Any property damage caused by participants will be charged accordingly.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Travel insurance is highly recommended and must be arranged by the traveler.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Company is not responsible for delays caused by transportation or external factors.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Medical emergencies are at the traveler’s own expense. Assistance will be provided as feasible.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Child fare and age policies apply as per the chosen package.</label><br>
+                        <label><input type="checkbox" style="margin-right:8px;">Any disputes shall be handled under the jurisdiction of the company’s registered city.</label><br>
+                    </div>
+
+                    <p style="color:#e67e22; text-align:center; margin-top:18px; font-weight:600;">
+                        ✅ Please ensure all boxes are checked before proceeding with booking.
+                    </p>
+                </div>
+            `;
+
         frm.fields_dict.terms_and_conditions.$wrapper.html(html_content);
 
         // 🔒 Restrict VISA fields (Parent)

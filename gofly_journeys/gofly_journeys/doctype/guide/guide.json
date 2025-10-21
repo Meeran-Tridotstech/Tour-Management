@@ -161,7 +161,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-20 21:09:21.935446",
+ "modified": "2025-10-21 13:22:49.977025",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Guide",
@@ -186,5 +186,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "full_name"
+ "title_field": "guide_id"
 }
