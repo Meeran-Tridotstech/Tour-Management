@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Travel Plan-.###",
+ "creation": "2025-10-22 14:41:08.332829",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "travel_plan_section",
+  "booking",
+  "guide",
+  "start_date",
+  "column_break_fhrl",
+  "travel_status",
+  "total_estimated_cost",
+  "flight_booking_section",
+  "flight_number",
+  "airline",
+  "departure_city",
+  "column_break_nkof",
+  "arrival_city",
+  "ticket_number",
+  "hotel_booking_section",
+  "hotel_name",
+  "location",
+  "room_type",
+  "column_break_rwff",
+  "booking_reference",
+  "amount",
+  "booking_status",
+  "transport_arrangement_section",
+  "vehicle_type",
+  "driver_name",
+  "pickup",
+  "column_break_bdjy",
+  "travel_date",
+  "cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "travel_plan_section",
+   "fieldtype": "Section Break",
+   "label": "Travel Plan"
+  },
+  {
+   "fieldname": "booking",
+   "fieldtype": "Link",
+   "label": "Booking",
+   "options": "Booking"
+  },
+  {
+   "fieldname": "guide",
+   "fieldtype": "Link",
+   "label": "Guide",
+   "options": "Guide"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "travel_status",
+   "fieldtype": "Select",
+   "label": "Travel Status",
+   "options": "Planned\nOngoing\nCompleted"
+  },
+  {
+   "fieldname": "total_estimated_cost",
+   "fieldtype": "Int",
+   "label": "Total Estimated Cost"
+  },
+  {
+   "fieldname": "flight_booking_section",
+   "fieldtype": "Section Break",
+   "label": "Flight Booking"
+  },
+  {
+   "fieldname": "flight_number",
+   "fieldtype": "Data",
+   "label": "Flight Number"
+  },
+  {
+   "fieldname": "airline",
+   "fieldtype": "Select",
+   "label": "Airline"
+  },
+  {
+   "fieldname": "departure_city",
+   "fieldtype": "Data",
+   "label": "Departure City"
+  },
+  {
+   "fieldname": "arrival_city",
+   "fieldtype": "Data",
+   "label": "Arrival City"
+  },
+  {
+   "fieldname": "ticket_number",
+   "fieldtype": "Data",
+   "label": "Ticket Number"
+  },
+  {
+   "fieldname": "hotel_booking_section",
+   "fieldtype": "Section Break",
+   "label": "Hotel Booking"
+  },
+  {
+   "fieldname": "hotel_name",
+   "fieldtype": "Data",
+   "label": "Hotel Name"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Select",
+   "label": "Room Type"
+  },
+  {
+   "fieldname": "booking_reference",
+   "fieldtype": "Data",
+   "label": "Booking Reference"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Int",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "booking_status",
+   "fieldtype": "Select",
+   "label": "Booking Status",
+   "options": "Confirmed\nPending\nCanceled"
+  },
+  {
+   "fieldname": "transport_arrangement_section",
+   "fieldtype": "Section Break",
+   "label": "Transport Arrangement"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Data",
+   "label": "Vehicle Type"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "pickup",
+   "fieldtype": "Data",
+   "label": "Pickup"
+  },
+  {
+   "fieldname": "travel_date",
+   "fieldtype": "Date",
+   "label": "Travel Date"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Int",
+   "label": "Cost"
+  },
+  {
+   "fieldname": "column_break_fhrl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nkof",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rwff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bdjy",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-22 16:02:39.680629",
+ "modified_by": "Administrator",
+ "module": "GoFly Journeys",
+ "name": "Travel Plan",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -29,53 +29,48 @@ class Booking(Document):
 
 
 	def on_update(self):
-		# ✅ When Booking status becomes "Booked", create a Tour Staff Assignment record
-		if self.booking_status == "Booked":
-			# Check if already created to avoid duplicates
-			existing = frappe.db.exists("Tour Staff Assignment", {"booking": self.name})
-			if not existing:
-				new_assignment = frappe.get_doc({
-					"doctype": "Tour Staff Assignment",
-					"booking": self.name,
-					"customer": self.customer
-				})
-				new_assignment.insert()
-				frappe.msgprint(f"✅ Tour Staff Assignment created for booking {self.name}")
+		# ✅ Run only when Booking status is "Booked"
+		if self.booking_status != "Booked":
+			return
 
-			# ✅ Submit the Booking document if not already submitted
-			if not self.docstatus:  # docstatus 0 = Draft
-				frappe.msgprint(f"✅ Booking {self.name} is being submitted automatically")
-				self.db_set("booking_status", "Booked")  # make sure field is saved
-				self.submit()
-				
-				# Refresh the form on UI
-				frappe.msgprint(f"✅ Booking {self.name} submitted successfully")
-				frappe.local.flags.update_ui = True
+		# ✅ 1. Create Tour Staff Assignment (avoid duplicates)
+		existing_assignment = frappe.db.exists("Tour Staff Assignment", {"booking": self.name})
+		if not existing_assignment:
+			new_assignment = frappe.get_doc({
+				"doctype": "Tour Staff Assignment",
+				"booking": self.name,
+				"customer": self.customer
+			})
+			new_assignment.insert()
+			frappe.msgprint(f"✅ Tour Staff Assignment created for booking {self.name}")
+		else:
+			frappe.msgprint("ℹ️ Tour Staff Assignment already exists for this booking.")
 
+		# ✅ 2. Get Guide ID from Tour Staff Assignment
+		tsa = frappe.get_all("Tour Staff Assignment", filters={"booking": self.name}, limit=1)
+		guide_id = None
+		if tsa:
+			tsa_doc = frappe.get_doc("Tour Staff Assignment", tsa[0].name)
+			guide_id = tsa_doc.guide_id
 
-#Guide Filter Based on Package Country and state
-# @frappe.whitelist()
-# def get_guide_query(doctype, txt, searchfield, start, page_len, filters):
-#     docname = filters.get("docname")
-#     if not docname:
-#         return []
+		# ✅ 3. Create Travel Plan (avoid duplicates)
+		existing_travel = frappe.db.exists("Travel Plan", {"booking": self.name})
+		if not existing_travel:
+			travel_plan = frappe.get_doc({
+				"doctype": "Travel Plan",
+				"booking": self.name,
+				"guide": guide_id
+			})
+			travel_plan.insert()
+			frappe.msgprint(f"✅ Travel Plan created for Booking {self.name} with Guide {guide_id or 'Not Assigned'}")
+		else:
+			frappe.msgprint("ℹ️ Travel Plan already exists for this booking.")
 
-#     booking = frappe.get_doc("Booking", docname)
-    
-#     # Example: Get guides based on package country/state
-#     guides = frappe.get_all(
-#         "Guide",
-#         filters={
-#             "country": booking.package_country,
-#             "state": booking.package_state
-#         },
-#         fields=["name", "full_name"],
-#         limit_start=start,
-#         limit_page_length=page_len
-#     )
-
-#     # Must return a list of lists
-#     return [[g.name, g.full_name] for g in guides]
+		# ✅ 4. Auto-submit if still Draft
+		if not self.docstatus:  # 0 = Draft
+			self.submit()
+			frappe.msgprint(f"✅ Booking {self.name} submitted successfully")			
+     
 
 @frappe.whitelist()
 def get_guide_query(doctype, txt, searchfield, start, page_len, filters):
