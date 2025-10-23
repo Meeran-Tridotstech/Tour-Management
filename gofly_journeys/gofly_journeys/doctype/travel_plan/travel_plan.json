@@ -9,17 +9,24 @@
   "travel_plan_section",
   "booking",
   "guide",
+  "column_break_wmjk",
   "start_date",
+  "end_date",
   "column_break_fhrl",
   "travel_status",
-  "total_estimated_cost",
   "flight_booking_section",
-  "flight_number",
-  "airline",
-  "departure_city",
+  "from_airport",
+  "to_airport",
+  "airline_code",
   "column_break_nkof",
-  "arrival_city",
-  "ticket_number",
+  "flight_number",
+  "departure_time",
+  "arrival_time",
+  "column_break_citn",
+  "flight_status",
+  "from_airport_name",
+  "to_airport_name",
+  "airline_name",
   "hotel_booking_section",
   "hotel_name",
   "location",
@@ -50,11 +57,12 @@
   },
   {
    "fieldname": "guide",
-   "fieldtype": "Link",
-   "label": "Guide",
-   "options": "Guide"
+   "fieldtype": "Data",
+   "label": "Guide"
   },
   {
+   "bold": 1,
+   "fetch_from": "booking.start_date",
    "fieldname": "start_date",
    "fieldtype": "Date",
    "label": "Start Date"
@@ -66,11 +74,6 @@
    "options": "Planned\nOngoing\nCompleted"
   },
   {
-   "fieldname": "total_estimated_cost",
-   "fieldtype": "Int",
-   "label": "Total Estimated Cost"
-  },
-  {
    "fieldname": "flight_booking_section",
    "fieldtype": "Section Break",
    "label": "Flight Booking"
@@ -79,26 +82,6 @@
    "fieldname": "flight_number",
    "fieldtype": "Data",
    "label": "Flight Number"
-  },
-  {
-   "fieldname": "airline",
-   "fieldtype": "Select",
-   "label": "Airline"
-  },
-  {
-   "fieldname": "departure_city",
-   "fieldtype": "Data",
-   "label": "Departure City"
-  },
-  {
-   "fieldname": "arrival_city",
-   "fieldtype": "Data",
-   "label": "Arrival City"
-  },
-  {
-   "fieldname": "ticket_number",
-   "fieldtype": "Data",
-   "label": "Ticket Number"
   },
   {
    "fieldname": "hotel_booking_section",
@@ -181,12 +164,73 @@
   {
    "fieldname": "column_break_bdjy",
    "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "booking.end_date",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "column_break_wmjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_airport",
+   "fieldtype": "Data",
+   "label": "From Airport"
+  },
+  {
+   "fieldname": "to_airport",
+   "fieldtype": "Data",
+   "label": "To Airport"
+  },
+  {
+   "fieldname": "airline_code",
+   "fieldtype": "Data",
+   "label": "Airline Code"
+  },
+  {
+   "fieldname": "departure_time",
+   "fieldtype": "Data",
+   "label": "Departure Time"
+  },
+  {
+   "fieldname": "arrival_time",
+   "fieldtype": "Datetime",
+   "label": "Arrival Time"
+  },
+  {
+   "fieldname": "column_break_citn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "flight_status",
+   "fieldtype": "Select",
+   "label": "Flight Status",
+   "options": "Scheduled\nLanded\nDelayed"
+  },
+  {
+   "fieldname": "from_airport_name",
+   "fieldtype": "Data",
+   "label": "Airport Name"
+  },
+  {
+   "fieldname": "to_airport_name",
+   "fieldtype": "Data",
+   "label": "Airport Name"
+  },
+  {
+   "fieldname": "airline_name",
+   "fieldtype": "Data",
+   "label": "Airline Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-22 16:02:39.680629",
+ "modified": "2025-10-23 15:17:50.793136",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Travel Plan",

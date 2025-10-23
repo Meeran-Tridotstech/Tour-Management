@@ -46,23 +46,23 @@ class Booking(Document):
 		else:
 			frappe.msgprint("ℹ️ Tour Staff Assignment already exists for this booking.")
 
-		# ✅ 2. Get Guide ID from Tour Staff Assignment
-		tsa = frappe.get_all("Tour Staff Assignment", filters={"booking": self.name}, limit=1)
-		guide_id = None
-		if tsa:
-			tsa_doc = frappe.get_doc("Tour Staff Assignment", tsa[0].name)
-			guide_id = tsa_doc.guide_id
+		# # ✅ 2. Get Guide ID from Tour Staff Assignment
+		# tsa = frappe.get_all("Tour Staff Assignment", filters={"booking": self.name}, limit=1)
+		# guide_id = None
+		# if tsa:
+		# 	tsa_doc = frappe.get_doc("Tour Staff Assignment", tsa[0].name)
+		# 	guide_id = tsa_doc.guide_id
 
 		# ✅ 3. Create Travel Plan (avoid duplicates)
 		existing_travel = frappe.db.exists("Travel Plan", {"booking": self.name})
 		if not existing_travel:
 			travel_plan = frappe.get_doc({
 				"doctype": "Travel Plan",
-				"booking": self.name,
-				"guide": guide_id
+				"booking": self.name
+				
 			})
 			travel_plan.insert()
-			frappe.msgprint(f"✅ Travel Plan created for Booking {self.name} with Guide {guide_id or 'Not Assigned'}")
+			frappe.msgprint(f"✅ Travel Plan created for Booking {self.name} with Guide Not Assigned")
 		else:
 			frappe.msgprint("ℹ️ Travel Plan already exists for this booking.")
 
