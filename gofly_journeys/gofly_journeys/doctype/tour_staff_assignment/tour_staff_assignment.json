@@ -8,16 +8,13 @@
   "details_section",
   "customer",
   "booking",
-  "column_break_vpga",
-  "booking_status",
-  "payment_status",
-  "guide_details_section",
   "guide_id",
+  "column_break_vpga",
   "guide",
-  "column_break_vyvd",
+  "booking_status",
   "email",
-  "phone",
   "status",
+  "phone",
   "amended_from"
  ],
  "fields": [
@@ -44,13 +41,7 @@
    "fetch_from": "booking.booking_status",
    "fieldname": "booking_status",
    "fieldtype": "Data",
-   "label": "Booking Status",
-   "options": "Pending\nIn Progress\nCompleted"
-  },
-  {
-   "fieldname": "payment_status",
-   "fieldtype": "Data",
-   "label": "Payment Status"
+   "label": "Booking Status"
   },
   {
    "fieldname": "column_break_vpga",
@@ -62,19 +53,10 @@
    "label": "Details"
   },
   {
-   "fieldname": "guide_details_section",
-   "fieldtype": "Section Break",
-   "label": "Guide Details"
-  },
-  {
    "fieldname": "guide_id",
    "fieldtype": "Link",
    "label": "Guide ID",
    "options": "Guide"
-  },
-  {
-   "fieldname": "column_break_vyvd",
-   "fieldtype": "Column Break"
   },
   {
    "bold": 1,
@@ -97,7 +79,7 @@
    "fetch_from": "guide_id.status",
    "fieldname": "status",
    "fieldtype": "Data",
-   "label": "Status",
+   "label": "Guide Status",
    "read_only": 1
   },
   {
@@ -115,7 +97,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-21 13:47:32.800295",
+ "modified": "2025-10-24 19:08:05.137431",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Tour Staff Assignment",

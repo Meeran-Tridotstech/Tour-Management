@@ -15,25 +15,17 @@
   "column_break_fhrl",
   "travel_status",
   "flight_booking_section",
+  "flight_number",
   "from_airport",
   "to_airport",
-  "airline_code",
   "column_break_nkof",
-  "flight_number",
   "departure_time",
   "arrival_time",
-  "column_break_citn",
-  "flight_status",
-  "from_airport_name",
-  "to_airport_name",
-  "airline_name",
   "hotel_booking_section",
   "hotel_name",
   "location",
-  "room_type",
   "column_break_rwff",
-  "booking_reference",
-  "amount",
+  "room_type",
   "booking_status",
   "transport_arrangement_section",
   "vehicle_type",
@@ -104,16 +96,6 @@
    "label": "Room Type"
   },
   {
-   "fieldname": "booking_reference",
-   "fieldtype": "Data",
-   "label": "Booking Reference"
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Int",
-   "label": "Amount"
-  },
-  {
    "fieldname": "booking_status",
    "fieldtype": "Select",
    "label": "Booking Status",
@@ -178,59 +160,31 @@
   },
   {
    "fieldname": "from_airport",
-   "fieldtype": "Data",
-   "label": "From Airport"
+   "fieldtype": "Autocomplete",
+   "label": "From Airport",
+   "options": "Chennai International Airport (MAA) - India\nDelhi Indira Gandhi International Airport (DEL) - India\nMumbai Chhatrapati Shivaji Maharaj International Airport (BOM) - India\nBengaluru Kempegowda International Airport (BLR) - India\nHyderabad Rajiv Gandhi International Airport (HYD) - India\nKolkata Netaji Subhas Chandra Bose International Airport (CCU) - India\nCochin International Airport (COK) - India\nTrivandrum International Airport (TRV) - India\nGoa Dabolim Airport (GOI) - India\nAhmedabad Sardar Vallabhbhai Patel International Airport (AMD) - India\nPune International Airport (PNQ) - India\nJaipur International Airport (JAI) - India\nLucknow Chaudhary Charan Singh International Airport (LKO) - India\nPatna Jay Prakash Narayan International Airport (PAT) - India\nAmritsar Sri Guru Ram Dass Jee International Airport (ATQ) - India\nNagpur Dr. Babasaheb Ambedkar International Airport (NAG) - India\nVisakhapatnam International Airport (VTZ) - India\nMangalore International Airport (IXE) - India\nVaranasi Lal Bahadur Shastri International Airport (VNS) - India\nCoimbatore International Airport (CJB) - India\nMadurai International Airport (IXM) - India\nTiruchirappalli International Airport (TRZ) - India\nRaipur Swami Vivekananda Airport (RPR) - India\nRanchi Birsa Munda Airport (IXR) - India\nGuwahati Lokpriya Gopinath Bordoloi International Airport (GAU) - India\nBhopal Raja Bhoj Airport (BHO) - India\nIndore Devi Ahilya Bai Holkar Airport (IDR) - India\nPort Blair Veer Savarkar International Airport (IXZ) - India\nLeh Kushok Bakula Rimpochee Airport (IXL) - India\nSrinagar Sheikh ul-Alam International Airport (SXR) - India\nDubai International Airport (DXB) - UAE\nAbu Dhabi Zayed International Airport (AUH) - UAE\nSharjah International Airport (SHJ) - UAE\nRas Al Khaimah International Airport (RKT) - UAE\nDoha Hamad International Airport (DOH) - Qatar\nMuscat International Airport (MCT) - Oman\nRiyadh King Khalid International Airport (RUH) - Saudi Arabia\nJeddah King Abdulaziz International Airport (JED) - Saudi Arabia\nDammam King Fahd International Airport (DMM) - Saudi Arabia\nKuwait International Airport (KWI) - Kuwait\nBahrain International Airport (BAH) - Bahrain\nAmman Queen Alia International Airport (AMM) - Jordan\nBeirut Rafic Hariri International Airport (BEY) - Lebanon\nCairo International Airport (CAI) - Egypt\nAlexandria Borg El Arab Airport (HBE) - Egypt\nAddis Ababa Bole International Airport (ADD) - Ethiopia\nNairobi Jomo Kenyatta International Airport (NBO) - Kenya\nMombasa Moi International Airport (MBA) - Kenya\nJohannesburg OR Tambo International Airport (JNB) - South Africa\nCape Town International Airport (CPT) - South Africa\nDurban King Shaka International Airport (DUR) - South Africa\nCasablanca Mohammed V International Airport (CMN) - Morocco\nMarrakesh Menara Airport (RAK) - Morocco\nLagos Murtala Muhammed International Airport (LOS) - Nigeria\nAccra Kotoka International Airport (ACC) - Ghana\nAddis Ababa Bole International Airport (ADD) - Ethiopia\nDoala International Airport (DLA) - Cameroon\nSingapore Changi Airport (SIN) - Singapore\nKuala Lumpur International Airport (KUL) - Malaysia\nPenang International Airport (PEN) - Malaysia\nLangkawi International Airport (LGK) - Malaysia\nBangkok Suvarnabhumi Airport (BKK) - Thailand\nPhuket International Airport (HKT) - Thailand\nChiang Mai International Airport (CNX) - Thailand\nJakarta Soekarno\u2013Hatta International Airport (CGK) - Indonesia\nBali Ngurah Rai International Airport (DPS) - Indonesia\nMedan Kualanamu International Airport (KNO) - Indonesia\nManila Ninoy Aquino International Airport (MNL) - Philippines\nCebu Mactan\u2013Cebu International Airport (CEB) - Philippines\nClark International Airport (CRK) - Philippines\nTokyo Haneda Airport (HND) - Japan\nTokyo Narita International Airport (NRT) - Japan\nOsaka Kansai International Airport (KIX) - Japan\nNagoya Chubu Centrair International Airport (NGO) - Japan\nSapporo New Chitose Airport (CTS) - Japan\nBeijing Capital International Airport (PEK) - China\nBeijing Daxing International Airport (PKX) - China\nShanghai Pudong International Airport (PVG) - China\nShanghai Hongqiao International Airport (SHA) - China\nGuangzhou Baiyun International Airport (CAN) - China\nShenzhen Bao\u2019an International Airport (SZX) - China\nChengdu Tianfu International Airport (TFU) - China\nHong Kong International Airport (HKG) - Hong Kong\nMacau International Airport (MFM) - Macau\nTaipei Taoyuan International Airport (TPE) - Taiwan\nKaohsiung International Airport (KHH) - Taiwan\nSeoul Incheon International Airport (ICN) - South Korea\nSeoul Gimpo International Airport (GMP) - South Korea\nBusan Gimhae International Airport (PUS) - South Korea\nIstanbul Airport (IST) - Turkey\nAnkara Esenbo\u011fa International Airport (ESB) - Turkey\nAntalya Airport (AYT) - Turkey\nLondon Heathrow Airport (LHR) - United Kingdom\nLondon Gatwick Airport (LGW) - United Kingdom\nManchester Airport (MAN) - United Kingdom\nBirmingham Airport (BHX) - United Kingdom\nGlasgow Airport (GLA) - United Kingdom\nEdinburgh Airport (EDI) - United Kingdom\nParis Charles de Gaulle Airport (CDG) - France\nParis Orly Airport (ORY) - France\nNice C\u00f4te d\u2019Azur Airport (NCE) - France\nLyon Saint-Exup\u00e9ry Airport (LYS) - France\nFrankfurt Airport (FRA) - Germany\nMunich Airport (MUC) - Germany\nBerlin Brandenburg Airport (BER) - Germany\nD\u00fcsseldorf Airport (DUS) - Germany\nZurich Airport (ZRH) - Switzerland\nGeneva Airport (GVA) - Switzerland\nAmsterdam Schiphol Airport (AMS) - Netherlands\nRotterdam The Hague Airport (RTM) - Netherlands\nBrussels Airport (BRU) - Belgium\nMadrid Barajas Airport (MAD) - Spain\nBarcelona El Prat Airport (BCN) - Spain\nValencia Airport (VLC) - Spain\nRome Fiumicino Airport (FCO) - Italy\nMilan Malpensa Airport (MXP) - Italy\nNaples International Airport (NAP) - Italy\nVienna International Airport (VIE) - Austria\nPrague V\u00e1clav Havel Airport (PRG) - Czech Republic\nWarsaw Chopin Airport (WAW) - Poland\nKrak\u00f3w John Paul II International Airport (KRK) - Poland\nLisbon Humberto Delgado Airport (LIS) - Portugal\nPorto Francisco S\u00e1 Carneiro Airport (OPO) - Portugal\nAthens Eleftherios Venizelos Airport (ATH) - Greece\nHeraklion International Airport (HER) - Greece\nOslo Gardermoen Airport (OSL) - Norway\nBergen Airport (BGO) - Norway\nStockholm Arlanda Airport (ARN) - Sweden\nCopenhagen Kastrup Airport (CPH) - Denmark\nHelsinki Vantaa Airport (HEL) - Finland\nDublin Airport (DUB) - Ireland\nReykjavik Keflavik Airport (KEF) - Iceland\nMoscow Sheremetyevo International Airport (SVO) - Russia\nMoscow Domodedovo Airport (DME) - Russia\nSaint Petersburg Pulkovo Airport (LED) - Russia\nNew York John F. Kennedy International Airport (JFK) - USA\nNewark Liberty International Airport (EWR) - USA\nLos Angeles International Airport (LAX) - USA\nSan Francisco International Airport (SFO) - USA\nChicago O\u2019Hare International Airport (ORD) - USA\nDallas/Fort Worth International Airport (DFW) - USA\nDenver International Airport (DEN) - USA\nHartsfield-Jackson Atlanta International Airport (ATL) - USA\nBoston Logan International Airport (BOS) - USA\nMiami International Airport (MIA) - USA\nSeattle-Tacoma International Airport (SEA) - USA\nOrlando International Airport (MCO) - USA\nWashington Dulles International Airport (IAD) - USA\nLas Vegas Harry Reid International Airport (LAS) - USA\nHouston George Bush Intercontinental Airport (IAH) - USA\nDetroit Metropolitan Airport (DTW) - USA\nPhiladelphia International Airport (PHL) - USA\nPhoenix Sky Harbor International Airport (PHX) - USA\nCharlotte Douglas International Airport (CLT) - USA\nSan Diego International Airport (SAN) - USA\nToronto Pearson International Airport (YYZ) - Canada\nVancouver International Airport (YVR) - Canada\nMontreal Pierre Elliott Trudeau International Airport (YUL) - Canada\nCalgary International Airport (YYC) - Canada\nOttawa Macdonald\u2013Cartier International Airport (YOW) - Canada\nWinnipeg James Armstrong Richardson International Airport (YWG) - Canada\nMexico City Benito Ju\u00e1rez International Airport (MEX) - Mexico\nCanc\u00fan International Airport (CUN) - Mexico\nGuadalajara International Airport (GDL) - Mexico\nMonterrey International Airport (MTY) - Mexico\nS\u00e3o Paulo Guarulhos International Airport (GRU) - Brazil\nRio de Janeiro Gale\u00e3o International Airport (GIG) - Brazil\nBras\u00edlia International Airport (BSB) - Brazil\nBuenos Aires Ministro Pistarini International Airport (EZE) - Argentina\nSantiago Arturo Merino Ben\u00edtez International Airport (SCL) - Chile\nBogot\u00e1 El Dorado International Airport (BOG) - Colombia\nLima Jorge Ch\u00e1vez International Airport (LIM) - Peru\nQuito Mariscal Sucre International Airport (UIO) - Ecuador\nPanama City Tocumen International Airport (PTY) - Panama\nSan Jos\u00e9 Juan Santamar\u00eda International Airport (SJO) - Costa Rica\nKingston Norman Manley International Airport (KIN) - Jamaica\nNassau Lynden Pindling International Airport (NAS) - Bahamas\nHavana Jos\u00e9 Mart\u00ed International Airport (HAV) - Cuba\nSydney Kingsford Smith Airport (SYD) - Australia\nMelbourne Tullamarine Airport (MEL) - Australia\nBrisbane Airport (BNE) - Australia\nPerth Airport (PER) - Australia\nAdelaide Airport (ADL) - Australia\nAuckland Airport (AKL) - New Zealand\nWellington International Airport (WLG) - New Zealand\nChristchurch International Airport (CHC) - New Zealand\nFiji Nadi International Airport (NAN) - Fiji\nHonolulu Daniel K. Inouye International Airport (HNL) - USA\nGuam Antonio B. Won Pat International Airport (GUM) - Guam\nTahiti Faa'a International Airport (PPT) - French Polynesia\n"
   },
   {
    "fieldname": "to_airport",
-   "fieldtype": "Data",
-   "label": "To Airport"
-  },
-  {
-   "fieldname": "airline_code",
-   "fieldtype": "Data",
-   "label": "Airline Code"
+   "fieldtype": "Autocomplete",
+   "label": "To Airport",
+   "options": "Chennai International Airport (MAA) - India\nDelhi Indira Gandhi International Airport (DEL) - India\nMumbai Chhatrapati Shivaji Maharaj International Airport (BOM) - India\nBengaluru Kempegowda International Airport (BLR) - India\nHyderabad Rajiv Gandhi International Airport (HYD) - India\nKolkata Netaji Subhas Chandra Bose International Airport (CCU) - India\nCochin International Airport (COK) - India\nTrivandrum International Airport (TRV) - India\nGoa Dabolim Airport (GOI) - India\nAhmedabad Sardar Vallabhbhai Patel International Airport (AMD) - India\nPune International Airport (PNQ) - India\nJaipur International Airport (JAI) - India\nLucknow Chaudhary Charan Singh International Airport (LKO) - India\nPatna Jay Prakash Narayan International Airport (PAT) - India\nAmritsar Sri Guru Ram Dass Jee International Airport (ATQ) - India\nNagpur Dr. Babasaheb Ambedkar International Airport (NAG) - India\nVisakhapatnam International Airport (VTZ) - India\nMangalore International Airport (IXE) - India\nVaranasi Lal Bahadur Shastri International Airport (VNS) - India\nCoimbatore International Airport (CJB) - India\nMadurai International Airport (IXM) - India\nTiruchirappalli International Airport (TRZ) - India\nRaipur Swami Vivekananda Airport (RPR) - India\nRanchi Birsa Munda Airport (IXR) - India\nGuwahati Lokpriya Gopinath Bordoloi International Airport (GAU) - India\nBhopal Raja Bhoj Airport (BHO) - India\nIndore Devi Ahilya Bai Holkar Airport (IDR) - India\nPort Blair Veer Savarkar International Airport (IXZ) - India\nLeh Kushok Bakula Rimpochee Airport (IXL) - India\nSrinagar Sheikh ul-Alam International Airport (SXR) - India\nDubai International Airport (DXB) - UAE\nAbu Dhabi Zayed International Airport (AUH) - UAE\nSharjah International Airport (SHJ) - UAE\nRas Al Khaimah International Airport (RKT) - UAE\nDoha Hamad International Airport (DOH) - Qatar\nMuscat International Airport (MCT) - Oman\nRiyadh King Khalid International Airport (RUH) - Saudi Arabia\nJeddah King Abdulaziz International Airport (JED) - Saudi Arabia\nDammam King Fahd International Airport (DMM) - Saudi Arabia\nKuwait International Airport (KWI) - Kuwait\nBahrain International Airport (BAH) - Bahrain\nAmman Queen Alia International Airport (AMM) - Jordan\nBeirut Rafic Hariri International Airport (BEY) - Lebanon\nCairo International Airport (CAI) - Egypt\nAlexandria Borg El Arab Airport (HBE) - Egypt\nAddis Ababa Bole International Airport (ADD) - Ethiopia\nNairobi Jomo Kenyatta International Airport (NBO) - Kenya\nMombasa Moi International Airport (MBA) - Kenya\nJohannesburg OR Tambo International Airport (JNB) - South Africa\nCape Town International Airport (CPT) - South Africa\nDurban King Shaka International Airport (DUR) - South Africa\nCasablanca Mohammed V International Airport (CMN) - Morocco\nMarrakesh Menara Airport (RAK) - Morocco\nLagos Murtala Muhammed International Airport (LOS) - Nigeria\nAccra Kotoka International Airport (ACC) - Ghana\nAddis Ababa Bole International Airport (ADD) - Ethiopia\nDoala International Airport (DLA) - Cameroon\nSingapore Changi Airport (SIN) - Singapore\nKuala Lumpur International Airport (KUL) - Malaysia\nPenang International Airport (PEN) - Malaysia\nLangkawi International Airport (LGK) - Malaysia\nBangkok Suvarnabhumi Airport (BKK) - Thailand\nPhuket International Airport (HKT) - Thailand\nChiang Mai International Airport (CNX) - Thailand\nJakarta Soekarno\u2013Hatta International Airport (CGK) - Indonesia\nBali Ngurah Rai International Airport (DPS) - Indonesia\nMedan Kualanamu International Airport (KNO) - Indonesia\nManila Ninoy Aquino International Airport (MNL) - Philippines\nCebu Mactan\u2013Cebu International Airport (CEB) - Philippines\nClark International Airport (CRK) - Philippines\nTokyo Haneda Airport (HND) - Japan\nTokyo Narita International Airport (NRT) - Japan\nOsaka Kansai International Airport (KIX) - Japan\nNagoya Chubu Centrair International Airport (NGO) - Japan\nSapporo New Chitose Airport (CTS) - Japan\nBeijing Capital International Airport (PEK) - China\nBeijing Daxing International Airport (PKX) - China\nShanghai Pudong International Airport (PVG) - China\nShanghai Hongqiao International Airport (SHA) - China\nGuangzhou Baiyun International Airport (CAN) - China\nShenzhen Bao\u2019an International Airport (SZX) - China\nChengdu Tianfu International Airport (TFU) - China\nHong Kong International Airport (HKG) - Hong Kong\nMacau International Airport (MFM) - Macau\nTaipei Taoyuan International Airport (TPE) - Taiwan\nKaohsiung International Airport (KHH) - Taiwan\nSeoul Incheon International Airport (ICN) - South Korea\nSeoul Gimpo International Airport (GMP) - South Korea\nBusan Gimhae International Airport (PUS) - South Korea\nIstanbul Airport (IST) - Turkey\nAnkara Esenbo\u011fa International Airport (ESB) - Turkey\nAntalya Airport (AYT) - Turkey\nLondon Heathrow Airport (LHR) - United Kingdom\nLondon Gatwick Airport (LGW) - United Kingdom\nManchester Airport (MAN) - United Kingdom\nBirmingham Airport (BHX) - United Kingdom\nGlasgow Airport (GLA) - United Kingdom\nEdinburgh Airport (EDI) - United Kingdom\nParis Charles de Gaulle Airport (CDG) - France\nParis Orly Airport (ORY) - France\nNice C\u00f4te d\u2019Azur Airport (NCE) - France\nLyon Saint-Exup\u00e9ry Airport (LYS) - France\nFrankfurt Airport (FRA) - Germany\nMunich Airport (MUC) - Germany\nBerlin Brandenburg Airport (BER) - Germany\nD\u00fcsseldorf Airport (DUS) - Germany\nZurich Airport (ZRH) - Switzerland\nGeneva Airport (GVA) - Switzerland\nAmsterdam Schiphol Airport (AMS) - Netherlands\nRotterdam The Hague Airport (RTM) - Netherlands\nBrussels Airport (BRU) - Belgium\nMadrid Barajas Airport (MAD) - Spain\nBarcelona El Prat Airport (BCN) - Spain\nValencia Airport (VLC) - Spain\nRome Fiumicino Airport (FCO) - Italy\nMilan Malpensa Airport (MXP) - Italy\nNaples International Airport (NAP) - Italy\nVienna International Airport (VIE) - Austria\nPrague V\u00e1clav Havel Airport (PRG) - Czech Republic\nWarsaw Chopin Airport (WAW) - Poland\nKrak\u00f3w John Paul II International Airport (KRK) - Poland\nLisbon Humberto Delgado Airport (LIS) - Portugal\nPorto Francisco S\u00e1 Carneiro Airport (OPO) - Portugal\nAthens Eleftherios Venizelos Airport (ATH) - Greece\nHeraklion International Airport (HER) - Greece\nOslo Gardermoen Airport (OSL) - Norway\nBergen Airport (BGO) - Norway\nStockholm Arlanda Airport (ARN) - Sweden\nCopenhagen Kastrup Airport (CPH) - Denmark\nHelsinki Vantaa Airport (HEL) - Finland\nDublin Airport (DUB) - Ireland\nReykjavik Keflavik Airport (KEF) - Iceland\nMoscow Sheremetyevo International Airport (SVO) - Russia\nMoscow Domodedovo Airport (DME) - Russia\nSaint Petersburg Pulkovo Airport (LED) - Russia\nNew York John F. Kennedy International Airport (JFK) - USA\nNewark Liberty International Airport (EWR) - USA\nLos Angeles International Airport (LAX) - USA\nSan Francisco International Airport (SFO) - USA\nChicago O\u2019Hare International Airport (ORD) - USA\nDallas/Fort Worth International Airport (DFW) - USA\nDenver International Airport (DEN) - USA\nHartsfield-Jackson Atlanta International Airport (ATL) - USA\nBoston Logan International Airport (BOS) - USA\nMiami International Airport (MIA) - USA\nSeattle-Tacoma International Airport (SEA) - USA\nOrlando International Airport (MCO) - USA\nWashington Dulles International Airport (IAD) - USA\nLas Vegas Harry Reid International Airport (LAS) - USA\nHouston George Bush Intercontinental Airport (IAH) - USA\nDetroit Metropolitan Airport (DTW) - USA\nPhiladelphia International Airport (PHL) - USA\nPhoenix Sky Harbor International Airport (PHX) - USA\nCharlotte Douglas International Airport (CLT) - USA\nSan Diego International Airport (SAN) - USA\nToronto Pearson International Airport (YYZ) - Canada\nVancouver International Airport (YVR) - Canada\nMontreal Pierre Elliott Trudeau International Airport (YUL) - Canada\nCalgary International Airport (YYC) - Canada\nOttawa Macdonald\u2013Cartier International Airport (YOW) - Canada\nWinnipeg James Armstrong Richardson International Airport (YWG) - Canada\nMexico City Benito Ju\u00e1rez International Airport (MEX) - Mexico\nCanc\u00fan International Airport (CUN) - Mexico\nGuadalajara International Airport (GDL) - Mexico\nMonterrey International Airport (MTY) - Mexico\nS\u00e3o Paulo Guarulhos International Airport (GRU) - Brazil\nRio de Janeiro Gale\u00e3o International Airport (GIG) - Brazil\nBras\u00edlia International Airport (BSB) - Brazil\nBuenos Aires Ministro Pistarini International Airport (EZE) - Argentina\nSantiago Arturo Merino Ben\u00edtez International Airport (SCL) - Chile\nBogot\u00e1 El Dorado International Airport (BOG) - Colombia\nLima Jorge Ch\u00e1vez International Airport (LIM) - Peru\nQuito Mariscal Sucre International Airport (UIO) - Ecuador\nPanama City Tocumen International Airport (PTY) - Panama\nSan Jos\u00e9 Juan Santamar\u00eda International Airport (SJO) - Costa Rica\nKingston Norman Manley International Airport (KIN) - Jamaica\nNassau Lynden Pindling International Airport (NAS) - Bahamas\nHavana Jos\u00e9 Mart\u00ed International Airport (HAV) - Cuba\nSydney Kingsford Smith Airport (SYD) - Australia\nMelbourne Tullamarine Airport (MEL) - Australia\nBrisbane Airport (BNE) - Australia\nPerth Airport (PER) - Australia\nAdelaide Airport (ADL) - Australia\nAuckland Airport (AKL) - New Zealand\nWellington International Airport (WLG) - New Zealand\nChristchurch International Airport (CHC) - New Zealand\nFiji Nadi International Airport (NAN) - Fiji\nHonolulu Daniel K. Inouye International Airport (HNL) - USA\nGuam Antonio B. Won Pat International Airport (GUM) - Guam\nTahiti Faa'a International Airport (PPT) - French Polynesia\n"
   },
   {
    "fieldname": "departure_time",
-   "fieldtype": "Data",
+   "fieldtype": "Datetime",
    "label": "Departure Time"
   },
   {
    "fieldname": "arrival_time",
    "fieldtype": "Datetime",
    "label": "Arrival Time"
-  },
-  {
-   "fieldname": "column_break_citn",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "flight_status",
-   "fieldtype": "Select",
-   "label": "Flight Status",
-   "options": "Scheduled\nLanded\nDelayed"
-  },
-  {
-   "fieldname": "from_airport_name",
-   "fieldtype": "Data",
-   "label": "Airport Name"
-  },
-  {
-   "fieldname": "to_airport_name",
-   "fieldtype": "Data",
-   "label": "Airport Name"
-  },
-  {
-   "fieldname": "airline_name",
-   "fieldtype": "Data",
-   "label": "Airline Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-23 15:17:50.793136",
+ "modified": "2025-10-24 19:45:34.142797",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Travel Plan",
