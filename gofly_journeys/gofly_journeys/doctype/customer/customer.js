@@ -43,10 +43,10 @@ frappe.ui.form.on('Customer', {
         });
     },
 
-    first_name: function(frm) {
+    first_name: function (frm) {
         set_full_name(frm);
     },
-    last_name: function(frm) {
+    last_name: function (frm) {
         set_full_name(frm);
     }
 
