@@ -1,45 +1,37 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "HB-.###",
  "creation": "2025-10-25 18:43:43.124539",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "booking_details_section",
-  "booking_id",
-  "column_break_fxun",
   "hotel_name",
-  "section_break_xife",
-  "check_out_date",
-  "column_break_uutw",
-  "check_in_date",
-  "section_break_hiik",
-  "number_of_guests",
-  "column_break_bxgf",
-  "location",
-  "section_break_wtjb",
-  "room_type",
-  "column_break_iwva",
-  "room_number",
-  "section_break_qtws",
-  "total_cost",
-  "column_break_hmut",
-  "booking_status",
-  "section_break_bvfd",
-  "contact_number",
-  "column_break_idvw",
-  "contact_person"
+  "country",
+  "column_break_zcvz",
+  "city",
+  "location"
  ],
  "fields": [
   {
-   "fieldname": "booking_id",
-   "fieldtype": "Data",
-   "label": "Booking ID"
-  },
-  {
    "fieldname": "hotel_name",
    "fieldtype": "Data",
-   "label": "Hotel Name"
+   "in_list_view": 1,
+   "label": "Hotel Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City"
   },
   {
    "fieldname": "location",
@@ -47,115 +39,18 @@
    "label": "Location"
   },
   {
-   "fieldname": "check_in_date",
-   "fieldtype": "Date",
-   "label": "Check in Date"
-  },
-  {
-   "fieldname": "check_out_date",
-   "fieldtype": "Date",
-   "label": "Check out Date"
-  },
-  {
-   "fieldname": "number_of_guests",
-   "fieldtype": "Int",
-   "label": "Number of Guests"
-  },
-  {
-   "fieldname": "room_type",
-   "fieldtype": "Select",
-   "label": "Room Type",
-   "options": "Single\nDouble\nSuite\nDeluxe"
-  },
-  {
-   "fieldname": "room_number",
-   "fieldtype": "Data",
-   "label": "Room Number"
-  },
-  {
-   "fieldname": "booking_status",
-   "fieldtype": "Select",
-   "label": "Booking Status",
-   "options": "Pending\nConfirmed\nCancelled\nCompleted"
-  },
-  {
-   "fieldname": "total_cost",
-   "fieldtype": "Currency",
-   "label": "Total Cost"
-  },
-  {
-   "fieldname": "contact_person",
-   "fieldtype": "Data",
-   "label": "Contact Person"
-  },
-  {
-   "fieldname": "contact_number",
-   "fieldtype": "Data",
-   "label": "Contact Number"
-  },
-  {
-   "fieldname": "column_break_fxun",
+   "fieldname": "column_break_zcvz",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_xife",
-   "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "column_break_uutw",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_hiik",
-   "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "column_break_bxgf",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_wtjb",
-   "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "column_break_iwva",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_qtws",
-   "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "column_break_hmut",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_bvfd",
-   "fieldtype": "Section Break",
-   "hide_border": 1
-  },
-  {
-   "fieldname": "column_break_idvw",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "booking_details_section",
-   "fieldtype": "Section Break",
-   "hide_border": 1,
-   "label": "Booking Details"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-25 19:10:53.731204",
+ "modified": "2025-10-27 00:14:06.822910",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Hotel Booking",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -173,7 +68,10 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "country,city",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "hotel_name"
 }

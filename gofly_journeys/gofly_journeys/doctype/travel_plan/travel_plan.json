@@ -31,12 +31,13 @@
   "room_type",
   "booking_status",
   "transport_arrangement_section",
+  "vehicle",
   "vehicle_type",
   "driver_name",
-  "pickup",
   "column_break_bdjy",
-  "travel_date",
-  "cost"
+  "cost",
+  "pickup",
+  "travel_date"
  ],
  "fields": [
   {
@@ -85,20 +86,25 @@
   },
   {
    "fieldname": "hotel_name",
-   "fieldtype": "Data",
-   "label": "Hotel Name"
+   "fieldtype": "Link",
+   "label": "Hotel Name",
+   "options": "Hotel Booking"
   },
   {
+   "fetch_from": "hotel_name.location",
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location"
   },
   {
+   "default": "Family Room",
    "fieldname": "room_type",
    "fieldtype": "Select",
-   "label": "Room Type"
+   "label": "Room Type",
+   "options": "Single Room\nDouble Room\nTwin Room\nTriple Room\nDeluxe Room\nExecutive Room\nSuite\nJunior Suite\nPresidential Suite\nFamily Room\nConnecting Room\nStudio Room\nVilla\nPenthouse\nCabana\nAccessible Room\nSuperior Room\nStandard Room\nHoneymoon Suite\nApartment"
   },
   {
+   "default": "Pending",
    "fieldname": "booking_status",
    "fieldtype": "Select",
    "label": "Booking Status",
@@ -110,11 +116,13 @@
    "label": "Transport Arrangement"
   },
   {
+   "fetch_from": "vehicle.vehicle_type",
    "fieldname": "vehicle_type",
    "fieldtype": "Data",
    "label": "Vehicle Type"
   },
   {
+   "fetch_from": "vehicle.driver_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
    "label": "Driver Name"
@@ -130,9 +138,12 @@
    "label": "Travel Date"
   },
   {
+   "bold": 1,
+   "fetch_from": "vehicle.cost_per_day",
    "fieldname": "cost",
    "fieldtype": "Int",
-   "label": "Cost"
+   "label": "Cost",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_fhrl",
@@ -196,12 +207,18 @@
   {
    "fieldname": "column_break_quly",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Vehicle"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-25 12:54:30.507374",
+ "modified": "2025-10-27 00:33:56.612840",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Travel Plan",
