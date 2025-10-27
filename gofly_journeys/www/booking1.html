@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: #333;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #fff;
+            position: relative;
+        }
+
+        /* === Watermark === */
+        body::before {
+            content: "";
+            background: url('/files/Gofly Journey.png') no-repeat center center;
+            background-size: 400px;
+            opacity: 0.08;
+            position: fixed;
+            top: -80px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ff6600;
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header img {
+            height: 70px;
+        }
+
+        h2 {
+            color: #ff6600;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Info Section */
+        .info-section {
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-box {
+            background: #f9f9f9;
+            padding: 14px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-box strong {
+            display: block;
+            color: #ff6600;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .info-box span {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        th,
+        td {
+            border: 1px solid #eee;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ff6600;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        h3 {
+            color: #ff6600;
+            margin-top: 25px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Cards */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-card {
+            background: linear-gradient(135deg, #fff8f2, #ffe4d1);
+            border: 1px solid #ffd2a1;
+            border-left: 6px solid #ff6600;
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-card h4 {
+            color: #ff6600;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .section-card p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Terms Box */
+        .terms-box {
+            background: #f8faff;
+            border: 1px solid #dce9ff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 25px;
+        }
+
+        .terms-box ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .terms-box li {
+            margin-bottom: 6px;
+        }
+
+        @media print {
+            body::before {
+                opacity: 0.1;
+                top: -60px;
+            }
+
+            .section-card:hover {
+                box-shadow: none;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body> <!-- Header -->
+    <div class="header"> <img src="/files/Gofly Journey.png" alt="GoFly Journey Logo">
+        <h2>Booking Summary</h2>
+    </div> <!-- Package Info -->
+    <div class="info-section">
+        <div class="info-box"> <strong>Tour Package:</strong> <span>{{ doc.tour_package }}</span> </div>
+        <div class="info-box"> <strong>Start Date:</strong> <span>{{ doc.start_date }}</span> </div>
+        <div class="info-box"> <strong>End Date:</strong> <span>{{ doc.end_date }}</span> </div>
+        <div class="info-box"> <strong>Package Status:</strong> <span>{{ doc.package_status }}</span> </div>
+        <div class="info-box"> <strong>Amount:</strong> <span>₹ {{ "{:,.2f}".format(doc.amount) }}</span> </div>
+    </div> <!-- Booking Info -->
+    <h3>Booking Details</h3>
+    <div class="section-grid">
+        <div class="section-card">
+            <h4>Customer</h4>
+            <p>{{ doc.customer }}</p>
+        </div>
+        <div class="section-card">
+            <h4>Booking Date</h4>
+            <p>{{ doc.booking_date }}</p>
+        </div>
+        <div class="section-card">
+            <h4>Return Date</h4>
+            <p>{{ doc.return_date }}</p>
+        </div>
+        <div class="section-card">
+            <h4>Country</h4>
+            <p>{{ doc.package_country }}</p>
+        </div>
+        <div class="section-card">
+            <h4>State</h4>
+            <p>{{ doc.package_state }}</p>
+        </div>
+        <div class="section-card">
+            <h4>Booking Status</h4>
+            <p>{{ doc.booking_status }}</p>
+        </div>
+        <div class="section-card">
+            <h4>Sender Email</h4>
+            <p>{{ doc.sender_email }}</p>
+        </div>
+    </div> <!-- Visa Members -->
+    <h3>Visa Details</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Nationality</th>
+                <th>Passport Number</th>
+                <th>Visa Required</th>
+            </tr>
+        </thead>
+        <tbody> {% for row in doc.booking_members %} <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row.full_name }}</td>
+                <td>{{ row.age }}</td>
+                <td>{{ row.gender }}</td>
+                <td>{{ row.nationality }}</td>
+                <td>{{ row.passport_number }}</td>
+                <td>{{ row.visa_required }}</td>
+            </tr> {% endfor %} </tbody>
+    </table>
+    <div style="text-align: right; font-weight: 600;">Total Visa Amount: ₹ {{ "{:,.2f}".format(doc.total_visa_fee or 0)
+        }}</div> <!-- Footer -->
+    <div class="footer"> {{ frappe.db.get_value("Letter Head", doc.letter_head, "footer") or "" }} </div>
+</body>
+
+</html>

@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GoFly Journeys — Explore | Book | Travel</title> <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <meta name="description"
+        content="GoFly Journeys - Handpicked tour packages, flawless booking, and delightful travel experiences.">
+    <style>
+        :root {
+            --primary: #ff6b35;
+            --primary-dark: #e85a1b;
+            --accent: #ffa500;
+            --brand-blue: #004e89;
+            --muted: #6c757d;
+            --bg-light: #f6f7fb;
+            --dark: #0f1724;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #222;
+            background: white;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        <style>
+
+        /* === Navbar Logo Styling === */
+        .navbar-brand {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #ff6600 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: #ff6600;
+            margin-right: 8px;
+            transform: rotate(-10deg);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            color: #ff6600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover .logo-icon {
+            transform: rotate(0deg);
+        }
+
+        .navbar-brand:hover .logo-text {
+            color: #e05500;
+        }
+
+        /* === Navbar Styling === */
+        #mainNav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        #mainNav .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        #mainNav .nav-link:hover,
+        #mainNav .nav-link.active {
+            color: #ff6600 !important;
+        }
+
+        .btn-primary-gf {
+            background-color: #ff6600;
+            border: none;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-gf:hover {
+            background-color: #e05500;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            animation: fadeInUp 1s ease-out 0.9s both;
+            cursor: pointer;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+            animation: fadeInUp 1s ease-out 0.9s both;
+            cursor: pointer;
+        }
+
+        .btn-secondary-custom:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-primary-gf {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: .85rem 1.35rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 8px 26px rgba(255, 107, 53, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-gf:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.25);
+        }
+
+        section {
+            padding: 4.5rem 0
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: .25rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .package-card {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(15, 20, 36, 0.06);
+            transition: transform .28s ease, box-shadow .28s ease;
+            background: white;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 50px rgba(15, 20, 36, 0.09);
+        }
+
+        .package-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .package-card:hover .package-image img {
+            transform: scale(1.08);
+        }
+
+        .badge-top {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--primary);
+            color: white;
+            padding: .45rem .8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: .85rem;
+            box-shadow: 0 6px 18px rgba(255, 107, 53, 0.18);
+        }
+
+        .package-body {
+            padding: 1rem 1rem 1.2rem;
+        }
+
+        .package-title {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+            margin-bottom: .25rem;
+        }
+
+        .package-loc {
+            color: var(--muted);
+            font-size: .92rem;
+            margin-bottom: .7rem;
+            display: flex;
+            gap: .5rem;
+            align-items: center
+        }
+
+        .package-price {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.15rem
+        }
+
+        .package-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: .88rem;
+            color: var(--muted);
+            margin-top: .6rem;
+            align-items: center
+        }
+
+        .promo {
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        .promo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .promo-card {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: .5rem;
+        }
+
+        .testimonial-card {
+            border-radius: 12px;
+            background: white;
+            padding: 1.25rem;
+            box-shadow: 0 10px 30px rgba(15, 20, 36, 0.06);
+        }
+
+        .testimonial-author {
+            display: flex;
+            gap: .75rem;
+            align-items: center;
+            margin-top: .75rem
+        }
+
+        .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--brand-blue);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .booking-panel {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 16px 40px rgba(12, 15, 30, 0.06);
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .booking-section {
+            background: linear-gradient(135deg, var(--brand-blue), #003661);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .contact-card {
+            border-radius: 12px;
+            padding: 1rem;
+            background: var(--bg-light)
+        }
+
+        footer {
+            background: var(--dark);
+            color: #d0d7df;
+            padding: 2.2rem 0 3.2rem;
+        }
+
+        footer a {
+            color: #c9d6e0
+        }
+
+        .social-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brand-blue);
+            color: white;
+            margin-right: .5rem
+        }
+
+        .scroll-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(15, 20, 36, 0.12);
+            cursor: pointer;
+            z-index: 999;
+            display: none;
+        }
+
+        .muted-small {
+            color: var(--muted);
+            font-size: .95rem
+        }
+
+        .text-brand {
+            color: var(--brand-blue);
+            font-weight: 700
+        }
+
+        @media (max-width: 991px) {
+            .package-image {
+                height: 200px
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: .6rem 0.6rem
+            }
+
+            .navbar.scrolled {
+                padding: 0.35rem 0.6rem;
+            }
+
+            .navbar-brand-logo {
+                height: 42px;
+            }
+
+            .navbar.scrolled .navbar-brand-logo {
+                height: 36px;
+            }
+
+            .hero-section {
+                height: 80vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .btn-secondary-custom {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+                width: 100%;
+            }
+
+            .btn-primary-custom {
+                width: 100%;
+            }
+
+            .package-image {
+                height: 170px
+            }
+
+            .avatar {
+                width: 46px;
+                height: 46px
+            }
+
+            .section-title {
+                font-size: 1.6rem
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+    <!-- NAV with Text + Icon Logo -->
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container"> <!-- ✅ Logo --> <a class="navbar-brand d-flex align-items-center" href="#home"> <i
+                    class="bi bi-airplane-fill logo-icon"></i> <span class="logo-text">GoFly Journeys</span> </a>
+            <!-- Toggle (for mobile) --> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false"
+                aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navCollapse">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-2 d-none d-lg-inline"> <a class="btn btn-primary-gf" href="#booking">Get a
+                            Quote</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav> <!-- HERO SECTION - Enhanced from Second Code -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Experience the world with GoFly Journeys - Your trusted travel partner</p>
+            <div> <button class="btn-primary-custom"
+                    onclick="document.getElementById('packages').scrollIntoView({behavior: 'smooth'})">Explore
+                    Packages</button> <button class="btn-secondary-custom"
+                    onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book Now</button>
+            </div>
+        </div>
+    </section> <!-- PACKAGES -->
+    <section id="packages">
+        <div class="container">
+            <h2 class="section-title">Popular Tour Packages</h2>
+            <p class="section-sub">Handpicked packages for unforgettable memories — family trips, honeymoon deals, and
+                adventure escapes.</p>
+            <div class="row g-4"> <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <div class="position-relative package-image"> <img
+                                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80&auto=format&fit=crop"
+                                alt="Maldives" loading="lazy">
+                            <div class="badge-top">Best Seller</div>
+                        </div>
+                        <div class="package-body">
+                            <div class="package-title">Maldives Romantic Escape - 5 Nights</div>
+                            <div class="package-loc"><i class="bi bi-geo-alt-fill text-brand"></i> Maldives</div>
+                            <div class="package-meta">
+                                <div class="package-price">₹ 42,999 <small
+                                        style="color:#999; font-weight:500">/person</small></div>
+                                <div class="ms-auto muted-small">4 nights • Flights incl.</div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2"> <a href="#booking" class="btn btn-outline-dark btn-sm">View
+                                    Details</a> <a href="#booking" class="btn btn-primary-gf btn-sm">Book Now</a> </div>
+                        </div>
+                    </div>
+                </div> <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <div class="position-relative package-image"> <img
+                                src="https://images.unsplash.com/photo-1505765058905-1cdb64e4d7fe?w=1200&q=80&auto=format&fit=crop"
+                                alt="Europe" loading="lazy"> </div>
+                        <div class="package-body">
+                            <div class="package-title">Europe Grand Tour - 10 Days</div>
+                            <div class="package-loc"><i class="bi bi-geo-alt-fill text-brand"></i> Multiple Cities</div>
+                            <div class="package-meta">
+                                <div class="package-price">₹ 1,49,999</div>
+                                <div class="ms-auto muted-small">10 days • Hotels & Tours</div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2"> <a href="#booking" class="btn btn-outline-dark btn-sm">View
+                                    Details</a> <a href="#booking" class="btn btn-primary-gf btn-sm">Book Now</a> </div>
+                        </div>
+                    </div>
+                </div> <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <div class="position-relative package-image"> <img
+                                src="https://images.unsplash.com/photo-1533105078125-3c8b1b0f7dc4?w=1200&q=80&auto=format&fit=crop"
+                                alt="Dubai" loading="lazy">
+                            <div class="badge-top">Family</div>
+                        </div>
+                        <div class="package-body">
+                            <div class="package-title">Dubai Family Fun - 4 Nights</div>
+                            <div class="package-loc"><i class="bi bi-geo-alt-fill text-brand"></i> Dubai</div>
+                            <div class="package-meta">
+                                <div class="package-price">₹ 36,499</div>
+                                <div class="ms-auto muted-small">4 nights • Family-friendly</div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2"> <a href="#booking" class="btn btn-outline-dark btn-sm">View
+                                    Details</a> <a href="#booking" class="btn btn-primary-gf btn-sm">Book Now</a> </div>
+                        </div>
+                    </div>
+                </div> <!-- More cards sample (4,5,6) -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <div class="package-image"> <img
+                                src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=1200&q=80&auto=format&fit=crop"
+                                alt="Kerala" loading="lazy"> </div>
+                        <div class="package-body">
+                            <div class="package-title">Kerala Backwater Retreat - 3 Nights</div>
+                            <div class="package-loc"><i class="bi bi-geo-alt-fill text-brand"></i> India</div>
+                            <div class="package-meta">
+                                <div class="package-price">₹ 9,999</div>
+                                <div class="ms-auto muted-small">3 nights • Houseboat</div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2"> <a href="#booking" class="btn btn-outline-dark btn-sm">View
+                                    Details</a> <a href="#booking" class="btn btn-primary-gf btn-sm">Book Now</a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <div class="package-image"> <img
+                                src="https://images.unsplash.com/photo-1549887534-5d2a19d9b6f0?w=1200&q=80&auto=format&fit=crop"
+                                alt="Himachal" loading="lazy"> </div>
+                        <div class="package-body">
+                            <div class="package-title">Himachal Adventure - 5 Days</div>
+                            <div class="package-loc"><i class="bi bi-geo-alt-fill text-brand"></i> India</div>
+                            <div class="package-meta">
+                                <div class="package-price">₹ 18,499</div>
+                                <div class="ms-auto muted-small">5 days • Trek & Sightseeing</div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2"> <a href="#booking" class="btn btn-outline-dark btn-sm">View
+                                    Details</a> <a href="#booking" class="btn btn-primary-gf btn-sm">Book Now</a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-1"> <a class="btn btn-outline-dark" href="#packages">View All
+                        Packages</a> </div>
+            </div>
+        </div>
+    </section> <!-- OFFERS / PROMOS -->
+    <section id="offers" class="pt-0">
+        <div class="container">
+            <h2 class="section-title">Limited Time Offers</h2>
+            <p class="section-sub">Special fares & seasonal discounts — book early to save more.</p>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-md-6">
+                    <div class="promo"> <img
+                            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=80&auto=format&fit=crop"
+                            alt="promo" loading="lazy">
+                        <div class="promo-card">
+                            <h4 style="margin:0">Summer Early Bird</h4>
+                            <p class="muted-small">Up to <strong>30% off</strong> on select beach escapes. Offer valid
+                                until <strong>31 Dec</strong>.</p> <a href="#booking"
+                                class="btn btn-primary-gf btn-sm mt-2">Grab Offer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="promo" style="flex-direction:row-reverse"> <img
+                            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80&auto=format&fit=crop"
+                            alt="promo" loading="lazy">
+                        <div class="promo-card">
+                            <h4 style="margin:0">Honeymoon Special</h4>
+                            <p class="muted-small">Complimentary candlelight dinner & romantic upgrades for honeymoon
+                                bookings.</p> <a href="#booking" class="btn btn-primary-gf btn-sm mt-2">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- TESTIMONIALS -->
+    <section id="testimonials" style="background:var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">Traveler Reviews</h2>
+            <p class="section-sub">Real stories from travelers who chose GoFly.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="muted-small">"GoFly Journeys made our honeymoon to Maldives absolutely magical!
+                            Attention to detail and personalized service exceeded expectations."</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">RS</div>
+                            <div>
+                                <div class="fw-bold">Rahul & Sneha</div>
+                                <div class="small text-muted">Honeymoon • Maldives</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="muted-small">"The Europe tour was perfectly planned. Local guides were knowledgeable
+                            and the itinerary was smooth from start to finish."</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">PM</div>
+                            <div>
+                                <div class="fw-bold">Priya Mehta</div>
+                                <div class="small text-muted">Europe Tour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="muted-small">"Amazing family trip to Dubai! Kids loved every moment. We felt safe and
+                            well taken care of at every step."</p>
+                        <div class="testimonial-author">
+                            <div class="avatar">AK</div>
+                            <div>
+                                <div class="fw-bold">Amit Kumar</div>
+                                <div class="small text-muted">Family Trip • Dubai</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- BOOKING -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2 class="section-title text-white">Book Your Dream Vacation</h2>
+            <p class="section-sub text-white-50">Fill in your details and we'll get back to you within 24 hours.</p>
+            <div class="booking-panel mt-4">
+                <form id="bookingForm" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6"> <label class="form-label">Full Name *</label> <input required type="text"
+                                id="name" class="form-control" placeholder="Your Name"> </div>
+                        <div class="col-md-6"> <label class="form-label">Email Address *</label> <input required
+                                type="email" id="email" class="form-control" placeholder="you@example.com"> </div>
+                        <div class="col-md-6"> <label class="form-label">Phone *</label> <input required type="tel"
+                                id="phone" class="form-control" placeholder="+91 98765 43210"> </div>
+                        <div class="col-md-6"> <label class="form-label">Select Package</label> <select id="pkg"
+                                class="form-select">
+                                <option>Maldives Romantic Escape - 5 Nights</option>
+                                <option>Europe Grand Tour - 10 Days</option>
+                                <option>Dubai Family Fun - 4 Nights</option>
+                                <option>Kerala Backwater Retreat - 3 Nights</option>
+                            </select> </div>
+                        <div class="col-md-6"> <label class="form-label">Preferred Start Date</label> <input type="date"
+                                id="startDate" class="form-control"> </div>
+                        <div class="col-md-6"> <label class="form-label">Travelers</label> <input type="number" min="1"
+                                value="2" id="travellers" class="form-control"> </div>
+                        <div class="col-12"> <label class="form-label">Message (optional)</label> <textarea id="msg"
+                                class="form-control" rows="3" placeholder="Any special requests..."></textarea> </div>
+                        <div class="col-12 d-grid"> <button type="submit" class="btn btn-primary-gf">Submit Booking
+                                Request</button> </div>
+                    </div>
+                </form>
+                <div id="bookingAlert" class="alert alert-success mt-3 d-none" role="alert"> Thanks! Your request has
+                    been received. We'll contact you within 24 hours. </div>
+            </div>
+        </div>
+    </section> <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Office</h2>
+            <p class="section-sub">Reach out for tailored packages and corporate bookings.</p>
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="contact-card">
+                        <h5>Get in touch</h5>
+                        <p class="muted-small">Office hours: Mon - Sat, 9:30 AM - 6:30 PM</p>
+                        <div class="d-flex align-items-start gap-3 mt-3">
+                            <div
+                                class="contact-icon bg-primary rounded-circle text-white d-inline-flex align-items-center justify-content-center p-2">
+                                <i class="bi bi-telephone-fill"></i> </div>
+                            <div>
+                                <h6 class="mb-0">Phone</h6>
+                                <div class="small text-muted">+91 98765 43210</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-3 mt-3">
+                            <div
+                                class="contact-icon bg-primary rounded-circle text-white d-inline-flex align-items-center justify-content-center p-2">
+                                <i class="bi bi-envelope-fill"></i> </div>
+                            <div>
+                                <h6 class="mb-0">Email</h6>
+                                <div class="small text-muted">support@goflyjourneys.in</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-3 mt-3">
+                            <div
+                                class="contact-icon bg-primary rounded-circle text-white d-inline-flex align-items-center justify-content-center p-2">
+                                <i class="bi bi-geo-alt-fill"></i> </div>
+                            <div>
+                                <h6 class="mb-0">Address</h6>
+                                <div class="small text-muted">Chennai, India</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex gap-2"> <a class="social-circle" href="#"><i
+                                    class="bi bi-facebook"></i></a> <a class="social-circle" href="#"><i
+                                    class="bi bi-instagram"></i></a> <a class="social-circle" href="#"><i
+                                    class="bi bi-twitter"></i></a> </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="map-container" style="border-radius:12px; overflow:hidden; height:360px;"> <iframe
+                            loading="lazy"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.831282780524!2d80.27071861482924!3d13.08268079077533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267c6dd9b0e11%3A0xf1fdaf2f9f4b8d1b!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+                            style="border:0; width:100%; height:100%" allowfullscreen="" aria-hidden="false"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5 class="text-brand">GoFly Journeys</h5>
+                    <p class="small text-muted">Your trusted travel partner for curated experiences, handpicked packages
+                        and exceptional service.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white">Company</h6> <a href="#packages">Packages</a> <a href="#offers">Offers</a> <a
+                        href="#testimonials">Testimonials</a>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white">Support</h6> <a href="#contact">Contact</a> <a href="#booking">Book Now</a>
+                    <a href="#">FAQs</a>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white">Follow</h6>
+                    <div class="d-flex flex-column"> <a href="#" class="small">Facebook</a> <a href="#"
+                            class="small">Instagram</a> <a href="#" class="small">Twitter</a> </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center mt-4"> <small>© <span id="year"></span> GoFly Journeys — All rights
+                    reserved.</small> </div>
+        </div>
+    </footer>
+    <div id="scrollTop" class="scroll-top" aria-hidden="true" title="Back to top"> <i class="bi bi-chevron-up"></i>
+    </div> <!-- Bootstrap JS + small script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script> // set year document.getElementById('year').textContent = new Date().getFullYear(); // scroll-to-top const scrollTopBtn = document.getElementById('scrollTop'); window.addEventListener('scroll', () => { if (window.scrollY > 400) scrollTopBtn.style.display = 'flex'; else scrollTopBtn.style.display = 'none'; }); scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' })); // booking form basic handler (demo) const bookingForm = document.getElementById('bookingForm'); const bookingAlert = document.getElementById('bookingAlert'); bookingForm.addEventListener('submit', (e) => { e.preventDefault(); // simple client-side validation const name = document.getElementById('name').value.trim(); const email = document.getElementById('email').value.trim(); if (!name || !email) { alert('Please fill required fields.'); return; } // simulate success bookingAlert.classList.remove('d-none'); bookingForm.reset(); setTimeout(() => bookingAlert.classList.add('d-none'), 6500); }); // Smooth links for internal anchors & collapse navbar on click (mobile) document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const target = document.querySelector(this.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); // collapse mobile menu const navbarCollapse = document.querySelector('#navCollapse'); if (window.getComputedStyle(navbarCollapse).display !== 'none') { const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false }); bsCollapse.hide(); } } }); }); // Activate bootstrap scrollspy (works with data attributes) const scrollSpy = new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: 90 }); // reveal animations for elements with .fade-in (simple) const revealOnScroll = () => { document.querySelectorAll('.fade-in').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < (window.innerHeight - 80)) { el.classList.add('visible'); el.style.transitionDelay = (el.dataset.delay || '0s'); } }); }; window.addEventListener('load', revealOnScroll); window.addEventListener('scroll', revealOnScroll); </script>
+</body>
+
+</html>

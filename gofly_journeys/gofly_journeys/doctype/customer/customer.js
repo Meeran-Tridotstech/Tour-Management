@@ -8,7 +8,7 @@ frappe.ui.form.on('Customer', {
 
 
     country: function (frm) {
-        if (!frm.doc.country) return;
+        // if (!frm.doc.country) return;
 
         frappe.call({
             method: "gofly_journeys.gofly_journeys.doctype.customer.customer.get_states_for_country",

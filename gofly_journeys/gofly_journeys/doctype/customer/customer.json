@@ -115,8 +115,19 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2025-10-24 15:01:02.915088",
+ "links": [
+  {
+   "group": "Booking payment success count",
+   "link_doctype": "Booking",
+   "link_fieldname": "Customer"
+  },
+  {
+   "group": "Booking payment success count",
+   "link_doctype": "Payment",
+   "link_fieldname": "Customer"
+  }
+ ],
+ "modified": "2025-10-25 14:05:08.580407",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Customer",

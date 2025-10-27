@@ -149,13 +149,14 @@ function calculate_days_left(frm) {
             frm.set_value("package_status", "Available");
             set_status_color("Expiring");
         }
-    } else {
-        frm.set_value("days_left", "");
-        if (!frm.doc.package_status) {
-            frm.set_value("package_status", "Available");
-            set_status_color("Available");
-        }
-    }
+    } 
+    // else {
+    //     frm.set_value("days_left", "");
+    //     if (!frm.doc.package_status) {
+    //         frm.set_value("package_status", "Available");
+    //         set_status_color("Available");
+    //     }
+    // }
 }
 
 
