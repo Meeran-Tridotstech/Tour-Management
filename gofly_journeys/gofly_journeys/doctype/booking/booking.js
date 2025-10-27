@@ -30,7 +30,7 @@ frappe.ui.form.on('Booking', {
         frm.fields_dict.make_payment.$wrapper.html(`
             <div style="text-align:right; margin-top:10px;">
                 <button id="go_to_payment" class="btn btn-success custom-payment-btn">
-                    💳 Make Payment
+                    Prview & Goto Payment
                 </button>
             </div>
             <style>
@@ -39,7 +39,7 @@ frappe.ui.form.on('Booking', {
                     color: white !important;
                     border: none;
                     border-radius: 6px;
-                    padding: 8px 18px;
+                    padding: 18px 18px;
                     font-weight: 600;
                     font-size: 14px;
                     transition: all 0.3s ease-in-out;
@@ -124,28 +124,28 @@ frappe.ui.form.on('Booking', {
                         📜 Tour Booking Terms & Conditions
                     </h2>
                     <p style="font-size:14px; color:#34495e; text-align:center;">
-                        Please review each point carefully and check the box to confirm your agreement.
+                        Please review each point carefully before confirming your agreement.
                     </p>
 
-                    <div style="margin-top:15px; line-height:1.8; font-size:14px;">
-                        <label><input type="checkbox" style="margin-right:8px;">Bookings are confirmed only after advance payment.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Balance payment must be made before the tour start date.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Cancellations within 15 days are non-refundable.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Refunds (if any) will be processed within 7–10 working days.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Company reserves the right to modify or cancel tours due to unforeseen events (weather, strikes, etc.).</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Travelers must carry valid ID, passport, visa, and travel documents.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Company is not liable for loss of baggage, delays, or personal belongings.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Participants must follow the guide’s instructions and maintain discipline during the tour.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Any property damage caused by participants will be charged accordingly.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Travel insurance is highly recommended and must be arranged by the traveler.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Company is not responsible for delays caused by transportation or external factors.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Medical emergencies are at the traveler’s own expense. Assistance will be provided as feasible.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Child fare and age policies apply as per the chosen package.</label><br>
-                        <label><input type="checkbox" style="margin-right:8px;">Any disputes shall be handled under the jurisdiction of the company’s registered city.</label><br>
-                    </div>
+                    <ul style="margin-top:15px; line-height:1.8; font-size:14px; padding-left:20px;">
+                        <li>Bookings are confirmed only after advance payment.</li>
+                        <li>Balance payment must be made before the tour start date.</li>
+                        <li>Cancellations within 15 days are non-refundable.</li>
+                        <li>Refunds (if any) will be processed within 7–10 working days.</li>
+                        <li>Company reserves the right to modify or cancel tours due to unforeseen events (weather, strikes, etc.).</li>
+                        <li>Travelers must carry valid ID, passport, visa, and travel documents.</li>
+                        <li>Company is not liable for loss of baggage, delays, or personal belongings.</li>
+                        <li>Participants must follow the guide’s instructions and maintain discipline during the tour.</li>
+                        <li>Any property damage caused by participants will be charged accordingly.</li>
+                        <li>Travel insurance is highly recommended and must be arranged by the traveler.</li>
+                        <li>Company is not responsible for delays caused by transportation or external factors.</li>
+                        <li>Medical emergencies are at the traveler’s own expense. Assistance will be provided as feasible.</li>
+                        <li>Child fare and age policies apply as per the chosen package.</li>
+                        <li>Any disputes shall be handled under the jurisdiction of the company’s registered city.</li>
+                    </ul>
 
                     <p style="color:#e67e22; text-align:center; margin-top:18px; font-weight:600;">
-                        ✅ Please ensure all boxes are checked before proceeding with booking.
+                        ✅ Please ensure you have read and understood all the terms before proceeding with booking.
                     </p>
                 </div>
             `;

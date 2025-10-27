@@ -320,7 +320,7 @@ from random import choice, randint
 
 def insert_vehicle_records():
     vehicle_names = [
-        "Toyota Innova", "Mahindra Scorpio", "Hyundai Creta", "Honda City", 
+        "Toyota Innova", "Mahindra Scorpio", "Hyundai Creta", "Honda City",
         "Suzuki Swift", "Ford Endeavour", "Kia Seltos", "Maruti Baleno",
         "Tata Nexon", "BMW X5", "Mercedes GLE", "Audi Q7", "Toyota Fortuner",
         "Mahindra XUV500", "Honda Civic", "Hyundai Tucson", "Jeep Compass",
@@ -366,6 +366,129 @@ def insert_vehicle_records():
 
     frappe.db.commit()
     print("100 Vehicle records inserted successfully!")
+    
+    
+    
+    
+    
+    #--------------------------------------------------------------------------------------------------------------------
+    import frappe
+from random import choice, randint
+from datetime import date, timedelta
 
-# To run:
-# bench --site yoursite execute path.to.this.script.insert_vehicle_records
+def insert_tour_packages():
+    countries = ["India", "Thailand", "Malaysia", "United Arab Emirates", "France"]
+    states = {
+        "India": ["Tamil Nadu", "Kerala", "Goa", "Maharashtra"],
+        "Thailand": ["Bangkok", "Chiang Mai"],
+        "Malaysia": ["Kuala Lumpur", "Penang"],
+        "United Arab Emirates": ["Dubai", "Abu Dhabi"],
+        "France": ["Paris", "Nice"]
+    }
+
+    package_names = [
+        "Romantic Paris Getaway",
+        "Dubai Desert Adventure",
+        "Goa Beach Holidays",
+        "Thailand Explorer",
+        "Malaysia Family Fun"
+    ]
+
+    explore_data = [
+        {
+            "destination_name": "Eiffel Tower",
+            "key_attractions": "Iconic landmark of Paris",
+            "description": "Enjoy breathtaking views from the top of the Eiffel Tower.",
+            "best_time_to_visit": "April to June"
+        },
+        {
+            "destination_name": "Burj Khalifa",
+            "key_attractions": "Tallest building in the world",
+            "description": "Experience Dubai from the highest observation deck.",
+            "best_time_to_visit": "November to February"
+        },
+        {
+            "destination_name": "Baga Beach",
+            "key_attractions": "Beach activities and nightlife",
+            "description": "Relax and enjoy beachside cafes and water sports.",
+            "best_time_to_visit": "October to March"
+        },
+        {
+            "destination_name": "Chiang Mai Old City",
+            "key_attractions": "Ancient temples and street food",
+            "description": "Explore the cultural capital of Northern Thailand.",
+            "best_time_to_visit": "November to February"
+        },
+        {
+            "destination_name": "Langkawi Island",
+            "key_attractions": "Sky Bridge, beaches, and waterfalls",
+            "description": "Perfect island destination for families.",
+            "best_time_to_visit": "December to March"
+        }
+    ]
+
+    for i in range(5):
+        country = choice(countries)
+        state = choice(states[country])
+        start_date = date.today() + timedelta(days=randint(5, 20))
+        end_date = start_date + timedelta(days=randint(3, 10))
+        days = (end_date - start_date).days
+        nights = days - 1
+
+        doc = frappe.get_doc({
+            "doctype": "Tour Package",
+            "package_name": package_names[i],
+            "amount": randint(20000, 100000),
+            "country": country,
+            "state": state,
+            # Frappe will auto-generate unique PKG-.###
+            "start_date": start_date,
+            "end_date": end_date,
+            "days": days,
+            "nights": nights,
+            "package_status": "Available",
+            "expected_trip_month": choice(["January", "February", "March", "April", "May", "June"]),
+            "up_to": choice(["July", "August", "September", "October", "November", "December"]),
+            "explore": [
+                {
+                    "destination_name": explore_data[i]["destination_name"],
+                    "key_attractions": explore_data[i]["key_attractions"],
+                    "description": explore_data[i]["description"],
+                    "best_time_to_visit": explore_data[i]["best_time_to_visit"]
+                }
+            ],
+            "images": [
+                {
+                    "image": "/files/sample_image.jpg",
+                    "caption": f"Image {i+1}"
+                }
+            ]
+        })
+        doc.insert(ignore_permissions=True)
+        frappe.db.commit()
+        print(f"✅ Created Tour Package: {doc.name}")
+
+
+
+
+
+
+# -------------------------------------------------------------------------------------------------------------------------------
+import frappe
+
+def insert_staff_record():
+    doc = frappe.get_doc({
+        "doctype": "Staff",
+        "staff_name": "John Doe",
+        "contact_number": "9876543210",
+        "email": "john.doe@example.com",
+        "assigned_customer": "CUST-0001",  # existing Customer ID
+        "assigned_tour": "BOOK-0001",      # existing Booking ID
+        "allocation_date": "2025-10-27",
+        "status": "Available",
+        "remarks": "Assigned for Chennai–Goa Tour"
+    })
+    doc.insert(ignore_permissions=True)
+    doc.submit()
+    frappe.db.commit()
+    print(f"✅ Staff record created successfully: {doc.name}")

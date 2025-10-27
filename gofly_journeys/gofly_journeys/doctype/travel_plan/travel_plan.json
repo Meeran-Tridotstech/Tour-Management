@@ -91,6 +91,7 @@
    "options": "Hotel Booking"
   },
   {
+   "bold": 1,
    "fetch_from": "hotel_name.location",
    "fieldname": "location",
    "fieldtype": "Data",
@@ -128,20 +129,24 @@
    "label": "Driver Name"
   },
   {
+   "bold": 1,
    "fieldname": "pickup",
    "fieldtype": "Data",
-   "label": "Pickup"
+   "label": "Pickup",
+   "read_only": 1
   },
   {
+   "bold": 1,
    "fieldname": "travel_date",
-   "fieldtype": "Date",
-   "label": "Travel Date"
+   "fieldtype": "Data",
+   "label": "Travel Date",
+   "read_only": 1
   },
   {
    "bold": 1,
    "fetch_from": "vehicle.cost_per_day",
    "fieldname": "cost",
-   "fieldtype": "Int",
+   "fieldtype": "Currency",
    "label": "Cost",
    "read_only": 1
   },
@@ -218,7 +223,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-27 00:33:56.612840",
+ "modified": "2025-10-27 13:24:27.666957",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Travel Plan",

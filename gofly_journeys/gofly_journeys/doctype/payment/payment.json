@@ -114,7 +114,7 @@
    "label": "<b style=\"color:green;\">Pay Amount</b>"
   },
   {
-   "description": "<b style=\"color:red;\">You can only make 3 payments for this booking</b>",
+   "description": "<b style=\"color:red;\">You can only make 2 payments for this booking</b>",
    "fieldname": "payment_count",
    "fieldtype": "Int",
    "label": "Payment Count",
@@ -163,7 +163,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-20 10:16:47.526612",
+ "modified": "2025-10-27 14:37:24.036630",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Payment",

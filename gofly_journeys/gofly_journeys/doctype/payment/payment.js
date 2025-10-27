@@ -11,7 +11,7 @@ frappe.ui.form.on("Payment", {
             frm.set_df_property("balance_amount", "hidden", 1);
             frm.set_df_property("payment_count", "hidden", 1);
             frm.set_df_property("pay_amount", "hidden", 1);
-            return; // stop here (no Pay Now button or auto-set needed)
+            return;
         }
 
         // 💳 Show Pay Now button if payment not completed
@@ -22,13 +22,13 @@ frappe.ui.form.on("Payment", {
         // Reset read-only each refresh
         frm.set_df_property("pay_amount", "read_only", 0);
 
-        // 🟢 First Payment — set initial balance and first installment
+        // 🟢 First Payment — set 50% of total
         if (paymentCount === 0 && total > 0) {
             if (!frm.doc.balance_amount || frm.doc.balance_amount === 0) {
                 frm.set_value("balance_amount", total);
             }
 
-            const first_installment = Math.round(total / 3);
+            const first_installment = Math.round(total / 2);
             if (!frm.doc.pay_amount || frm.doc.pay_amount === 0) {
                 frm.set_value("pay_amount", first_installment);
                 frappe.show_alert({ message: `First payment ₹${first_installment} set`, indicator: "blue" });
@@ -36,14 +36,15 @@ frappe.ui.form.on("Payment", {
             frm.set_df_property("pay_amount", "read_only", 1);
         }
 
-        // 🟠 Third Payment — auto-fill remaining balance
-        if (paymentCount === 2 && balance > 0) {
+        // 🟠 Second Payment — auto-fill remaining balance
+        if (paymentCount === 1 && balance > 0) {
             frm.set_value("pay_amount", balance);
             frm.set_df_property("pay_amount", "read_only", 1);
             frappe.show_alert({ message: `Final payment ₹${balance} auto-filled`, indicator: "blue" });
         }
     }
 });
+
 
 function make_razorpay_payment(frm) {
     let payAmount = parseFloat(frm.doc.pay_amount || 0);
@@ -64,15 +65,15 @@ function make_razorpay_payment(frm) {
         frappe.show_alert({ message: `Pay Amount exceeds remaining balance. Adjusted to ₹${balance}.`, indicator: "orange" });
         payAmount = balance;
     }
-    if (paymentCount >= 3) {
-        frappe.msgprint("You can make a maximum of 3 payments for this booking.");
+    if (paymentCount >= 2) { // changed from 3 to 2
+        frappe.msgprint("You can make a maximum of 2 payments for this booking.");
         return;
     }
 
     const amount_in_paise = Math.round(payAmount * 100);
 
     const options = {
-        key: "rzp_test_1DP5mmOlF5G5ag", // 🔑 replace with live key in production
+        key: "rzp_test_1DP5mmOlF5G5ag",
         amount: amount_in_paise,
         currency: "INR",
         name: frm.doc.customer || "Customer",
@@ -93,15 +94,15 @@ function make_razorpay_payment(frm) {
             const newCount = paymentCount + 1;
             let newBalance = parseFloat((balance - payAmount).toFixed(2));
 
-            // ✅ Final payment or overpay = set balance to 0
-            if (newCount >= 3 || newBalance <= 0.009) {
+            // ✅ Final payment = set balance to 0
+            if (newCount >= 2 || newBalance <= 0.009) {
                 newBalance = 0;
             }
 
             // 🧮 Next installment if not complete
             let nextPay = 0;
             if (newBalance > 0) {
-                const remaining_installments = Math.max(1, 3 - newCount);
+                const remaining_installments = Math.max(1, 2 - newCount); // changed to 2
                 nextPay = Math.round(newBalance / remaining_installments);
                 if (nextPay > newBalance) nextPay = newBalance;
             }
@@ -117,7 +118,6 @@ function make_razorpay_payment(frm) {
                 frm.set_value("payment_status", "Completed");
                 frappe.show_alert({ message: "✅ All payments completed successfully!", indicator: "green" });
 
-                // 🔒 Hide fields after completion
                 frm.set_df_property("balance_amount", "hidden", 1);
                 frm.set_df_property("payment_count", "hidden", 1);
                 frm.set_df_property("pay_amount", "hidden", 1);
@@ -127,19 +127,14 @@ function make_razorpay_payment(frm) {
                 frm.set_df_property("pay_amount", "read_only", 1);
             }
 
-            // 💾 Save the Payment doc first
+            // 💾 Save Payment Doc
             frm.save().then(() => {
-                // 🔗 Update related Booking doctype after the first payment
+                // 🔗 Update related Booking after first payment
                 if (newCount === 1 && frm.doc.booking) {
                     frappe.db.set_value("Booking", frm.doc.booking, "booking_status", "Booked")
                         .then(() => {
-                            // ✅ Show alert
                             frappe.show_alert({ message: "Booking status updated to 'Booked'", indicator: "green" });
-
-                            // ✅ Show popup message
                             frappe.msgprint("Booking status has been updated to 'Booked'.");
-
-                            // 🔄 Redirect to the Booking doctype
                             frappe.set_route("Form", "Booking", frm.doc.booking);
                         });
                 } else {
