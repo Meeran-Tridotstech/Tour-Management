@@ -725,3 +725,104 @@ def insert_staff_records():
         except Exception as e:
             frappe.db.rollback()
             print(f"❌ Error inserting record {i+1}: {e}")
+
+
+
+#-------------------------------------------------------------------------------------------------------------
+import frappe
+import random
+from datetime import datetime, timedelta
+
+def insert_multiple_guides():
+    """
+    Create 100 Guide records with all field values filled uniquely.
+    """
+
+    # Example countries (ensure these exist in Country doctype)
+    countries = [
+        "India", "United States", "United Kingdom", "Canada", "Australia", "Germany", "France",
+        "Italy", "Spain", "Netherlands", "Switzerland", "Norway", "Sweden", "Denmark",
+        "Finland", "Japan", "China", "Singapore", "UAE", "Qatar", "Saudi Arabia", "Egypt",
+        "South Africa", "Kenya", "Brazil", "Mexico", "Argentina", "Chile", "Thailand",
+        "Malaysia", "Vietnam", "Indonesia", "Philippines", "Nepal", "Sri Lanka", "Bangladesh",
+        "Pakistan", "Turkey", "Poland", "Portugal", "Greece", "Ireland", "Belgium", "Austria",
+        "Czech Republic", "Hungary", "Romania", "Russia", "New Zealand", "South Korea", "Oman",
+        "Bahrain", "Kuwait", "Jordan", "Israel", "Iran", "Iraq", "Morocco", "Nigeria", "Ghana",
+        "Ethiopia", "Colombia", "Peru", "Venezuela", "Chile", "Uruguay", "Paraguay", "Bolivia",
+        "Maldives", "Bhutan", "Fiji", "Panama", "Costa Rica", "Luxembourg", "Monaco", "Cyprus",
+        "Malta", "Iceland", "Estonia", "Latvia", "Lithuania", "Slovakia", "Slovenia", "Croatia",
+        "Serbia", "Bosnia", "Bulgaria", "Albania", "Georgia", "Ukraine", "Belarus", "Armenia",
+        "Azerbaijan", "Moldova", "Kazakhstan", "Uzbekistan", "Myanmar", "Cambodia", "Laos", "Mongolia"
+    ]
+
+    first_names = [
+        "Aarav", "Vivaan", "Aditya", "Vihaan", "Arjun", "Krishna", "Rohan", "Ananya", "Diya", "Sara",
+        "Kabir", "Tanish", "Parth", "Rudra", "Aryan", "Harsh", "Dev", "Raj", "Nisha", "Sneha",
+        "Neha", "Priya", "Divya", "Kavya", "Anjali", "Pooja", "Ritika", "Shruti", "Abhinav", "Amar",
+        "Vikram", "Rahul", "Leela", "Lakshmi", "Maya", "Tara", "Anitha", "Vani", "Geeta", "Bhavana",
+        "Siddharth", "Yash", "Rakesh", "Varun", "Karthik", "Vivek", "Sandeep", "Keerthi", "Suhana", "Rashmi",
+        "Kiran", "Manisha", "Shravya", "Vinay", "Kamal", "Lalith", "Roshan", "Hema", "Ashwin", "Tanvi",
+        "Avantika", "Riya", "Simran", "Dhruv", "Aniket", "Charan", "Omkar", "Pranav", "Suman", "Suresh",
+        "Meena", "Rekha", "Bala", "Deepa", "Siva", "Murali", "Aravind", "Mohan", "Kiran", "Sathish",
+        "Sujatha", "Ravi", "Nandha", "Priyanka", "Ajay", "Pradeep", "Uma", "Swathi", "Veena", "Ramya",
+        "Arpita", "Deeksha", "Vignesh", "Sowmiya", "Rahima", "Sakthi", "Hari", "Navin", "Saran", "Divakar"
+    ]
+
+    last_names = [
+        "Kumar", "Patel", "Sharma", "Reddy", "Nair", "Das", "Menon", "Singh", "Pillai", "Gupta"
+    ]
+
+    languages = [
+        "English", "Hindi", "Tamil", "Telugu", "Malayalam", "Kannada", "French", "Spanish", "Arabic", "German"
+    ]
+
+    statuses = ["Available", "Assigned", "On Tour", "On Leave", "Inactive", "Blocked"]
+    genders = ["Male", "Female", "Other"]
+
+    cities = ["Chennai", "Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Pune", "Kolkata", "Ahmedabad", "Dubai", "Singapore"]
+    states = ["Tamil Nadu", "Delhi", "Maharashtra", "Karnataka", "Telangana", "West Bengal", "Gujarat", "Kerala", "Punjab", "Rajasthan"]
+
+    for i in range(100):
+        try:
+            first_name = first_names[i]
+            last_name = random.choice(last_names)
+            full_name = f"{first_name} {last_name}"
+            gender = random.choice(genders)
+            dob = datetime.now().date() - timedelta(days=random.randint(9000, 20000))
+            email = f"{first_name.lower()}.{last_name.lower()}@example.com"
+            phone = f"+91{random.randint(7000000000, 9999999999)}"
+            passport = f"P{random.randint(1000000,9999999)}"
+            country = countries[i]
+            state = random.choice(states)
+            city = random.choice(cities)
+            experience = random.randint(1, 20)
+            language_known = ", ".join(random.sample(languages, k=random.randint(2, 5)))
+            status = random.choice(statuses)
+            guide_id = f"G-{i+1:03}"
+
+            doc = frappe.get_doc({
+                "doctype": "Guide",
+                "first_name": first_name,
+                "last_name": last_name,
+                "full_name": full_name,
+                "gender": gender,
+                "date_of_birth": dob,
+                "email": email,
+                "phone_number": phone,
+                "passport": passport,
+                "country": country,
+                "state": state,
+                "city": city,
+                "guide_id": guide_id,
+                "experience": experience,
+                "languages_known": language_known,
+                "status": status
+            })
+
+            doc.insert(ignore_permissions=True)
+            frappe.db.commit()
+            print(f"✅ Created Guide {i+1}: {full_name} ({country})")
+
+        except Exception as e:
+            frappe.db.rollback()
+            print(f"❌ Error creating guide {i+1}: {e}")
