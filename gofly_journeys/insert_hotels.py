@@ -1,6 +1,6 @@
 import frappe
 import json
-
+#-----------------Hitel Booking ---------------------------------------
 def insert_hotels():
     hotel_data = [
   {"hotel_name": "Taj Coromandel", "country": "India", "city": "Chennai", "location": "Nungambakkam"},
@@ -181,132 +181,109 @@ def insert_hotels():
 
 
 
-# ---------------------------------------------------------------------------------------------------------------------------------------------
-# import frappe
-# from datetime import datetime
-
-# @frappe.whitelist()
-# def insert_travel_plan():
-#     # Sample record
-#     travel_plan = {
-#         "booking": "Booking-001",
-#         "guide": "Rahul Sharma",
-#         "start_date": "2025-11-01",
-#         "end_date": "2025-11-05",
-#         "travel_status": "Planned",
-#         "flight_number": "AI101",
-#         "from_airport": "Chennai International Airport (MAA) - India",
-#         "to_airport": "Delhi Indira Gandhi International Airport (DEL) - India",
-#         "departure_date": "2025-11-01",
-#         "departure_time": "06:00",
-#         "arrival_date": "2025-11-01",
-#         "arrival_time": "08:00",
-#         "hotel_name": "Leela Palace",
-#         "location": "Chanakyapuri",
-#         "room_type": "Deluxe",
-#         "booking_status": "Confirmed",
-#         "vehicle_type": "Sedan",
-#         "driver_name": "Ramesh Kumar",
-#         "pickup": "Hotel Lobby",
-#         "travel_date": "2025-11-01",
-#         "cost": 15000
-#     }
-
-#     # Create and insert doc
-#     doc = frappe.get_doc({
-#         "doctype": "Travel Plan",
-#         **travel_plan
-#     })
-#     doc.insert()
-#     frappe.db.commit()  # Commit to save in database
-#     return "Travel Plan inserted successfully!"
-
-
-
-
-
-
-
-
-
-
-
-
+# --  Travel plan  -------------------------------------------------------------------------------------------------------------------------------------------
 
 import frappe
-from datetime import datetime, timedelta
 import random
+from frappe.utils import nowdate, add_days, nowtime
 
 def insert_multiple_travel_plans():
-    guides = ["Rahul Sharma", "Anita Verma", "Suresh Patel", "Priya Singh", "Arjun Mehta"]
-    hotels = [
-        {"hotel_name": "Leela Palace", "location": "Chanakyapuri"},
-        {"hotel_name": "Taj Mahal Hotel", "location": "Connaught Place"},
-        {"hotel_name": "ITC Maurya", "location": "Diplomatic Enclave"},
-        {"hotel_name": "Hilton Garden Inn", "location": "Manhattan"},
-        {"hotel_name": "Marriott Downtown", "location": "Chicago"},
-        {"hotel_name": "Four Seasons", "location": "Toronto"},
-        {"hotel_name": "Ritz-Carlton", "location": "London"},
-        {"hotel_name": "Grand Hyatt", "location": "Berlin"},
-        {"hotel_name": "Atlantis The Palm", "location": "Dubai"},
-        {"hotel_name": "Mandarin Oriental", "location": "Singapore"}
+    # Static data
+    guides = ["Arun Kumar", "Fatima Noor", "Rahul Verma", "Zoya Khan", "Deepak Reddy", "Priya Das", "Nasser Ali", "Ibrahim Syed"]
+    room_types = [
+        "Single Room", "Double Room", "Twin Room", "Triple Room", "Deluxe Room", "Executive Room",
+        "Suite", "Junior Suite", "Presidential Suite", "Family Room", "Connecting Room", "Studio Room",
+        "Villa", "Penthouse", "Cabana", "Accessible Room", "Superior Room", "Standard Room",
+        "Honeymoon Suite", "Apartment"
     ]
-    flights = [
-        {"flight_number": "AI101", "from_airport": "Chennai International Airport (MAA) - India", "to_airport": "Delhi Indira Gandhi International Airport (DEL) - India"},
-        {"flight_number": "AI202", "from_airport": "Mumbai Chhatrapati Shivaji International Airport (BOM) - India", "to_airport": "Bengaluru Kempegowda International Airport (BLR) - India"},
-        {"flight_number": "AI303", "from_airport": "Hyderabad Rajiv Gandhi International Airport (HYD) - India", "to_airport": "Kolkata Netaji Subhas Chandra Bose International Airport (CCU) - India"},
-    ]
-    room_types = ["Deluxe", "Suite", "Standard"]
+    travel_statuses = ["Planned", "Ongoing", "Completed"]
     booking_statuses = ["Confirmed", "Pending", "Canceled"]
-    vehicles = ["Sedan", "SUV", "Van"]
     
-    base_date = datetime(2025, 11, 1)
+    from_airports = [
+        "Chennai International Airport (MAA) - India",
+        "Delhi Indira Gandhi International Airport (DEL) - India",
+        "Mumbai Chhatrapati Shivaji Maharaj International Airport (BOM) - India",
+        "Dubai International Airport (DXB) - UAE",
+        "Doha Hamad International Airport (DOH) - Qatar",
+        "Singapore Changi Airport (SIN) - Singapore",
+        "London Heathrow Airport (LHR) - United Kingdom",
+        "New York John F. Kennedy International Airport (JFK) - USA"
+    ]
     
-    for i in range(100):
-        guide = random.choice(guides)
-        hotel = random.choice(hotels)
-        flight = random.choice(flights)
-        room_type = random.choice(room_types)
-        booking_status = random.choice(booking_statuses)
-        vehicle_type = random.choice(vehicles)
-        driver_name = f"Driver {i+1}"
-        travel_date = base_date + timedelta(days=i)
-        start_date = travel_date
-        end_date = travel_date + timedelta(days=random.randint(2, 5))
-        departure_time = f"{random.randint(5, 23):02d}:00"
-        arrival_time = f"{random.randint(6, 24):02d}:00"
-        cost = random.randint(10000, 50000)
-        
-        travel_plan = {
-            "doctype": "Travel Plan",
-            "booking": f"Booking-{i+1:03d}",
-            "guide": guide,
-            "start_date": start_date.strftime("%Y-%m-%d"),
-            "end_date": end_date.strftime("%Y-%m-%d"),
-            "travel_status": "Planned",
-            "flight_number": flight["flight_number"],
-            "from_airport": flight["from_airport"],
-            "to_airport": flight["to_airport"],
-            "departure_date": start_date.strftime("%Y-%m-%d"),
-            "departure_time": departure_time,
-            "arrival_date": start_date.strftime("%Y-%m-%d"),
-            "arrival_time": arrival_time,
-            "hotel_name": hotel["hotel_name"],
-            "location": hotel["location"],
-            "room_type": room_type,
-            "booking_status": booking_status,
-            "vehicle_type": vehicle_type,
-            "driver_name": driver_name,
-            "pickup": "Hotel Lobby",
-            "travel_date": travel_date.strftime("%Y-%m-%d"),
-            "cost": cost
-        }
-        
-        doc = frappe.get_doc(travel_plan)
-        doc.insert(ignore_if_duplicate=True)
+    to_airports = [
+        "Bengaluru Kempegowda International Airport (BLR) - India",
+        "Hyderabad Rajiv Gandhi International Airport (HYD) - India",
+        "Kolkata Netaji Subhas Chandra Bose International Airport (CCU) - India",
+        "Abu Dhabi Zayed International Airport (AUH) - UAE",
+        "Paris Charles de Gaulle Airport (CDG) - France",
+        "Frankfurt Airport (FRA) - Germany",
+        "Tokyo Haneda Airport (HND) - Japan",
+        "Toronto Pearson International Airport (YYZ) - Canada"
+    ]
     
-    frappe.db.commit()
-    return "50 Travel Plan records inserted successfully!"
+    hotels = [
+        "Marriott Hotel", "Taj Palace", "Oberoi Grand", "Radisson Blu",
+        "Le Meridien", "ITC Grand Chola", "Hilton Garden", "Hyatt Regency",
+        "Trident Hotel", "The Park"
+    ]
+
+    vehicles = frappe.get_all("Vehicle", pluck="name")
+    bookings = frappe.get_all("Booking", pluck="name")
+
+    for i in range(1, 101):
+        try:
+            # Random values
+            guide = random.choice(guides)
+            hotel_name = random.choice(hotels)
+            room_type = random.choice(room_types)
+            from_airport = random.choice(from_airports)
+            to_airport = random.choice(to_airports)
+            travel_status = random.choice(travel_statuses)
+            booking_status = random.choice(booking_statuses)
+            flight_number = f"FL{random.randint(1000, 9999)}"
+            vehicle = random.choice(vehicles) if vehicles else None
+            booking = random.choice(bookings) if bookings else None
+
+            start_date = nowdate()
+            end_date = add_days(start_date, random.randint(2, 10))
+
+            # Construct document
+            doc = frappe.get_doc({
+                "doctype": "Travel Plan",
+                "booking": booking,
+                "guide": guide,
+                "travel_start_date": start_date,
+                "travel_end_date": end_date,
+                "travel_status": travel_status,
+                "flight_number": flight_number,
+                "from_airport": from_airport,
+                "to_airport": to_airport,
+                "departure_date": start_date,
+                "departure_time": nowtime(),
+                "arrival_date": end_date,
+                "arrival_time": nowtime(),
+                "return_departure_date": add_days(end_date, 1),
+                "return_departure_time": nowtime(),
+                "return_arrival_date": add_days(end_date, 2),
+                "return_arrival_time": nowtime(),
+                "hotel_name": hotel_name,
+                "location": random.choice(["Chennai", "Delhi", "Mumbai", "Dubai", "Singapore", "London"]),
+                "room_type": room_type,
+                "booking_status": booking_status,
+                "vehicle": vehicle,
+                "pickup": random.choice(["Hotel Lobby", "Airport Terminal", "Main Bus Stop", "Travel Office"]),
+                "travel_date": start_date,
+                "cost": random.randint(3000, 20000)
+            })
+
+            doc.insert(ignore_permissions=True)
+            frappe.db.commit()
+
+            print(f"✅ Record {i}: {hotel_name} ({from_airport} → {to_airport}) saved")
+
+        except Exception as e:
+            print(f"❌ Error inserting record {i}: {str(e)}")
+            frappe.db.rollback()
 
 
 
@@ -314,7 +291,7 @@ def insert_multiple_travel_plans():
 
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------  Vehicle Records  --------------------------------------------------------------------------------------------------------------------------------
 import frappe
 from random import choice, randint
 
@@ -371,103 +348,7 @@ def insert_vehicle_records():
     
     
     
-#     #--------------------------------------------------------------------------------------------------------------------
-
-# from random import choice, randint
-# from datetime import date, timedelta
-# import frappe
-
-# def insert_tour_packages():
-#     package_data = [
-#         {
-#             "package_name": "Romantic Paris Getaway",
-#             "country": "France",
-#             "state": "Paris",
-#             "explore": {
-#                 "destination_name": "Eiffel Tower",
-#                 "key_attractions": "Iconic landmark of Paris",
-#                 "description": "Enjoy breathtaking views from the top of the Eiffel Tower.",
-#                 "best_time_to_visit": "April to June"
-#             }
-#         },
-#         {
-#             "package_name": "Dubai Desert Adventure",
-#             "country": "United Arab Emirates",
-#             "state": "Dubai",
-#             "explore": {
-#                 "destination_name": "Burj Khalifa",
-#                 "key_attractions": "Tallest building in the world",
-#                 "description": "Experience Dubai from the highest observation deck.",
-#                 "best_time_to_visit": "November to February"
-#             }
-#         },
-#         {
-#             "package_name": "Goa Beach Holidays",
-#             "country": "India",
-#             "state": "Goa",
-#             "explore": {
-#                 "destination_name": "Baga Beach",
-#                 "key_attractions": "Beach activities and nightlife",
-#                 "description": "Relax and enjoy beachside cafes and water sports.",
-#                 "best_time_to_visit": "October to March"
-#             }
-#         },
-#         {
-#             "package_name": "Thailand Explorer",
-#             "country": "Thailand",
-#             "state": "Bangkok",
-#             "explore": {
-#                 "destination_name": "Chiang Mai Old City",
-#                 "key_attractions": "Ancient temples and street food",
-#                 "description": "Explore the cultural capital of Northern Thailand.",
-#                 "best_time_to_visit": "November to February"
-#             }
-#         },
-#         {
-#             "package_name": "Malaysia Family Fun",
-#             "country": "Malaysia",
-#             "state": "Kuala Lumpur",
-#             "explore": {
-#                 "destination_name": "Langkawi Island",
-#                 "key_attractions": "Sky Bridge, beaches, and waterfalls",
-#                 "description": "Perfect island destination for families.",
-#                 "best_time_to_visit": "December to March"
-#             }
-#         }
-#     ]
-
-#     for i, pkg in enumerate(package_data):
-#         start_date = date.today() + timedelta(days=randint(5, 20))
-#         end_date = start_date + timedelta(days=randint(3, 10))
-#         days = (end_date - start_date).days
-#         nights = days - 1
-
-#         doc = frappe.get_doc({
-#             "doctype": "Tour Package",
-#             "package_name": pkg["package_name"],
-#             "amount": randint(20000, 100000),
-#             "country": pkg["country"],
-#             "state": pkg["state"],
-#             "start_date": start_date,
-#             "end_date": end_date,
-#             "days": days,
-#             "nights": nights,
-#             "package_status": "Available",
-#             "expected_trip_month": choice(["January", "February", "March", "April", "May", "June"]),
-#             "up_to": choice(["July", "August", "September", "October", "November", "December"]),
-#             "explore": [pkg["explore"]],
-#             "images": [
-#                 {
-#                     "image": "/files/sample_image.jpg",
-#                     "caption": f"Image {i+1}"
-#                 }
-#             ]
-#         })
-#         doc.insert(ignore_permissions=True)
-#         frappe.db.commit()
-#         print(f"✅ Created Tour Package: {doc.name} ({pkg['country']})")
-
-
+##--------------  Tour Package  ------------------------------------------------------------------------------------------------------
 
 from random import choice, randint
 from datetime import date, timedelta
@@ -627,7 +508,7 @@ def insert_tour_packages():
 
 
 
-# -------------------------------------------------------------------------------------------------------------------------------
+# ----------------  Staff Records   ---------------------------------------------------------------------------------------------------------------
 import frappe
 
 def insert_staff_record():
@@ -646,3 +527,144 @@ def insert_staff_record():
     doc.submit()
     frappe.db.commit()
     print(f"✅ Staff record created successfully: {doc.name}")
+
+
+
+
+#-----------------------  Booking Doctype   --------------------------------------------------------------------------------------------
+import frappe
+from random import choice, randint
+from frappe.utils import nowdate, add_days
+
+def insert_multiple_bookings():
+    customers = [d.name for d in frappe.get_all("Customer")]
+    packages = [d.name for d in frappe.get_all("Tour Package")]
+
+    if not customers or not packages:
+        frappe.throw("Please create some Customer and Tour Package records first.")
+
+    for i in range(1, 101):  # 100 records
+        customer = choice(customers)
+        tour_package = choice(packages)
+
+        # Fetch package details
+        pkg = frappe.get_doc("Tour Package", tour_package)
+
+        booking = frappe.new_doc("Booking")
+        booking.customer = customer
+        booking.tour_package = tour_package
+        booking.tour_package_name = pkg.package_name
+        booking.start_date = pkg.start_date
+        booking.end_date = pkg.end_date
+        booking.package_status = pkg.package_status
+        booking.amount = pkg.amount
+        booking.package_country = pkg.country
+        booking.package_state = pkg.state
+
+        booking.travel_date = add_days(nowdate(), randint(1, 30))
+        booking.return_date = add_days(booking.travel_date, randint(3, 10))
+        booking.booking_status = choice(["Draft", "Booked", "Confirmed"])
+        booking.booking_date = nowdate()
+
+        booking.insert(ignore_permissions=True)
+        frappe.db.commit()
+
+    frappe.msgprint("✅ 100 Booking records created successfully!")
+
+
+
+
+#-----------------------------   Payment  --------------------------------------------------------------------------------------------
+import frappe
+from frappe.utils import nowdate
+import random
+
+def insert_multiple_payments():
+    customers = [
+        "John Doe", "Jane Smith", "Rahul Kumar", "Amit Patel", "Priya Sharma",
+        "Ravi Iyer", "Sneha Reddy", "Arjun Mehta", "Fatima Khan", "Vijay Rao",
+        "Anjali Nair", "Suresh Das", "Kiran Verma", "Deepak Singh", "Neha Joshi",
+        "Manoj Babu", "Lakshmi Devi", "Pooja Mishra", "Ajay Kumar", "Sara Thomas"
+    ]
+
+    payment_modes = ["Cash", "UPI", "Credit Card", "Debit Card", "Bank Transfer"]
+
+    for i in range(1, 101):  # ✅ 100 records
+        try:
+            customer = random.choice(customers)
+            amount = random.randint(2000, 10000)
+            visa_amount = round(amount * random.uniform(0.4, 0.8), 2)
+            advance_amount = round(amount * random.uniform(0.3, 0.7), 2)
+            payment_mode = random.choice(payment_modes)
+
+            payment = frappe.get_doc({
+                "doctype": "Payment",
+                "customer": customer,
+                "amount": amount,
+                "visa_amount": visa_amount,
+                "advance_amount": advance_amount,
+                "payment_mode": payment_mode,
+                "posting_date": nowdate(),
+            })
+
+            payment.insert(ignore_permissions=True)
+            frappe.db.commit()
+            print(f"✅ Payment {i} created: {payment.name} ({customer}, ₹{amount})")
+
+        except frappe.DuplicateEntryError:
+            print(f"⚠️ Skipping duplicate for record {i}")
+        except Exception as e:
+            print(f"❌ Error on record {i}: {e}")
+#--------------------------------------------------------------------------------
+
+import frappe
+import random
+
+def insert_multiple_tour_staff_assignments():
+    """
+    Inserts 100 sample Tour Staff Assignment records with valid data.
+    """
+
+    # Get existing link data to maintain relational integrity
+    bookings = frappe.get_all("Booking", pluck="name")
+    customers = frappe.get_all("Customer", pluck="name")
+    guides = frappe.get_all("Guide", fields=["name", "full_name", "email", "phone_number", "status"])
+
+    if not bookings or not customers or not guides:
+        frappe.throw("Make sure Booking, Customer, and Guide records exist before running this script.")
+
+    for i in range(1, 101):
+        try:
+            # Pick random values
+            booking = random.choice(bookings)
+            customer = random.choice(customers)
+            guide_data = random.choice(guides)
+
+            guide_id = guide_data.get("name")
+            guide_name = guide_data.get("full_name")
+            guide_email = guide_data.get("email")
+            guide_phone = guide_data.get("phone_number")
+            guide_status = guide_data.get("status")
+
+            booking_status = random.choice(["Confirmed", "Pending", "Cancelled"])
+
+            # Create document
+            doc = frappe.get_doc({
+                "doctype": "Tour Staff Assignment",
+                "booking": booking,
+                "customer": customer,
+                "guide_id": guide_id,
+                "guide": guide_name,
+                "booking_status": booking_status,
+                "email": guide_email,
+                "status": guide_status,
+                "phone": guide_phone,
+            })
+
+            doc.insert(ignore_permissions=True)
+            frappe.db.commit()
+            print(f"✅ Record {i} created: {guide_name} → {customer} ({booking_status})")
+
+        except Exception as e:
+            frappe.db.rollback()
+            print(f"❌ Error creating record {i}: {e}")
