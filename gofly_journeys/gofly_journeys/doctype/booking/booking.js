@@ -163,8 +163,76 @@ frappe.ui.form.on('Booking', {
         if (!frm.doc.accept_tnc) {
             frappe.throw('Please accept Terms & Conditions before booking.');
         }
+    },
+    tour_package: function(frm) {
+        if (frm.doc.tour_package) {
+            // Fetch months from linked Tour Package
+            frappe.db.get_value("Tour Package", frm.doc.tour_package, ["expected_trip_month", "up_to"])
+            .then(r => {
+                if (r.message) {
+                    frm.expected_trip_month = r.message.expected_trip_month;
+                    frm.up_to = r.message.up_to;
+                }
+            });
+        }
+    },
+
+    travel_date: function(frm) {
+        validate_month_range(frm, "travel_date");
+    },
+
+    return_date: function(frm) {
+        validate_month_range(frm, "return_date");
+
+        // Optional: logical check - return_date must be after travel_date
+        if (frm.doc.travel_date && frm.doc.return_date) {
+            const t1 = frappe.datetime.str_to_obj(frm.doc.travel_date);
+            const t2 = frappe.datetime.str_to_obj(frm.doc.return_date);
+            if (t2 < t1) {
+                frappe.msgprint("Return Date cannot be before Travel Date.");
+                frm.set_value("return_date", null);
+            }
+        }
     }
 });
+
+function validate_month_range(frm, fieldname) {
+    if (!frm.doc.tour_package || !frm.doc[fieldname]) return;
+
+    frappe.db.get_value("Tour Package", frm.doc.tour_package, ["expected_trip_month", "up_to"])
+    .then(r => {
+        if (!r.message) return;
+
+        const from_month = r.message.expected_trip_month;
+        const to_month = r.message.up_to;
+        const selected_date = frappe.datetime.str_to_obj(frm.doc[fieldname]);
+
+        const month_map = {
+            "January": 0,
+            "February": 1,
+            "March": 2,
+            "April": 3,
+            "May": 4,
+            "June": 5,
+            "July": 6,
+            "August": 7,
+            "September": 8,
+            "October": 9,
+            "November": 10,
+            "December": 11
+        };
+
+        const from_index = month_map[from_month];
+        const to_index = month_map[to_month];
+        const selected_index = selected_date.getMonth();
+
+        // Validate if selected month is within range
+        if (selected_index < from_index || selected_index > to_index) {
+            frappe.msgprint(`Please select a date between ${from_month} and ${to_month}`);
+            frm.set_value(fieldname, null);
+        }
+    });
+}
 
 // ======================================
 // 🔹 Booking Member Child Table
