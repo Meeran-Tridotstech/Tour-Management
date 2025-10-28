@@ -507,30 +507,6 @@ def insert_tour_packages():
 
 
 
-
-# ----------------  Staff Records   ---------------------------------------------------------------------------------------------------------------
-import frappe
-
-def insert_staff_record():
-    doc = frappe.get_doc({
-        "doctype": "Staff",
-        "staff_name": "John Doe",
-        "contact_number": "9876543210",
-        "email": "john.doe@example.com",
-        "assigned_customer": "CUST-0001",  # existing Customer ID
-        "assigned_tour": "BOOK-0001",      # existing Booking ID
-        "allocation_date": "2025-10-27",
-        "status": "Available",
-        "remarks": "Assigned for Chennai–Goa Tour"
-    })
-    doc.insert(ignore_permissions=True)
-    doc.submit()
-    frappe.db.commit()
-    print(f"✅ Staff record created successfully: {doc.name}")
-
-
-
-
 #-----------------------  Booking Doctype   --------------------------------------------------------------------------------------------
 import frappe
 from random import choice, randint
@@ -668,3 +644,84 @@ def insert_multiple_tour_staff_assignments():
         except Exception as e:
             frappe.db.rollback()
             print(f"❌ Error creating record {i}: {e}")
+#----------------------------------------------------------------------------------------------------------
+import frappe
+import random
+from datetime import datetime, timedelta
+
+def insert_staff_records():
+    """
+    Create 100 Staff records with unique names, different countries,
+    and all fields filled with valid random values.
+    """
+
+    customers = frappe.get_all("Customer", pluck="name")
+    tours = frappe.get_all("Booking", pluck="name")
+
+    if not customers or not tours:
+        frappe.throw("Please ensure that 'Customer' and 'Booking' records exist before running this script.")
+
+    # 100 unique first names
+    first_names = [
+        "Aarav", "Vivaan", "Aditya", "Vihaan", "Arjun", "Sai", "Reyansh", "Krishna", "Ishaan", "Rohan",
+        "Ananya", "Diya", "Sara", "Aditi", "Meera", "Ira", "Saanvi", "Navya", "Myra", "Aarohi",
+        "Zara", "Kabir", "Tanish", "Parth", "Rudra", "Aryan", "Harsh", "Manav", "Dev", "Raj",
+        "Nisha", "Sneha", "Neha", "Priya", "Divya", "Kavya", "Anjali", "Pooja", "Ritika", "Shruti",
+        "Abhinav", "Amar", "Akhil", "Ajay", "Aravind", "Naveen", "Surya", "Deepak", "Vikram", "Rahul",
+        "Leela", "Lakshmi", "Maya", "Tara", "Nandini", "Anitha", "Vani", "Geeta", "Bhavana", "Revathi",
+        "Siddharth", "Yash", "Jay", "Rakesh", "Tarun", "Varun", "Sameer", "Karthik", "Vivek", "Sandeep",
+        "Arpita", "Swathi", "Keerthi", "Chandni", "Suhana", "Pavithra", "Rashmi", "Harini", "Megha", "Deeksha",
+        "Kiran", "Manisha", "Shravya", "Rajesh", "Vinay", "Kamal", "Lalith", "Roshan", "Hema", "Ashwin",
+        "Tanvi", "Avantika", "Riya", "Simran", "Dhruv", "Aniket", "Charan", "Omkar", "Pranav", "Suman"
+    ]
+
+    # 100 countries (unique)
+    countries = [
+        "India", "United States", "United Kingdom", "Canada", "Australia", "Germany", "France", "Italy", "Spain", "Netherlands",
+        "Sweden", "Norway", "Denmark", "Finland", "Switzerland", "Austria", "Belgium", "Ireland", "Portugal", "Greece",
+        "Russia", "Poland", "Czech Republic", "Hungary", "Romania", "Ukraine", "Turkey", "UAE", "Qatar", "Saudi Arabia",
+        "Oman", "Kuwait", "Bahrain", "Egypt", "South Africa", "Nigeria", "Kenya", "Ethiopia", "Morocco", "Ghana",
+        "China", "Japan", "South Korea", "Singapore", "Malaysia", "Thailand", "Vietnam", "Philippines", "Indonesia", "Taiwan",
+        "Sri Lanka", "Bangladesh", "Nepal", "Bhutan", "Maldives", "Pakistan", "Afghanistan", "Iran", "Iraq", "Israel",
+        "Jordan", "Lebanon", "Syria", "Yemen", "Mexico", "Brazil", "Argentina", "Chile", "Peru", "Colombia",
+        "Venezuela", "Cuba", "Panama", "Costa Rica", "Jamaica", "Honduras", "Bolivia", "Uruguay", "Paraguay", "Ecuador",
+        "New Zealand", "Fiji", "Papua New Guinea", "Tonga", "Samoa", "Solomon Islands", "Vanuatu", "Nauru", "Kiribati", "Palau",
+        "Luxembourg", "Monaco", "Liechtenstein", "Iceland", "Andorra", "Malta", "Cyprus", "Estonia", "Latvia", "Lithuania"
+    ]
+
+    remarks_list = [
+        "Assigned successfully", "Available for next tour", "Closed due to completion",
+        "Pending reassignment", "Reallocation required", "Confirmed allocation"
+    ]
+
+    for i in range(100):
+        try:
+            staff_name = f"{first_names[i]} {random.choice(['Singh', 'Patel', 'Kumar', 'Sharma', 'Nair', 'Reddy', 'Das', 'Pillai'])}"
+            country = countries[i]
+            contact_number = f"+91{random.randint(7000000000, 9999999999)}"
+            email = f"{staff_name.replace(' ', '').lower()}@{country.replace(' ', '').lower()}.com"
+            assigned_customer = random.choice(customers)
+            assigned_tour = random.choice(tours)
+            allocation_date = datetime.now().date() - timedelta(days=random.randint(0, 60))
+            status = random.choice(["Available", "Closed"])
+            remarks = random.choice(remarks_list)
+
+            doc = frappe.get_doc({
+                "doctype": "Staff",
+                "staff_name": f"{staff_name} ({country})",
+                "contact_number": contact_number,
+                "email": email,
+                "assigned_customer": assigned_customer,
+                "assigned_tour": assigned_tour,
+                "allocation_date": allocation_date,
+                "status": status,
+                "remarks": remarks
+            })
+
+            doc.insert(ignore_permissions=True)
+            frappe.db.commit()
+            print(f"✅ Created Staff Record {i+1}: {staff_name} - {country}")
+
+        except Exception as e:
+            frappe.db.rollback()
+            print(f"❌ Error inserting record {i+1}: {e}")
