@@ -371,77 +371,230 @@ def insert_vehicle_records():
     
     
     
-    #--------------------------------------------------------------------------------------------------------------------
-    import frappe
+#     #--------------------------------------------------------------------------------------------------------------------
+
+# from random import choice, randint
+# from datetime import date, timedelta
+# import frappe
+
+# def insert_tour_packages():
+#     package_data = [
+#         {
+#             "package_name": "Romantic Paris Getaway",
+#             "country": "France",
+#             "state": "Paris",
+#             "explore": {
+#                 "destination_name": "Eiffel Tower",
+#                 "key_attractions": "Iconic landmark of Paris",
+#                 "description": "Enjoy breathtaking views from the top of the Eiffel Tower.",
+#                 "best_time_to_visit": "April to June"
+#             }
+#         },
+#         {
+#             "package_name": "Dubai Desert Adventure",
+#             "country": "United Arab Emirates",
+#             "state": "Dubai",
+#             "explore": {
+#                 "destination_name": "Burj Khalifa",
+#                 "key_attractions": "Tallest building in the world",
+#                 "description": "Experience Dubai from the highest observation deck.",
+#                 "best_time_to_visit": "November to February"
+#             }
+#         },
+#         {
+#             "package_name": "Goa Beach Holidays",
+#             "country": "India",
+#             "state": "Goa",
+#             "explore": {
+#                 "destination_name": "Baga Beach",
+#                 "key_attractions": "Beach activities and nightlife",
+#                 "description": "Relax and enjoy beachside cafes and water sports.",
+#                 "best_time_to_visit": "October to March"
+#             }
+#         },
+#         {
+#             "package_name": "Thailand Explorer",
+#             "country": "Thailand",
+#             "state": "Bangkok",
+#             "explore": {
+#                 "destination_name": "Chiang Mai Old City",
+#                 "key_attractions": "Ancient temples and street food",
+#                 "description": "Explore the cultural capital of Northern Thailand.",
+#                 "best_time_to_visit": "November to February"
+#             }
+#         },
+#         {
+#             "package_name": "Malaysia Family Fun",
+#             "country": "Malaysia",
+#             "state": "Kuala Lumpur",
+#             "explore": {
+#                 "destination_name": "Langkawi Island",
+#                 "key_attractions": "Sky Bridge, beaches, and waterfalls",
+#                 "description": "Perfect island destination for families.",
+#                 "best_time_to_visit": "December to March"
+#             }
+#         }
+#     ]
+
+#     for i, pkg in enumerate(package_data):
+#         start_date = date.today() + timedelta(days=randint(5, 20))
+#         end_date = start_date + timedelta(days=randint(3, 10))
+#         days = (end_date - start_date).days
+#         nights = days - 1
+
+#         doc = frappe.get_doc({
+#             "doctype": "Tour Package",
+#             "package_name": pkg["package_name"],
+#             "amount": randint(20000, 100000),
+#             "country": pkg["country"],
+#             "state": pkg["state"],
+#             "start_date": start_date,
+#             "end_date": end_date,
+#             "days": days,
+#             "nights": nights,
+#             "package_status": "Available",
+#             "expected_trip_month": choice(["January", "February", "March", "April", "May", "June"]),
+#             "up_to": choice(["July", "August", "September", "October", "November", "December"]),
+#             "explore": [pkg["explore"]],
+#             "images": [
+#                 {
+#                     "image": "/files/sample_image.jpg",
+#                     "caption": f"Image {i+1}"
+#                 }
+#             ]
+#         })
+#         doc.insert(ignore_permissions=True)
+#         frappe.db.commit()
+#         print(f"✅ Created Tour Package: {doc.name} ({pkg['country']})")
+
+
+
 from random import choice, randint
 from datetime import date, timedelta
+import frappe
 
 def insert_tour_packages():
-    countries = ["India", "Thailand", "Malaysia", "United Arab Emirates", "France"]
-    states = {
-        "India": ["Tamil Nadu", "Kerala", "Goa", "Maharashtra"],
-        "Thailand": ["Bangkok", "Chiang Mai"],
-        "Malaysia": ["Kuala Lumpur", "Penang"],
-        "United Arab Emirates": ["Dubai", "Abu Dhabi"],
-        "France": ["Paris", "Nice"]
+    countries = {
+        "India": {
+            "states": ["Tamil Nadu", "Kerala", "Goa", "Maharashtra"],
+            "destinations": [
+                {
+                    "destination_name": "Taj Mahal",
+                    "key_attractions": "Symbol of love and Mughal architecture",
+                    "description": "Experience the timeless beauty of the Taj Mahal at sunrise.",
+                    "best_time_to_visit": "October to March"
+                },
+                {
+                    "destination_name": "Baga Beach",
+                    "key_attractions": "Beach activities and nightlife",
+                    "description": "Relax and enjoy beachside cafes and water sports.",
+                    "best_time_to_visit": "November to February"
+                },
+                {
+                    "destination_name": "Munnar Hills",
+                    "key_attractions": "Tea gardens and scenic hills",
+                    "description": "Perfect for a peaceful mountain retreat.",
+                    "best_time_to_visit": "September to March"
+                }
+            ]
+        },
+        "Thailand": {
+            "states": ["Bangkok", "Chiang Mai", "Phuket"],
+            "destinations": [
+                {
+                    "destination_name": "Phuket Beaches",
+                    "key_attractions": "Tropical beaches and island hopping",
+                    "description": "Explore Thailand’s most famous island paradise.",
+                    "best_time_to_visit": "November to February"
+                },
+                {
+                    "destination_name": "Chiang Mai Old City",
+                    "key_attractions": "Ancient temples and street food",
+                    "description": "Discover culture and cuisine in Northern Thailand.",
+                    "best_time_to_visit": "November to February"
+                }
+            ]
+        },
+        "Malaysia": {
+            "states": ["Kuala Lumpur", "Penang", "Langkawi"],
+            "destinations": [
+                {
+                    "destination_name": "Langkawi Island",
+                    "key_attractions": "Sky Bridge, beaches, and waterfalls",
+                    "description": "Perfect island destination for families.",
+                    "best_time_to_visit": "December to March"
+                },
+                {
+                    "destination_name": "Batu Caves",
+                    "key_attractions": "Hindu shrines and limestone caves",
+                    "description": "A colorful and spiritual attraction near Kuala Lumpur.",
+                    "best_time_to_visit": "January to February"
+                }
+            ]
+        },
+        "United Arab Emirates": {
+            "states": ["Dubai", "Abu Dhabi"],
+            "destinations": [
+                {
+                    "destination_name": "Burj Khalifa",
+                    "key_attractions": "Tallest building in the world",
+                    "description": "Experience Dubai from the highest observation deck.",
+                    "best_time_to_visit": "November to February"
+                },
+                {
+                    "destination_name": "Sheikh Zayed Grand Mosque",
+                    "key_attractions": "Architectural masterpiece",
+                    "description": "Marvel at the stunning white marble architecture.",
+                    "best_time_to_visit": "November to March"
+                }
+            ]
+        },
+        "France": {
+            "states": ["Paris", "Nice", "Lyon"],
+            "destinations": [
+                {
+                    "destination_name": "Eiffel Tower",
+                    "key_attractions": "Iconic landmark of Paris",
+                    "description": "Enjoy breathtaking views from the top of the Eiffel Tower.",
+                    "best_time_to_visit": "April to June"
+                },
+                {
+                    "destination_name": "French Riviera",
+                    "key_attractions": "Beaches, glamour, and Mediterranean views",
+                    "description": "Relax along the stunning Côte d’Azur coastline.",
+                    "best_time_to_visit": "May to September"
+                }
+            ]
+        }
     }
 
-    package_names = [
-        "Romantic Paris Getaway",
-        "Dubai Desert Adventure",
-        "Goa Beach Holidays",
-        "Thailand Explorer",
-        "Malaysia Family Fun"
+    package_themes = [
+        "Romantic Getaway", "Adventure Trip", "Family Vacation",
+        "Cultural Tour", "Luxury Experience", "Wildlife Safari",
+        "Beach Holiday", "Mountain Escape", "City Lights Tour", "Heritage Journey"
     ]
 
-    explore_data = [
-        {
-            "destination_name": "Eiffel Tower",
-            "key_attractions": "Iconic landmark of Paris",
-            "description": "Enjoy breathtaking views from the top of the Eiffel Tower.",
-            "best_time_to_visit": "April to June"
-        },
-        {
-            "destination_name": "Burj Khalifa",
-            "key_attractions": "Tallest building in the world",
-            "description": "Experience Dubai from the highest observation deck.",
-            "best_time_to_visit": "November to February"
-        },
-        {
-            "destination_name": "Baga Beach",
-            "key_attractions": "Beach activities and nightlife",
-            "description": "Relax and enjoy beachside cafes and water sports.",
-            "best_time_to_visit": "October to March"
-        },
-        {
-            "destination_name": "Chiang Mai Old City",
-            "key_attractions": "Ancient temples and street food",
-            "description": "Explore the cultural capital of Northern Thailand.",
-            "best_time_to_visit": "November to February"
-        },
-        {
-            "destination_name": "Langkawi Island",
-            "key_attractions": "Sky Bridge, beaches, and waterfalls",
-            "description": "Perfect island destination for families.",
-            "best_time_to_visit": "December to March"
-        }
-    ]
+    for i in range(1, 101):
+        # Randomly pick a country and corresponding state
+        country = choice(list(countries.keys()))
+        state = choice(countries[country]["states"])
+        destination = choice(countries[country]["destinations"])
 
-    for i in range(5):
-        country = choice(countries)
-        state = choice(states[country])
-        start_date = date.today() + timedelta(days=randint(5, 20))
-        end_date = start_date + timedelta(days=randint(3, 10))
+        # Generate a dynamic package name
+        theme = choice(package_themes)
+        package_name = f"{theme} in {state}"
+
+        start_date = date.today() + timedelta(days=randint(5, 30))
+        end_date = start_date + timedelta(days=randint(4, 12))
         days = (end_date - start_date).days
         nights = days - 1
 
         doc = frappe.get_doc({
             "doctype": "Tour Package",
-            "package_name": package_names[i],
-            "amount": randint(20000, 100000),
+            "package_name": package_name,
+            "amount": randint(20000, 120000),
             "country": country,
             "state": state,
-            # Frappe will auto-generate unique PKG-.###
             "start_date": start_date,
             "end_date": end_date,
             "days": days,
@@ -451,24 +604,25 @@ def insert_tour_packages():
             "up_to": choice(["July", "August", "September", "October", "November", "December"]),
             "explore": [
                 {
-                    "destination_name": explore_data[i]["destination_name"],
-                    "key_attractions": explore_data[i]["key_attractions"],
-                    "description": explore_data[i]["description"],
-                    "best_time_to_visit": explore_data[i]["best_time_to_visit"]
+                    "destination_name": destination["destination_name"],
+                    "key_attractions": destination["key_attractions"],
+                    "description": destination["description"],
+                    "best_time_to_visit": destination["best_time_to_visit"]
                 }
             ],
             "images": [
                 {
                     "image": "/files/sample_image.jpg",
-                    "caption": f"Image {i+1}"
+                    "caption": f"Image {i}"
                 }
             ]
         })
+
         doc.insert(ignore_permissions=True)
         frappe.db.commit()
-        print(f"✅ Created Tour Package: {doc.name}")
+        print(f"✅ Created Tour Package {i}: {package_name} ({country})")
 
-
+    print("\n🎉 Successfully inserted 100 tour packages!")
 
 
 
