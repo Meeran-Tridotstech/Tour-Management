@@ -10,8 +10,8 @@
   "booking",
   "guide",
   "column_break_wmjk",
-  "start_date",
-  "end_date",
+  "travel_start_date",
+  "travel_end_date",
   "column_break_fhrl",
   "travel_status",
   "flight_booking_section",
@@ -21,9 +21,13 @@
   "column_break_nkof",
   "departure_date",
   "departure_time",
-  "column_break_quly",
   "arrival_date",
   "arrival_time",
+  "column_break_quly",
+  "return_departure_date",
+  "return_departure_time",
+  "return_arrival_date",
+  "return_arrival_time",
   "hotel_booking_section",
   "hotel_name",
   "location",
@@ -55,13 +59,6 @@
    "fieldname": "guide",
    "fieldtype": "Data",
    "label": "Guide"
-  },
-  {
-   "bold": 1,
-   "fetch_from": "booking.start_date",
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date"
   },
   {
    "fieldname": "travel_status",
@@ -167,13 +164,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "bold": 1,
-   "fetch_from": "booking.end_date",
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date"
-  },
-  {
    "fieldname": "column_break_wmjk",
    "fieldtype": "Column Break"
   },
@@ -201,7 +191,7 @@
   },
   {
    "fieldname": "departure_date",
-   "fieldtype": "Date",
+   "fieldtype": "Data",
    "label": "Departure Date"
   },
   {
@@ -218,12 +208,46 @@
    "fieldtype": "Link",
    "label": "Vehicle",
    "options": "Vehicle"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "booking.travel_date",
+   "fieldname": "travel_start_date",
+   "fieldtype": "Date",
+   "label": "Travel Start Date"
+  },
+  {
+   "bold": 1,
+   "fetch_from": "booking.return_date",
+   "fieldname": "travel_end_date",
+   "fieldtype": "Date",
+   "label": "Travel End Date"
+  },
+  {
+   "fieldname": "return_departure_date",
+   "fieldtype": "Data",
+   "label": "Return Departure Date"
+  },
+  {
+   "fieldname": "return_departure_time",
+   "fieldtype": "Time",
+   "label": "Return Departure Time"
+  },
+  {
+   "fieldname": "return_arrival_date",
+   "fieldtype": "Date",
+   "label": " Return Arrival Date"
+  },
+  {
+   "fieldname": "return_arrival_time",
+   "fieldtype": "Time",
+   "label": "Return Arrival Time"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-27 13:24:27.666957",
+ "modified": "2025-10-28 13:24:34.368828",
  "modified_by": "Administrator",
  "module": "GoFly Journeys",
  "name": "Travel Plan",
